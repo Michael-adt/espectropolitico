@@ -529,7 +529,7 @@
         return "Conservadorismo Moderado / Defensor da Ordem";
     }
 
-    // Gerador de Análise Ultra-Detalhada dos Eixos
+    // Gerador de Análise Ultra-Detalhada com Figuras Históricas
     function gerarRelatorioTextual(x, y, r) {
         let html = '';
 
@@ -547,7 +547,6 @@
         
         html += `<ul class="report-bullet-list">`;
         
-        // Subpauta A: Estado vs Mercado
         if (x > 2) {
             html += `<li class="report-bullet-item"><strong>Papel das Empresas e Mercado:</strong> Você prioriza a livre iniciativa, concorrência e privatizações. Entende que o livre mercado regula os preços de forma mais eficiente do que governos e que impostos altos desestimulam empregos e investimentos.</li>`;
         } else if (x < -2) {
@@ -556,7 +555,6 @@
             html += `<li class="report-bullet-item"><strong>Papel das Empresas e Mercado:</strong> Sua posição é de equilíbrio: você reconhece o valor da livre iniciativa privada para gerar inovação, mas concorda que o Estado precisa atuar onde o mercado não atende de forma justa.</li>`;
         }
 
-        // Subpauta B: Impostos e Serviços Públicos
         if (x > 2) {
             html += `<li class="report-bullet-item"><strong>Impostos e Proteção Social:</strong> Prefere a redução da carga tributária geral e defende a responsabilidade fiscal rigorosa. Acredita que os benefícios sociais devem ter regras claras de transição para o mercado de trabalho.</li>`;
         } else if (x < -2) {
@@ -565,7 +563,6 @@
             html += `<li class="report-bullet-item"><strong>Impostos e Proteção Social:</strong> Apoia a manutenção de redes essenciais de proteção social (como SUS e auxílios), mas cobra eficiência, gestão responsável dos recursos e equilíbrio no orçamento.</li>`;
         }
 
-        // Subpauta C: Desenvolvimento e Meio Ambiente
         if (r['q25'] >= 4 || r['q27'] >= 4) {
             html += `<li class="report-bullet-item"><strong>Sustentabilidade e Clima:</strong> Suas respostas destacam forte preocupação ambiental, concordando que regras de proteção da natureza e compromissos climáticos globais devem sobrepor-se ao crescimento econômico desordenado.</li>`;
         } else {
@@ -582,22 +579,20 @@
         else if (y > 2) perfilSoc = "Conservadorismo Institucional / Defensor da Ordem";
         else if (y >= -2) perfilSoc = "Moderado no Campo Cultural / Equilibrado";
         else if (y >= -6) perfilSoc = "Progressismo Social / Social-Libertário";
-        else perfilSoc = "Libertarianismo Social / Progressismo Laico Rígido";
+        else perfilSoc = "Libertarianismo Social / Progressista Laico Rígido";
 
         html += `<div class="report-paragraph">No campo social e institucional, sua postura é classificada como <strong>${perfilSoc}</strong>. Esse eixo mede sua visão sobre costumes, papel da religião no Estado, segurança pública e limites da autoridade governamental.</div>`;
         
         html += `<ul class="report-bullet-list">`;
         
-        // Subpauta A: Liberdades Individuais e Costumes
         if (y > 2) {
             html += `<li class="report-bullet-item"><strong>Moralidade e Princípios:</strong> Você valoriza a preservação da estrutura familiar e moral tradicional como alicerces de estabilidade da sociedade, preferindo diretrizes escolares e leis alinhadas a esses costumes.</li>`;
         } else if (y < -2) {
             html += `<li class="report-bullet-item"><strong>Moralidade e Princípios:</strong> Defende a autonomia individual plena e o respeito à diversidade, sustentando que o Estado deve ser estritamente laico e neutro, garantindo que cada cidadão decida sobre seu próprio corpo e estilo de vida.</li>`;
         } else {
-            html += `<li class="report-bullet-item"><strong>Moralidade e Princípios:</strong> Demonstra tolerancia e respeito às liberdades individuais, ao mesmo tempo em que reconhece a relevância das tradições culturais e religiosas para a coesão social.</li>`;
+            html += `<li class="report-bullet-item"><strong>Moralidade e Princípios:</strong> Demonstra tolerância e respeito às liberdades individuais, ao mesmo tempo em que reconhece a relevância das tradições culturais e religiosas para a coesão social.</li>`;
         }
 
-        // Subpauta B: Segurança Pública e Leis
         if (y > 2) {
             html += `<li class="report-bullet-item"><strong>Segurança e Ordem Pública:</strong> Favorece uma abordagem de firmeza e rigor penal, apoiando maior punição para crimes graves, atuação policial enérgica e o direito à legítima defesa do cidadão comum.</li>`;
         } else if (y < -2) {
@@ -606,7 +601,6 @@
             html += `<li class="report-bullet-item"><strong>Segurança e Ordem Pública:</strong> Apoia ações efetivas de combate à criminalidade e respeito às leis, buscando conciliar a autoridade do Estado com a preservação dos direitos humanos básicos.</li>`;
         }
 
-        // Subpauta C: Instituições e Política
         if (r['q36'] >= 4 || r['q37'] >= 4 || r['q40'] >= 4) {
             html += `<li class="report-bullet-item"><strong>Reforma do Estado:</strong> Suas respostas indicam forte desejo de reformar o sistema político, cortando privilégios, reduzindo o número de parlamentares e flexibilizando a obrigatoriedade do voto.</li>`;
         } else {
@@ -624,7 +618,7 @@
             "Socialismo de Estado / Estatismo Conservador": "Você une a defesa de uma economia planejada e regulada pelo Estado com uma visão cultural conservadora. Para você, o governo deve controlar os setores estratégicos para evitar a exploração econômica, ao mesmo tempo em que protege a ordem pública, os costumes tradicionais e as instituições familiares.",
             "Conservadorismo Tradicional / Direita Conservadora": "Seu perfil alinha o liberalismo econômico no mercado à preservação da ordem moral na sociedade. Você enxerga a livre iniciativa e a responsabilidade fiscal como fontes de riqueza, e defende que o rigor nas leis, o combate à criminalidade e o fortalecimento da família são essenciais para a coesão social.",
             "Social-Democracia / Progressismo Social": "Seu diagnóstico aponta para a defesa de um Estado social forte e protetor, combinado com valores progressistas e libertários. Você defende serviços públicos universais e justiça fiscal para combater as desigualdades, ao mesmo tempo em que luta pela laicidade do Estado, diversidade e direitos civis.",
-            "Liberalismo Econômico / Libertarianismo": "Seu princípio orientador é a liberdade individual plena. Na economia, defende privatizaciones, desregulamentação e corte de impostos para que o mercado prospere sem amarras estatais. No campo pessoal, sustenta que o governo não tem o direito de interferir nos costumes e nas escolhas privadas das pessoas.",
+            "Liberalismo Econômico / Libertarianismo": "Seu princípio orientador é a liberdade individual plena. Na economia, defende privatizações, desregulamentação e corte de impostos para que o mercado prospere sem amarras estatais. No campo pessoal, sustenta que o governo não tem o direito de interferir nos costumes e nas escolhas privadas das pessoas.",
             "Esquerda Reformista / Social-Desenvolvimentista": "Sua prioridade política é usar o Estado como indutor do desenvolvimento econômico nacional e garantidor de direitos sociais. Você defende investimentos estatais em ciência, infraestrutura e valorização do trabalho, adotando uma postura equilibrada ou moderada em relação às pautas culturais.",
             "Direita Fiscal / Liberalismo de Mercado": "Seu foco primordial está na responsabilidade fiscal, no enxugamento do Estado e na criação de um ambiente favorável para empresas e empreendedores. Para você, o equilíbrio das contas públicas e a atração de capital são a base do progresso, mantendo uma atitude flexível em questões morais.",
             "Social-Libertário / Progressista Laico": "Você prioriza a autonomia das escolhas pessoais e a neutralidade laica do Estado acima de tutelas morais. Na economia, adota uma posição equilibrada, valorizando o livre mercado sem abrir mão de uma rede pública de proteção social para quem precisa.",
@@ -666,24 +660,56 @@
             html += `</div>`;
         }
 
-        // BLOCO 5: CONTEXTO E CORRENTES DE PENSAMENTO AFINS
-        const afinidades = {
-            "Centrismo Pragmático / Moderado": "Social-Democracia Moderada, Neoliberalismo Social, Pragmatismo Político.",
-            "Socialismo de Estado / Estatismo Conservador": "Nacional-Desenvolvimentismo, Estatismo Tradicional, Socialismo de Estado.",
-            "Conservadorismo Tradicional / Direita Conservadora": "Conservadorismo de Livre Mercado, Democracia Cristã, Neoconservadorismo.",
-            "Social-Democracia / Progressismo Social": "Social-Democracia Europeia, Progressismo Social, Sociedade Aberta.",
-            "Liberalismo Econômico / Libertarianismo": "Libertarianismo, Escola Austríaca de Economia, Minarquismo.",
-            "Esquerda Reformista / Social-Desenvolvimentista": "Keynesianismo, Trabalhismo, Social-Democracia Clássica.",
-            "Direita Fiscal / Liberalismo de Mercado": "Ordoliberalismo, Neoliberalismo Fiscal, Pragmático-Empresarial.",
-            "Social-Libertário / Progressista Laico": "Liberalismo Social, Progressismo Laico, Humanismo Secular.",
-            "Conservadorismo Moderado / Defensor da Ordem": "Conservadorismo Institucional, Legalismo, Republicanismo Clássico."
+        // BLOCO 5: FIGURAS HISTÓRICAS E CORRENTES AFINS
+        const contextoHistorico = {
+            "Centrismo Pragmático / Moderado": {
+                figuras: "Franklin D. Roosevelt (EUA) e Helmut Kohl (Alemanha)",
+                correntes: "Social-Democracia Moderada, Neoliberalismo Social e Pragmatismo Político"
+            },
+            "Socialismo de Estado / Estatismo Conservador": {
+                figuras: "Clement Attlee (Reino Unido) e Getúlio Vargas (Fase Trabalhista - Brasil)",
+                correntes: "Nacional-Desenvolvimentismo, Estatismo Social e Trabalhismo de Estado"
+            },
+            "Conservadorismo Tradicional / Direita Conservadora": {
+                figuras: "Edmund Burke (Reino Unido) e Winston Churchill (Reino Unido)",
+                correntes: "Conservadorismo Clássico, Democracia Cristã e Neoconservadorismo"
+            },
+            "Social-Democracia / Progressismo Social": {
+                figuras: "Olof Palme (Suécia) e Willy Brandt (Alemanha)",
+                correntes: "Social-Democracia Nórdica, Progressismo Social e Sociedade Aberta"
+            },
+            "Liberalismo Econômico / Libertarianismo": {
+                figuras: "Adam Smith (Escócia) e Ludwig von Mises (Áustria)",
+                correntes: "Libertarianismo, Escola Austríaca de Economia e Minarquismo"
+            },
+            "Esquerda Reformista / Social-Desenvolvimentista": {
+                figuras: "John Maynard Keynes (Reino Unido) e Celso Furtado (Brasil)",
+                correntes: "Keynesianismo, Social-Desenvolvimentismo e Reformismo Social"
+            },
+            "Direita Fiscal / Liberalismo de Mercado": {
+                figuras: "Ludwig Erhard (Alemanha) e Milton Friedman (EUA)",
+                correntes: "Ordoliberalismo, Neoliberalismo Fiscal e Economia Social de Mercado"
+            },
+            "Social-Libertário / Progressista Laico": {
+                figuras: "John Stuart Mill (Reino Unido) e Joaquim Nabuco (Brasil)",
+                correntes: "Liberalismo Social, Progressismo Laico e Humanismo Secular"
+            },
+            "Conservadorismo Moderado / Defensor da Ordem": {
+                figuras: "Rui Barbosa (Brasil) e Charles de Gaulle (França)",
+                correntes: "Legalismo, Republicanismo Clássico e Conservadorismo Institucional"
+            }
         };
 
-        const listaAfinidades = afinidades[perfilNome] || "Diversas correntes do pensamento político contemporâneo.";
+        const dadosContexto = contextoHistorico[perfilNome] || {
+            figuras: "Pensadores do Iluminismo e do Constitucionalismo Moderno",
+            correntes: "Ciência Política Contemporânea"
+        };
 
         html += `<div class="report-context-box">`;
-        html += `<strong>📚 Correntes do Pensamento Afins:</strong><br>`;
-        html += `Para fins educativos, suas respostas dialogam com conceitos e escolas do pensamento como: <em>${listaAfinidades}</em>.`;
+        html += `<strong>🏛️ Referências Históricas & Filosofias Afins:</strong><br><br>`;
+        html += `• <strong>Figuras de Referência Histórica:</strong> <em>${dadosContexto.figuras}</em>.<br>`;
+        html += `• <strong>Escolas do Pensamento:</strong> <em>${dadosContexto.correntes}</em>.<br><br>`;
+        html += `<small><em>*Nota pedagógica: As referências históricas servem como ilustrações didáticas de líderes e pensadores que dialogam com o seu quadrante.</em></small>`;
         html += `</div>`;
 
         return html;

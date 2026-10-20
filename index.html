@@ -201,6 +201,25 @@
             border: 1px solid var(--card-border);
         }
 
+        .share-btn-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-share {
+            background-color: var(--accent-green);
+            color: #0f172a;
+            font-weight: 700;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+
+        .btn-share:hover { opacity: 0.9; }
+
         .report-box {
             background-color: var(--example-bg);
             border: 1px solid var(--card-border);
@@ -226,9 +245,7 @@
             color: var(--text-main);
         }
 
-        .report-paragraph strong {
-            color: var(--primary);
-        }
+        .report-paragraph strong { color: var(--primary); }
 
         .report-bullet-list {
             margin: 10px 0 16px 0;
@@ -304,24 +321,88 @@
             margin-bottom: 12px;
         }
 
-        .bio-card-title-pos {
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--accent-green);
-            margin-bottom: 4px;
-        }
-
-        .bio-card-title-neg {
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--error-red);
-            margin-bottom: 4px;
-        }
+        .bio-card-title-pos { font-weight: 700; font-size: 0.95rem; color: var(--accent-green); margin-bottom: 4px; }
+        .bio-card-title-neg { font-weight: 700; font-size: 0.95rem; color: var(--error-red); margin-bottom: 4px; }
 
         .bio-card-text {
             font-size: 0.88rem;
             line-height: 1.45;
             color: var(--text-main);
+        }
+
+        /* GLOSSÁRIO TOOLTIP */
+        .glossary-term {
+            border-bottom: 1px dashed var(--primary);
+            color: var(--primary);
+            cursor: help;
+            position: relative;
+            display: inline-block;
+        }
+
+        .glossary-term:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--primary);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            width: 220px;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            white-space: normal;
+        }
+
+        /* COMPATIBILIDADE */
+        .compat-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .compat-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .compat-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; }
+        .compat-value { font-size: 0.95rem; font-weight: bold; color: var(--primary); }
+
+        /* PAINEL DE GABARITO (ACCORDION) */
+        details.gabarito-panel {
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 20px;
+        }
+
+        details.gabarito-panel summary {
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--primary);
+            outline: none;
+        }
+
+        .gabarito-list {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .gabarito-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 6px;
         }
     </style>
 </head>
@@ -351,11 +432,17 @@
     </div>
 
     <div id="result-section" class="card">
-        <div class="result-title" id="profileTitle">Seu Perfil Ideológico</div>
-        <div class="result-subtitle" id="profileCoords"></div>
-        
-        <div class="chart-container">
-            <canvas id="compassChart"></canvas>
+        <div id="shareableArea">
+            <div class="result-title" id="profileTitle">Seu Perfil Ideológico</div>
+            <div class="result-subtitle" id="profileCoords"></div>
+            
+            <div class="chart-container">
+                <canvas id="compassChart"></canvas>
+            </div>
+        </div>
+
+        <div class="share-btn-container">
+            <button class="btn-share" onclick="baixarResultadoImagem()">📸 Baixar Resultado em Imagem</button>
         </div>
 
         <div class="report-box" id="reportContent"></div>
@@ -363,6 +450,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
 <script>
     const perguntas = [
@@ -408,7 +496,7 @@
 
         // BLOCO 5
         { id: 'q33', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: true, texto: '33. As campanhas dos políticos devem ser pagas com dinheiro de impostos, proibindo doações de empresários.', exemplo: 'Usar fundo eleitoral público para panfletos e TV, evitando que grandes empresários ajudem candidatos em troca de favores.' },
-        { id: 'q34', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: true, texto: '34. A população deveria ir às urnas votar diretamente para decidir sobre leis importantes e polêmicas.', exemplo: 'Votar diretamente na urna dizendo "Sim" ou "Não" sobre legalização de armas, reformas ou privatizações.' },
+        { id: 'q34', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: true, texto: '34. A população deveria ir às urnas votar diretamente para decidir sobre leis importantes e polêmicas.', exemplo: 'Votar diretamente na urna dizendo "Sim" ou "Não" sobre legalização de armas, reformas ou privatizaciones.' },
         { id: 'q35', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: false, texto: '35. Os ministros do governo deveriam ser escolhidos apenas pelo currículo de trabalho, e não por acordos entre partidos.', exemplo: 'Nomear apenas especialistas renomados para os ministérios, recusando indicações de deputados em troca de votos.' },
         { id: 'q36', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: true, texto: '36. Votar no dia da eleição deveria ser uma escolha livre, e não uma obrigação.', exemplo: 'Acabar com a multa e o bloqueio de documentos para quem escolhe não ir votar no dia da eleição.' },
         { id: 'q37', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: false, texto: '37. Funcionários públicos que atendem mal ou trabalham de forma ineficiente deveriam poder ser demitidos.', exemplo: 'Criar avaliações de atendimento em postos e escolas, podendo demitir o funcionário público com desempenho ruim constante.' },
@@ -571,6 +659,22 @@
         return "Conservadorismo Moderado / Defensor da Ordem";
     }
 
+    // COMPATIBILIDADE DE PERFIS
+    function calcularCompatibilidades(perfilAtual) {
+        const matriz = {
+            "Centrismo Pragmático / Moderado": { proximo: "Conservadorismo Moderado / Defensor da Ordem", oposto: "Socialismo de Estado ou Libertarianismo Extremo" },
+            "Socialismo de Estado / Estatismo Conservador": { proximo: "Esquerda Reformista / Social-Desenvolvimentista", oposto: "Liberalismo Econômico / Libertarianismo" },
+            "Conservadorismo Tradicional / Direita Conservadora": { proximo: "Direita Fiscal / Liberalismo de Mercado", oposto: "Social-Democracia / Progressismo Social" },
+            "Social-Democracia / Progressismo Social": { proximo: "Social-Libertário / Progressista Laico", oposto: "Conservadorismo Tradicional / Direita Conservadora" },
+            "Liberalismo Econômico / Libertarianismo": { proximo: "Direita Fiscal / Liberalismo de Mercado", oposto: "Socialismo de Estado / Estatismo Conservador" },
+            "Esquerda Reformista / Social-Desenvolvimentista": { proximo: "Social-Democracia / Progressismo Social", oposto: "Direita Fiscal / Liberalismo de Mercado" },
+            "Direita Fiscal / Liberalismo de Mercado": { proximo: "Liberalismo Econômico / Libertarianismo", oposto: "Esquerda Reformista / Social-Desenvolvimentista" },
+            "Social-Libertário / Progressista Laico": { proximo: "Social-Democracia / Progressismo Social", oposto: "Conservadorismo Tradicional / Direita Conservadora" },
+            "Conservadorismo Moderado / Defensor da Ordem": { proximo: "Centrismo Pragmático / Moderado", oposto: "Social-Libertário / Progressista Laico" }
+        };
+        return matriz[perfilAtual] || { proximo: "Perfis Moderados", oposto: "Perfis Extremos" };
+    }
+
     function gerarRelatorioTextual(x, y, r) {
         let html = '';
 
@@ -589,25 +693,19 @@
         html += `<ul class="report-bullet-list">`;
         
         if (x > 2) {
-            html += `<li class="report-bullet-item"><strong>Papel das Empresas e Mercado:</strong> Você prioriza a livre iniciativa, concorrência e privatizações. Entende que o livre mercado regula os preços de forma mais eficiente do que governos e que impostos altos desestimulam empregos e investimentos.</li>`;
+            html += `<li class="report-bullet-item"><strong>Papel das Empresas e Mercado:</strong> Você prioriza a livre iniciativa, concorrência e privatizações. Entende que o livre mercado regula os preços de forma mais eficiente do que governos e que impostos altos desestimulam empregos.</li>`;
         } else if (x < -2) {
-            html += `<li class="report-bullet-item"><strong>Papel das Empresas e Mercado:</strong> Você defende um Estado indutor, capaz de gerir estatais estratégicas (como energia e saneamento) e regular preços ou abusos para impedir monopólios que prejudiquem a população.</li>`;
+            html += `<li class="report-bullet-item"><strong>Papel das Empresas e Mercado:</strong> Você defende um <span class="glossary-term" data-tooltip="Estado Indutor: O governo usa investimentos públicos para direcionar o crescimento da economia.">Estado indutor</span>, capaz de gerir estatais estratégicas e regular preços para impedir monopólios.</li>`;
         } else {
-            html += `<li class="report-bullet-item"><strong>Papel das Empresas e Mercado:</strong> Sua posição é de equilíbrio: você reconhece o valor da livre iniciativa privada para gerar inovação, mas concorda que o Estado precisa atuar onde o mercado não atende de forma justa.</li>`;
+            html += `<li class="report-bullet-item"><strong>Papel das Empresas e Mercado:</strong> Sua posição é de equilíbrio: você reconhece o valor da livre iniciativa privada para gerar inovação, mas concorda que o Estado precisa atuar onde o mercado falha.</li>`;
         }
 
         if (x > 2) {
-            html += `<li class="report-bullet-item"><strong>Impostos e Proteção Social:</strong> Prefere a redução da carga tributária geral e defende a responsabilidade fiscal rigorosa. Acredita que os benefícios sociais devem ter regras claras de transição para o mercado de trabalho.</li>`;
+            html += `<li class="report-bullet-item"><strong>Impostos e Proteção Social:</strong> Prefere a redução da carga tributária geral e defende a <span class="glossary-term" data-tooltip="Responsabilidade Fiscal: Regra de não gastar mais do que o governo arrecada com impostos.">responsabilidade fiscal</span> rigorosa.</li>`;
         } else if (x < -2) {
-            html += `<li class="report-bullet-item"><strong>Impostos e Proteção Social:</strong> Defende a justiça fiscal com tributação progressiva sobre grandes fortunas e renda mais alta, financiando serviços 100% públicos e universais em saúde, educação e auxílios de renda.</li>`;
+            html += `<li class="report-bullet-item"><strong>Impostos e Proteção Social:</strong> Defende a justiça fiscal com tributação progressiva sobre grandes fortunas, financiando serviços públicos universais em saúde e educação.</li>`;
         } else {
-            html += `<li class="report-bullet-item"><strong>Impostos e Proteção Social:</strong> Apoia a manutenção de redes essenciais de proteção social (como SUS e auxílios), mas cobra eficiência, gestão responsável dos recursos e equilíbrio no orçamento.</li>`;
-        }
-
-        if (r['q25'] >= 4 || r['q27'] >= 4) {
-            html += `<li class="report-bullet-item"><strong>Sustentabilidade e Clima:</strong> Suas respostas destacam forte preocupação ambiental, concordando que regras de proteção da natureza e compromissos climáticos globais devem sobrepor-se ao crescimento econômico desordenado.</li>`;
-        } else {
-            html += `<li class="report-bullet-item"><strong>Desenvolvimento e Soberania:</strong> Suas respostas enfatizam a produção nacional, a autonomia agrícola e industrial e a rejeição a barreiras externas que possam travar o crescimento produtivo do país.</li>`;
+            html += `<li class="report-bullet-item"><strong>Impostos e Proteção Social:</strong> Apoia a manutenção de redes essenciais de proteção social (como SUS e auxílios), mas cobra eficiência no orçamento.</li>`;
         }
         html += `</ul>`;
 
@@ -622,219 +720,204 @@
         else if (y >= -6) perfilSoc = "Progressismo Social / Social-Libertário";
         else perfilSoc = "Libertarianismo Social / Progressista Laico Rígido";
 
-        html += `<div class="report-paragraph">No campo social e institucional, sua postura é classificada como <strong>${perfilSoc}</strong>. Esse eixo mede sua visão sobre costumes, papel da religião no Estado, segurança pública e limites da autoridade governamental.</div>`;
+        html += `<div class="report-paragraph">No campo social e institucional, sua postura é classificada como <strong>${perfilSoc}</strong>. Esse eixo mede sua visão sobre costumes, papel da religião no Estado e segurança pública.</div>`;
         
         html += `<ul class="report-bullet-list">`;
-        
         if (y > 2) {
-            html += `<li class="report-bullet-item"><strong>Moralidade e Princípios:</strong> Você valoriza a preservação da estrutura familiar e moral tradicional como alicerces de estabilidade da sociedade, preferindo diretrizes escolares e leis alinhadas a esses costumes.</li>`;
+            html += `<li class="report-bullet-item"><strong>Moralidade e Princípios:</strong> Você valoriza a preservação da estrutura familiar e moral tradicional como alicerces de estabilidade da sociedade.</li>`;
         } else if (y < -2) {
-            html += `<li class="report-bullet-item"><strong>Moralidade e Princípios:</strong> Defende a autonomia individual plena e o respeito à diversidade, sustentando que o Estado deve ser estritamente laico e neutro, garantindo que cada cidadão decida sobre seu próprio corpo e estilo de vida.</li>`;
+            html += `<li class="report-bullet-item"><strong>Moralidade e Princípios:</strong> Defende a autonomia individual e o respeito à diversidade, sustentando que o Estado deve ser estritamente <span class="glossary-term" data-tooltip="Estado Laico: Separação total entre a religião e as leis públicas do governo.">laico</span>.</li>`;
         } else {
-            html += `<li class="report-bullet-item"><strong>Moralidade e Princípios:</strong> Demonstra tolerância e respeito às liberdades individuais, ao mesmo tempo em que reconhece a relevância das tradições culturais e religiosas para a coesão social.</li>`;
-        }
-
-        if (y > 2) {
-            html += `<li class="report-bullet-item"><strong>Segurança e Ordem Pública:</strong> Favorece uma abordagem de firmeza e rigor penal, apoiando maior punição para crimes graves, atuação policial enérgica e o direito à legítima defesa do cidadão comum.</li>`;
-        } else if (y < -2) {
-            html += `<li class="report-bullet-item"><strong>Segurança e Ordem Pública:</strong> Enfatiza a proteção dos direitos civis, garantias individuais e limites à atuação do Estado e das forças policiais para evitar abusos de autoridade.</li>`;
-        } else {
-            html += `<li class="report-bullet-item"><strong>Segurança e Ordem Pública:</strong> Apoia ações efetivas de combate à criminalidade e respeito às leis, buscando conciliar a autoridade do Estado com a preservação dos direitos humanos básicos.</li>`;
-        }
-
-        if (r['q36'] >= 4 || r['q37'] >= 4 || r['q40'] >= 4) {
-            html += `<li class="report-bullet-item"><strong>Reforma do Estado:</strong> Suas respostas indicam forte desejo de reformar o sistema político, cortando privilégios, reduzindo o número de parlamentares e flexibilizando a obrigatoriedade do voto.</li>`;
-        } else {
-            html += `<li class="report-bullet-item"><strong>Institucionalidade:</strong> Suas respostas mostram respeito pela estrutura republicana representativa tradicional e pela manutenção do equilíbrio entre os poderes constituídos.</li>`;
+            html += `<li class="report-bullet-item"><strong>Moralidade e Princípios:</strong> Demonstra tolerância e respeito às liberdades individuais, ao mesmo tempo em que reconhece a relevância das tradições culturais.</li>`;
         }
         html += `</ul>`;
 
 
-        // BLOCO 3: RESUMO EXCLUSIVO E DEDICADO DO PERFIL
+        // BLOCO 3: RESUMO EXCLUSIVO E DEDICADO DO PERFIL + COMPATIBILIDADE
         html += `<div class="report-section-header">💡 Síntese do seu Perfil Ideológico</div>`;
         const perfilNome = definirIdeologia(x, y);
 
         const textosConclusao = {
-            "Centrismo Pragmático / Moderado": "Você se recusa a adotar cartilhas ideológicas fechadas. Suas respostas revelam um pensamento essencialmente centrista: apoia a eficiência do mercado onde ela funciona, mas não hesita em defender a atuação do Estado para garantir saúde, educação e segurança pública. No campo social, busca o equilíbrio entre o respeito às tradições e o acolhimento das liberdades individuais.",
-            "Socialismo de Estado / Estatismo Conservador": "Você une a defesa de uma economia planejada e regulada pelo Estado com uma visão cultural conservadora. Para você, o governo deve controlar os setores estratégicos para evitar a exploração econômica, ao mesmo tempo em que protege a ordem pública, os costumes tradicionais e as instituições familiares.",
-            "Conservadorismo Tradicional / Direita Conservadora": "Seu perfil alinha o liberalismo econômico no mercado à preservação da ordem moral na sociedade. Você enxerga a livre iniciativa e a responsabilidade fiscal como fontes de riqueza, e defende que o rigor nas leis, o combate à criminalidade e o fortalecimento da família são essenciais para a coesão social.",
-            "Social-Democracia / Progressismo Social": "Seu diagnóstico aponta para a defesa de um Estado social forte e protetor, combinado com valores progressistas e libertários. Você defende serviços públicos universais e justiça fiscal para combater as desigualdades, ao mesmo tempo em que luta pela laicidade do Estado, diversidade e direitos civis.",
-            "Liberalismo Econômico / Libertarianismo": "Seu princípio orientador é a liberdade individual plena. Na economia, defende privatizações, desregulamentação e corte de impostos para que o mercado prospere sem amarras estatais. No campo pessoal, sustenta que o governo não tem o direito de interferir nos costumes e nas escolhas privadas das pessoas.",
-            "Esquerda Reformista / Social-Desenvolvimentista": "Sua prioridade política é usar o Estado como indutor do desenvolvimento econômico nacional e garantidor de direitos sociais. Você defende investimentos estatais em ciência, infraestrutura e valorização do trabalho, adotando uma postura equilibrada ou moderada em relação às pautas culturais.",
-            "Direita Fiscal / Liberalismo de Mercado": "Seu foco primordial está na responsabilidade fiscal, no enxugamento do Estado e na criação de um ambiente favorável para empresas e empreendedores. Para você, o equilíbrio das contas públicas e a atração de capital são a base do progresso, mantendo uma atitude flexível em questões morais.",
-            "Social-Libertário / Progressista Laico": "Você prioriza a autonomia das escolhas pessoais e a neutralidade laica do Estado acima de tutelas morais. Na economia, adota uma posição equilibrada, valorizando o livre mercado sem abrir mão de uma rede pública de proteção social para quem precisa.",
-            "Conservadorismo Moderado / Defensor da Ordem": "Sua visão coloca a segurança pública, o império da lei e o bom funcionamento das instituições no centro da política. Você apoia o dinamismo do mercado e a livre concorrência, mas exige rigor no cumprimento das leis, combate ao crime e estabilidade social."
+            "Centrismo Pragmático / Moderado": "Você se recusa a adotar cartilhas ideológicas fechadas. Apoia a eficiência do mercado onde ela funciona, mas defende a atuação do Estado em serviços essenciais.",
+            "Socialismo de Estado / Estatismo Conservador": "Você une a defesa de uma economia planejada e regulada pelo Estado com uma visão cultural conservadora e protetora das tradições.",
+            "Conservadorismo Tradicional / Direita Conservadora": "Seu perfil alinha o livre mercado na economia à preservação da ordem moral, combate ao crime e fortalecimento das instituições morais na sociedade.",
+            "Social-Democracia / Progressismo Social": "Seu diagnóstico aponta para um Estado social forte e protetor, combinado com a defesa ativa dos direitos civis, diversidade e laicidade.",
+            "Liberalismo Econômico / Libertarianismo": "Seu princípio orientador é a liberdade individual plena: privatizações e desregulamentação na economia, sem interferência moral do Estado na vida privada.",
+            "Esquerda Reformista / Social-Desenvolvimentista": "Sua prioridade política é usar o Estado como indutor do desenvolvimento nacional, ciência e direitos dos trabalhadores.",
+            "Direita Fiscal / Liberalismo de Mercado": "Seu foco está na responsabilidade fiscal, corte de impostos e ambiente livre para negócios e empreendedores.",
+            "Social-Libertário / Progressista Laico": "Você prioriza a autonomia individual e a neutralidade do Estado acima de valores morais ou dogmas religiosos.",
+            "Conservadorismo Moderado / Defensor da Ordem": "Sua visão coloca a segurança pública, o império da lei e a estabilidade das instituições republicanas no centro da política."
         };
-
-        const textoExplicativo = textosConclusao[perfilNome] || "Com base nas suas escolhas, seu perfil reflete uma combinação única de visão econômica e social.";
 
         html += `<div class="report-highlight-box">`;
         html += `<strong>Diagnóstico Dominante: ${perfilNome}</strong><br><br>`;
-        html += `${textoExplicativo}`;
+        html += `${textosConclusao[perfilNome] || ""}`;
         html += `</div>`;
 
-        // BLOCO 4: DETECTOR DE NUANCES E PONTOS SINGULARES
-        let nuances = [];
-        if (x > 1 && r['q11'] >= 4) {
-            nuances.push("Apesar de sua preferência pelo livre mercado, você apoia o sistema de cotas públicas como ferramenta legítima de inclusão social.");
-        }
-        if (y > 1 && r['q10'] >= 4) {
-            nuances.push("Embora defenda a ordem e valores tradicionais, você apoia a autonomia das pessoas sobre decisões do próprio corpo e estilo de vida.");
-        }
-        if (x < -1 && r['q13'] >= 4) {
-            nuances.push("Mesmo defendendo o papel do Estado na economia e em serviços públicos, você é a favor do direito do cidadão de possuir armas para defesa pessoal.");
-        }
-        if (r['q17'] >= 4 && r['q18'] >= 4) {
-            nuances.push("Sua postura defende a liberdade de expressão irrestrita, mas você concorda que o governo deve atuar contra notícias falsas graves.");
-        }
-        if (r['q36'] >= 4 && r['q37'] >= 4) {
-            nuances.push("Você apoia reformas institucionais profundas, como o fim do voto obrigatório e a demissão de servidores públicos ineficientes.");
-        }
-
-        if (nuances.length > 0) {
-            html += `<div class="report-nuances-box">`;
-            html += `<strong>🔍 Suas Nuances e Singularidades:</strong><br>`;
-            html += `O seu resultado não é 100% engessado. Notamos pontos marcantes onde você diverge das cartilhas tradicionais:<br><br>`;
-            nuances.forEach(n => {
-                html += `• ${n}<br>`;
-            });
-            html += `</div>`;
-        }
+        // COMPATIBILIDADE
+        const comp = calcularCompatibilidades(perfilNome);
+        html += `
+            <div class="compat-box">
+                <div class="compat-card">
+                    <div class="compat-title">🤝 Maior Afinitade</div>
+                    <div class="compat-value">${comp.proximo}</div>
+                </div>
+                <div class="compat-card">
+                    <div class="compat-title">⚡ Maior Divergência</div>
+                    <div class="compat-value" style="color: var(--error-red);">${comp.oposto}</div>
+                </div>
+            </div>
+        `;
 
         // BLOCO 5: DADOS DE 4 REFERÊNCIAS HISTÓRICAS (2 POSITIVAS E 2 NEGATIVAS)
         const referenciasCompletas = {
             "Centrismo Pragmático / Moderado": {
                 positivas: [
-                    { nome: "Franklin D. Roosevelt (1882–1945)", papel: "Presidente dos EUA", bio: "Liderou os EUA durante a Grande Depressão e a Segunda Guerra Mundial.", feitos: "Criou o New Deal, combinando economia de mercado com forte rede pública de proteção social e obras." },
-                    { nome: "Angela Merkel (1954–presente)", papel: "Chanceler da Alemanha", bio: "Física e política, governou a Alemanha por 16 anos como símbolo de estabilidade.", feitos: "Destacou-se pela gestão pragmática de crises europeias, transição energética e capacidade de conciliação." }
+                    { nome: "Franklin D. Roosevelt (1882–1945)", papel: "Presidente dos EUA", bio: "Liderou os EUA na Grande Depressão e 2ª Guerra.", feitos: "Criou o New Deal, combinando mercado com forte rede pública social." },
+                    { nome: "Angela Merkel (1954–presente)", papel: "Chanceler da Alemanha", bio: "Governou a Alemanha por 16 anos com estabilidade.", feitos: "Destacou-se pela gestão pragmática de crises e capacidade de conciliação." }
                 ],
                 negativas: [
-                    { nome: "Neville Chamberlain (1869–1940)", papel: "Primeiro-Ministro do Reino Unido", bio: "Político britânico de centro responsável pelo apaziguamento europeu pré-Segunda Guerra.", desdobramento: "Criticado pela hesitação e conciliação que adiaram a reação internacional ao avanço totalitário nazista." },
-                    { nome: "Dilma Rousseff (1947–presente)", papel: "Presidente do Brasil", bio: "Economista e política de centro-esquerda que governou o Brasil entre 2011 e 2016.", desdobramento: "Criticada pela gestão da 'Nova Matriz Econômica', que resultou na recessão de 2014-2016 e pedaladas fiscais." }
+                    { nome: "Neville Chamberlain (1869–1940)", papel: "Primeiro-Ministro do Reino Unido", bio: "Político de centro responsável pelo apaziguamento pré-Guerra.", desdobramento: "Criticado pela hesitação frente ao avanço totalitário nazista." },
+                    { nome: "Dilma Rousseff (1947–presente)", papel: "Presidente do Brasil", bio: "Governou o Brasil entre 2011 e 2016.", desdobramento: "Criticada pela recessão econômica de 2014-2016 e pedaladas fiscais." }
                 ]
             },
             "Socialismo de Estado / Estatismo Conservador": {
                 positivas: [
-                    { nome: "Clement Attlee (1883–1967)", papel: "Primeiro-Ministro do Reino Unido", bio: "Líder trabalhista do pós-guerra conhecido por seu forte senso de dever público.", feitos: "Nacionalizou indústrias essenciais e criou o Serviço Nacional de Saúde (NHS), maior rede pública do mundo." },
-                    { nome: "Indira Gandhi (1917–1984)", papel: "Primeira-Ministra da Índia", bio: "Primeira mulher a liderar a Índia, centralizou decisões estratégicas do país.", feitos: "Nacionalizou os maiores bancos indianos, impulsionou a Revolução Verde agrícola e fortaleceu a soberania nacional." }
+                    { nome: "Clement Attlee (1883–1967)", papel: "Primeiro-Ministro do Reino Unido", bio: "Líder trabalhista do pós-guerra.", feitos: "Nacionalizou indústrias e fundou o NHS (Serviço de Saúde Público)." },
+                    { nome: "Indira Gandhi (1917–1984)", papel: "Primeira-Ministra da Índia", bio: "Liderou a Índia com foco em soberania nacional.", feitos: "Nacionalizou bancos e impulsionou a Revolução Verde agrícola." }
                 ],
                 negativas: [
-                    { nome: "Josef Stalin (1878–1953)", papel: "Líder Supremo da União Soviética", bio: "Ditador soviético que promoveu a coletivização forçada e a industrialização pesada.", desdobramento: "Responsável pelo Grande Expurgo, regime de terror policial, censura e campos de trabalho forçado (Gulags)." },
-                    { nome: "Elena Ceaușescu (1916–1989)", papel: "Vice-Primeira-Ministra da Romênia", bio: "Figura central do regime ditatorial comunista romeno ao lado do marido, Nicolae Ceaușescu.", desdobramento: "Associada ao desvio de recursos públicos, culto à personalidade e empobrecimento severo da população." }
+                    { nome: "Josef Stalin (1878–1953)", papel: "Líder da União Soviética", bio: "Ditador soviético que promoveu a coletivização forçada.", desdobramento: "Responsável pelo Grande Expurgo, regime de terror e campos Gulag." },
+                    { nome: "Elena Ceaușescu (1916–1989)", papel: "Vice-Primeira-Ministra da Romênia", bio: "Co-figura do regime ditatorial comunista romeno.", desdobramento: "Associada à corrupção e forte empobrecimento populacional." }
                 ]
             },
             "Conservadorismo Tradicional / Direita Conservadora": {
                 positivas: [
-                    { nome: "Winston Churchill (1874–1965)", papel: "Primeiro-Ministro do Reino Unido", bio: "Estadista, historiador e Nobel de Literatura que liderou a resistência ao nazismo.", feitos: "Defendeu as instituições democráticas ocidentais, a soberania nacional e valores morais tradicionais." },
-                    { nome: "Margaret Thatcher (1925–2013)", papel: "Primeira-Ministra do Reino Unido", bio: "Conhecida como 'Dama de Ferro', foi a primeira mulher a ocupar o cargo no Reino Unido.", feitos: "Promoveu privatizações massivas, desregulamentação financeira e foco na responsabilidade individual." }
+                    { nome: "Winston Churchill (1874–1965)", papel: "Primeiro-Ministro do Reino Unido", bio: "Liderou a resistência ocidental ao nazismo.", feitos: "Defendeu instituições democráticas e valores morais tradicionais." },
+                    { nome: "Margaret Thatcher (1925–2013)", papel: "Primeira-Ministra do Reino Unido", bio: "Primeira mulher no cargo no Reino Unido.", feitos: "Promoveu privatizações massivas e responsabilidade individual." }
                 ],
                 negativas: [
-                    { nome: "Augusto Pinochet (1915–2006)", papel: "Ditador Militar do Chile", bio: "General chileno que assumiu o poder via golpe militar em 1973 e aplicou reformas liberais.", desdobramento: "Criticado internacionalmente por graves violações de direitos humanos, tortura, assassinatos políticos e censura." },
-                    { nome: "Imelda Marcos (1929–presente)", papel: "Primeira-Dama e Ministra das Filipinas", bio: "Figura influente durante o regime autoritário de seu marido, Ferdinand Marcos.", desdobramento: "Símbolo de extravagância e corrupção sistêmica, criticada pela apropriação indevida de bilhões de dólares do erário." }
+                    { nome: "Augusto Pinochet (1915–2006)", papel: "Ditador Militar do Chile", bio: "Assumiu via golpe militar em 1973.", desdobramento: "Graves violações de direitos humanos, tortura e assassinatos políticos." },
+                    { nome: "Imelda Marcos (1929–presente)", papel: "Primeira-Dama das Filipinas", bio: "Figura influente em regime autoritário.", desdobramento: "Símbolo de extravagância e apropriação indevida de verbas públicas." }
                 ]
             },
             "Social-Democracia / Progressismo Social": {
                 positivas: [
-                    { nome: "Olof Palme (1927–1986)", papel: "Primeiro-Ministro da Suécia", bio: "Líder social-democrata sueco que marcou a política internacional do século XX.", feitos: "Consolidou o 'Modelo Sueco' de bem-estar social universal com forte igualdade de gênero e direitos civis." },
-                    { nome: "Gro Harlem Brundtland (1939–presente)", papel: "Primeira-Ministra da Noruega", bio: "Primeira mulher Chefe de Governo da Noruega e ex-Diretora-Geral da OMS.", feitos: "Liderou o relatório da ONU sobre 'Desenvolvimento Sustentável' e expandiu licenças parentais e políticas sociais." }
+                    { nome: "Olof Palme (1927–1986)", papel: "Primeiro-Ministro da Suécia", bio: "Líder social-democrata internacional.", feitos: "Consolidou o bem-estar social sueco e a igualdade de gênero." },
+                    { nome: "Gro Harlem Brundtland (1939–presente)", papel: "Primeira-Ministra da Noruega", bio: "Ex-Diretora-Geral da OMS.", feitos: "Liderou o conceito de 'Desenvolvimento Sustentável' na ONU." }
                 ],
                 negativas: [
-                    { nome: "François Hollande (1954–presente)", papel: "Presidente da França", bio: "Líder socialista francês que governou em meio a estagnação econômica e crises de segurança.", desdobramento: "Atingiu recordes de impopularidade devido ao fraco desempenho econômico, paralisia de reformas e falta de liderança." },
-                    { nome: "Sanna Marin (1985–presente)", papel: "Primeira-Ministra da Finlândia", bio: "Líder social-democrata mais jovem do mundo ao assumir o cargo na Finlândia.", desdobramento: "Criticada pelo forte aumento do endividamento público durante sua gestão e por controvérsias de conduta ética no cargo." }
+                    { nome: "François Hollande (1954–presente)", papel: "Presidente da França", bio: "Governou em meio a crises econômicas.", desdobramento: "Recordes de impopularidade e paralisia no combate ao desemprego." },
+                    { nome: "Sanna Marin (1985–presente)", papel: "Primeira-Ministra da Finlândia", bio: "Jovem líder social-democrata.", desdobramento: "Criticada pelo aumento do endividamento público e controvérsias." }
                 ]
             },
             "Liberalismo Econômico / Libertarianismo": {
                 positivas: [
-                    { nome: "Adam Smith (1723–1790)", papel: "Filósofo e Economista Escocês", bio: "Considerado o pai da economia moderna e do liberalismo clássico.", feitos: "Escreveu 'A Riqueza das Nações', demonstrando como a livre concorrência e a divisão do trabalho geram riqueza." },
-                    { nome: "Rose Wilder Lane (1886–1968)", papel: "Escritora e Teórica Política (EUA)", bio: "Uma das mães do movimento libertário americano do século XX.", feitos: "Autora do clássico 'The Discovery of Freedom', advogou pela liberdade individual e mínima interferência estatal." }
+                    { nome: "Adam Smith (1723–1790)", papel: "Economista Escocês", bio: "Pai da economia moderna.", feitos: "Demonstrou como a livre concorrência gera riqueza social." },
+                    { nome: "Rose Wilder Lane (1886–1968)", papel: "Teórica Política (EUA)", bio: "Pioneira do libertarianismo.", feitos: "Advogou pela liberdade individual e mínima interferência do Estado." }
                 ],
                 negativas: [
-                    { nome: "Ayn Rand (1905–1982)", papel: "Escritora e Filósofa (EUA/Rússia)", bio: "Criadora do Objetivismo, defendeu o egoísmo racional e o capitalismo sem regulação.", desdobramento: "Criticada por sua rejeição radical ao altruísmo, solidariedade pública e a redes de assistência social estatal." },
-                    { nome: "Liz Truss (1975–presente)", papel: "Primeira-Ministra do Reino Unido", bio: "Política britânica com o mandato mais curto da história do país (45 dias em 2022).", desdobramento: "Provocou o colapso da moeda e forte crise financeira ao tentar aprovar cortes radicais de impostos sem lastro." }
+                    { nome: "Ayn Rand (1905–1982)", papel: "Filósofa (EUA/Rússia)", bio: "Criadora do Objetivismo.", desdobramento: "Criticada pela rejeição total ao altruísmo e redes de assistência." },
+                    { nome: "Liz Truss (1975–presente)", papel: "Primeira-Ministra do Reino Unido", bio: "Mandato mais curto da história do país (45 dias).", desdobramento: "Gerou crise cambial ao propor cortes de impostos sem lastro." }
                 ]
             },
             "Esquerda Reformista / Social-Desenvolvimentista": {
                 positivas: [
-                    { nome: "John Maynard Keynes (1883–1946)", papel: "Economista Britânico", bio: "Um dos economistas mais influentes da história moderna.", feitos: "Propôs investimentos públicos em crises para gerar empregos e reativar a demanda e economia nacional." },
-                    { nome: "Maria da Conceição Tavares (1931–2024)", papel: "Economista e Professora Luso-Brasileira", bio: "Uma das vozes mais marcantes do pensamento desenvolvimentista da América Latina.", feitos: "Defendeu a industrialização do Brasil, a valorização do salário mínimo e o papel do Estado contra a pobreza." }
+                    { nome: "John Maynard Keynes (1883–1946)", papel: "Economista Britânico", bio: "Referência no século XX.", feitos: "Defendeu investimentos públicos em crises para gerar empregos." },
+                    { nome: "Maria da Conceição Tavares (1931–2024)", papel: "Economista Luso-Brasileira", bio: "Voz do desenvolvimentismo.", feitos: "Defendeu a industrialização nacional e valorização do salário mínimo." }
                 ],
                 negativas: [
-                    { nome: "Alberto Fernández (1959–presente)", papel: "Presidente da Argentina", bio: "Político peronista de centro-esquerda que governou a Argentina entre 2019 e 2023.", desdobramento: "Criticado pela desvalorização acelerada da moeda, hiperinflação, aumento da pobreza e escândalos pessoais." },
-                    { nome: "Cristina Kirchner (1953–presente)", papel: "Presidente e Vice da Argentina", bio: "Figura central do peronismo desenvolvimentista na Argentina no século XXI.", desdobramento: "Condenada por esquemas de corrupção em obras públicas, além de criticada por intervencionismo e inflação alta." }
+                    { nome: "Alberto Fernández (1959–presente)", papel: "Presidente da Argentina", bio: "Governou a Argentina de 2019 a 2023.", desdobramento: "Marca registrada de hiperinflação, desvalorização e aumento da pobreza." },
+                    { nome: "Cristina Kirchner (1953–presente)", papel: "Presidente da Argentina", bio: "Líder peronista de centro-esquerda.", desdobramento: "Condenada por corrupção em obras públicas e inflação alta." }
                 ]
             },
             "Direita Fiscal / Liberalismo de Mercado": {
                 positivas: [
-                    { nome: "Milton Friedman (1912–2006)", papel: "Economista e Prêmio Nobel (EUA)", bio: "Líder da Escola de Chicago e defensor do livre mercado.", feitos: "Advogou pela contenção da inflação via controle monetário, livre câmbio e privatização com grande influência global." },
-                    { nome: "Elinor Ostrom (1933–2012)", papel: "Economista e Prêmio Nobel (EUA)", bio: "Primeira mulher a ganhar o Prêmio Nobel de Ciências Econômicas (2009).", feitos: "Demonstrou como associações locais podem gerir recursos comuns de forma eficiente sem intervenção estatal centralizada." }
+                    { nome: "Milton Friedman (1912–2006)", papel: "Economista Nobel (EUA)", bio: "Líder da Escola de Chicago.", feitos: "Advogou pelo controle monetário da inflação e câmbio livre." },
+                    { nome: "Elinor Ostrom (1933–2012)", papel: "Prêmio Nobel de Economia", bio: "Primeira mulher a vencer o Nobel de Economia.", feitos: "Demonstrou a eficiência de associações locais sem Estado central." }
                 ],
                 negativas: [
-                    { nome: "Carlos Menem (1930–2021)", papel: "Presidente da Argentina", bio: "Governou a Argentina nos anos 1990 com privatizações rápidas e paridade dólar-peso.", desdobramento: "Criticado por corrupção sistêmica, escândalos de venda ilegal de armas e pela crise do 'Corralito' em 2001." },
-                    { nome: "Jeanine Áñez (1967–presente)", papel: "Presidente Interina da Bolívia", bio: "Assumiu o poder interino da Bolívia em meio a forte crise política e institucional em 2019.", desdobramento: "Criticada por repressão violenta a protestos populares, violações constitucionais e posterior condenação penal." }
+                    { nome: "Carlos Menem (1930–2021)", papel: "Presidente da Argentina", bio: "Governou a Argentina nos anos 90.", desdobramento: "Corrupção sistêmica e crise cambial que gerou o colapso de 2001." },
+                    { nome: "Jeanine Áñez (1967–presente)", papel: "Presidente Interina da Bolívia", bio: "Assumiu em crise em 2019.", desdobramento: "Repressão violenta a protestos e condenação por atos inconstitucionais." }
                 ]
             },
             "Social-Libertário / Progressista Laico": {
                 positivas: [
-                    { nome: "John Stuart Mill (1806–1873)", papel: "Filósofo e Economista Britânico", bio: "Pioneiro do liberalismo social e defensor das liberdades individuais.", feitos: "Escreveu 'Sobre a Liberdade', defendendo a liberdade de expressão irrestrita e o voto para mulheres no século XIX." },
-                    { nome: "Bertha Lutz (1894–1976)", papel: "Cientista e Líder Feminista Brasileira", bio: "Bióloga e diplomata brasileira, referência científica e política no país.", feitos: "Liderou a conquista do voto feminino no Brasil em 1932 e atuou na elaboração da Carta da ONU para a igualdade de gênero." }
+                    { nome: "John Stuart Mill (1806–1873)", papel: "Filósofo Britânico", bio: "Pioneiro do liberalismo social.", feitos: "Defendeu a liberdade de expressão irrestrita e o voto feminino." },
+                    { nome: "Bertha Lutz (1894–1976)", papel: "Líder Feminista Brasileira", bio: "Cientista e diplomata.", feitos: "Liderou a conquista do voto feminino no Brasil em 1932." }
                 ],
                 negativas: [
-                    { nome: "Mikhail Bakunin (1814–1876)", papel: "Teórico Anarquista Russo", bio: "Um dos fundadores do anarquismo coletivista e crítico de qualquer tipo de autoridade.", desdobramento: "Defendeu a destruição violenta do Estado e de instituições estabelecidas, influenciando grupos insurreicionais radicais." },
-                    { nome: "Emma Goldman (1869–1940)", papel: "Ativista Anarquista e Escritora (EUA/Rússia)", bio: "Pioneira na defesa do amor livre e antimilitarismo no início do século XX.", desdobramento: "Criticada pelo apoio explícito ao uso da violência revolucionária e atos de propaganda armada na sua trajetória." }
+                    { nome: "Mikhail Bakunin (1814–1876)", papel: "Teórico Anarquista Russo", bio: "Crítico de toda autoridade estatal.", desdobramento: "Defendeu a destruição violenta das instituições sociais." },
+                    { nome: "Emma Goldman (1869–1940)", papel: "Ativista Anarquista", bio: "Defensora de liberdades individuais.", desdobramento: "Criticada pelo apoio justificativo a atos de violência armada." }
                 ]
             },
             "Conservadorismo Moderado / Defensor da Ordem": {
                 positivas: [
-                    { nome: "Rui Barbosa (1849–1923)", papel: "Jurista e Diplomata Brasileiro", bio: "Um dos fundadores da República brasileira e patrono dos advogados do Brasil.", feitos: "Defendeu o império da lei, a independência dos poderes constitucionais e representou o Brasil na Haia com brilho." },
-                    { nome: "Emmeline Pankhurst (1858–1928)", papel: "Ativista Política Britânica", bio: "Líder do movimento sufragista britânico reconhecida por sua determinação e disciplina.", feitos: "Lutou pela incorporação das mulheres ao sistema político eleitoral sob o império da lei e da cidadania plena." }
+                    { nome: "Rui Barbosa (1849–1923)", papel: "Jurista Brasileiro", bio: "Patrono dos advogados do Brasil.", feitos: "Defendeu o império da lei e a independência dos Poderes." },
+                    { nome: "Emmeline Pankhurst (1858–1928)", papel: "Ativista Britânica", bio: "Líder sufragista britânica.", feitos: "Lutou pelo direito de voto sob o império da lei e cidadania." }
                 ],
                 negativas: [
-                    { nome: "Jânio Quadros (1917–1992)", papel: "Presidente do Brasil", bio: "Político brasileiro conhecido por sua campanha moralista e postura populista e legalista.", desdobramento: "Renunciou impulsivamente após 7 meses, gerando crise política nacional, além de decretos autoritários e folclóricos." },
-                    { nome: "Isabel Perón (1931–presente)", papel: "Presidente da Argentina", bio: "Primeira mulher a assumir a presidência nas Américas após a morte de Juan Domingo Perón.", desdobramento: "Gestão fraca e caótica marcada por crise econômica severa, violência estatal (Triple A) e pelo golpe militar de 1976." }
+                    { nome: "Jânio Quadros (1917–1992)", papel: "Presidente do Brasil", bio: "Conhecido por bandeiras moralistas.", desdobramento: "Renúncia impulsiva que gerou forte crise política no país." },
+                    { nome: "Isabel Perón (1931–presente)", papel: "Presidente da Argentina", bio: "Primeira mulher presidente das Américas.", desdobramento: "Gestão fraca, surto inflacionário e avanço da violência estatal." }
                 ]
             }
         };
 
         const dadosRef = referenciasCompletas[perfilNome] || { positivas: [], negativas: [] };
 
-        // EXIBIÇÃO DAS 2 REFERÊNCIAS POSITIVAS
+        // REFERÊNCIAS POSITIVAS
         html += `<div class="report-context-box-positive">`;
-        html += `<strong>🟢 Referências Históricas de Destaque (Positivas):</strong><br>`;
-        html += `Figuras históricas cujas contribuições e ideias representam os aspectos construtivos do seu quadrante:<br><br>`;
-
+        html += `<strong>🟢 Referências Históricas de Destaque (Positivas):</strong><br><br>`;
         dadosRef.positivas.forEach(b => {
             html += `
                 <div class="bio-card">
                     <div class="bio-card-title-pos">👤 ${b.nome}</div>
-                    <div class="bio-card-text">
-                        <strong>Atuação:</strong> ${b.papel}.<br>
-                        <strong>Quem foi:</strong> ${b.bio}<br>
-                        <strong>Principais Feitos:</strong> ${b.feitos}
-                    </div>
+                    <div class="bio-card-text"><strong>Atuação:</strong> ${b.papel}.<br><strong>Feitos:</strong> ${b.feitos}</div>
                 </div>
             `;
         });
         html += `</div>`;
 
-        // EXIBIÇÃO DAS 2 REFERÊNCIAS NEGATIVAS / CRÍTICAS
+        // REFERÊNCIAS NEGATIVAS
         html += `<div class="report-context-box-negative">`;
-        html += `<strong>🔴 Referências Históricas Críticas / Controversas (Alertas Históricos):</strong><br>`;
-        html += `Figuras associadas ao seu quadrante que enfrentam fortes críticas da historiografia por desvios autoritários, falhas graves ou má gestão:<br><br>`;
-
+        html += `<strong>🔴 Referências Históricas Críticas (Alertas Históricos):</strong><br><br>`;
         dadosRef.negativas.forEach(b => {
             html += `
                 <div class="bio-card">
                     <div class="bio-card-title-neg">⚠️ ${b.nome}</div>
-                    <div class="bio-card-text">
-                        <strong>Atuação:</strong> ${b.papel}.<br>
-                        <strong>Quem foi:</strong> ${b.bio}<br>
-                        <strong>Principais Críticas/Arestas:</strong> ${b.desdobramento}
-                    </div>
+                    <div class="bio-card-text"><strong>Atuação:</strong> ${b.papel}.<br><strong>Críticas:</strong> ${b.desdobramento}</div>
                 </div>
             `;
         });
-        html += `<small><em>*Nota pedagógica: A apresentação destas referências atende a fins exclusivamente educativos e de análise histórica comparativa.</em></small>`;
         html += `</div>`;
+
+        // PAINEL DE GABARITO (RESPOSTA POR RESPOSTA)
+        html += `
+            <details class="gabarito-panel">
+                <summary>📋 Clique para ver o Gabarito com todas as suas 40 Respostas</summary>
+                <div class="gabarito-list">
+        `;
+        
+        perguntas.forEach(q => {
+            const v = r[q.id];
+            let txtResp = "Não respondida";
+            if(v === 1) txtResp = "Discordo Totalmente";
+            if(v === 2) txtResp = "Discordo Parcialmente";
+            if(v === 4) txtResp = "Concordo Parcialmente";
+            if(v === 5) txtResp = "Concordo Totalmente";
+
+            html += `
+                <div class="gabarito-item">
+                    <strong>${q.texto}</strong><br>
+                    <span>Sua resposta: <u style="color: var(--primary);">${txtResp}</u> (Eixo ${q.eixo})</span>
+                </div>
+            `;
+        });
+
+        html += `
+                </div>
+            </details>
+        `;
 
         return html;
     }
@@ -896,6 +979,17 @@
         }
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // EXPORTAR IMAGEM
+    function baixarResultadoImagem() {
+        const target = document.getElementById('shareableArea');
+        html2canvas(target, { backgroundColor: '#1e293b' }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'meu-perfil-politico.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
     }
 
     renderizarPassoAPasso();

@@ -9,14 +9,14 @@
             --bg-color: #0f172a;
             --card-bg: #1e293b;
             --card-border: #334155;
-            --primary: #38bdf8;
-            --primary-hover: #0284c7;
+            --primary: #0284c7;
+            --primary-hover: #0369a1;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --example-bg: #0f172a;
-            --accent-gold: #fbbf24;
-            --accent-green: #34d399;
-            --error-red: #ef4444;
+            --accent-gold: #d97706;
+            --accent-green: #059669;
+            --error-red: #dc2626;
         }
 
         * { box-sizing: border-box; }
@@ -179,10 +179,10 @@
 
         .btn-next {
             background-color: var(--primary);
-            color: #0f172a;
+            color: #ffffff;
         }
 
-        .btn-next:hover { background-color: var(--primary-hover); color: #ffffff; }
+        .btn-next:hover { background-color: var(--primary-hover); }
 
         #result-section { display: none; }
         .result-title { text-align: center; font-size: 1.5rem; font-weight: bold; margin-bottom: 6px; color: var(--primary); }
@@ -191,13 +191,13 @@
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 500px;
+            max-width: 400px;
             aspect-ratio: 1 / 1;
             margin: 0 auto 20px auto;
-            background-color: var(--example-bg);
+            background-color: #ffffff;
             padding: 10px;
             border-radius: 8px;
-            border: 1px solid var(--card-border);
+            border: 1px solid #cbd5e1;
         }
 
         .share-btn-container {
@@ -207,7 +207,7 @@
 
         .btn-share {
             background-color: var(--accent-green);
-            color: #0f172a;
+            color: #ffffff;
             font-weight: 700;
             padding: 12px 20px;
             border-radius: 8px;
@@ -220,20 +220,21 @@
         .btn-share:hover { opacity: 0.9; }
 
         .report-box {
-            background-color: var(--example-bg);
-            border: 1px solid var(--card-border);
+            background-color: #ffffff;
+            color: #1e293b;
+            border: 1px solid #cbd5e1;
             border-radius: 8px;
-            padding: 18px;
+            padding: 22px;
             margin-top: 15px;
         }
 
         .report-section-header {
             font-size: 1.1rem;
             font-weight: 700;
-            color: var(--primary);
-            border-bottom: 1px solid var(--card-border);
+            color: #0369a1;
+            border-bottom: 2px solid #e2e8f0;
             padding-bottom: 6px;
-            margin-top: 20px;
+            margin-top: 24px;
             margin-bottom: 12px;
         }
 
@@ -241,10 +242,10 @@
             margin-bottom: 14px;
             font-size: 0.94rem;
             line-height: 1.6;
-            color: var(--text-main);
+            color: #334155;
         }
 
-        .report-paragraph strong { color: var(--primary); }
+        .report-paragraph strong { color: #0284c7; }
 
         .report-bullet-list {
             margin: 10px 0 16px 0;
@@ -258,90 +259,71 @@
             margin-bottom: 12px;
             font-size: 0.92rem;
             line-height: 1.6;
-            color: var(--text-main);
+            color: #334155;
         }
 
         .report-bullet-item::before {
             content: "•";
             position: absolute;
             left: 4px;
-            color: var(--primary);
+            color: #0284c7;
             font-size: 1.2rem;
         }
 
         .report-highlight-box {
-            background-color: rgba(56, 189, 248, 0.06);
-            border-left: 4px solid var(--primary);
+            background-color: #f0f9ff;
+            border-left: 4px solid #0284c7;
             padding: 14px;
             border-radius: 6px;
             margin: 16px 0;
             font-size: 0.93rem;
             line-height: 1.6;
+            color: #0369a1;
         }
 
         .report-context-box-positive {
-            background-color: rgba(52, 211, 153, 0.08);
-            border-left: 4px solid var(--accent-green);
+            background-color: #ecfdf5;
+            border-left: 4px solid #059669;
             padding: 14px;
             border-radius: 6px;
             margin: 16px 0;
-            color: #a7f3d0;
+            color: #065f46;
             font-size: 0.92rem;
             line-height: 1.6;
         }
 
         .report-context-box-negative {
-            background-color: rgba(239, 68, 68, 0.08);
-            border-left: 4px solid var(--error-red);
+            background-color: #fef2f2;
+            border-left: 4px solid #dc2626;
             padding: 14px;
             border-radius: 6px;
             margin: 16px 0;
-            color: #fca5a5;
+            color: #991b1b;
             font-size: 0.92rem;
             line-height: 1.6;
         }
 
         .bio-card {
-            background-color: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--card-border);
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
             border-radius: 8px;
             padding: 14px;
             margin-bottom: 12px;
         }
 
-        .bio-card-title-pos { font-weight: 700; font-size: 0.98rem; color: var(--accent-green); margin-bottom: 6px; }
-        .bio-card-title-neg { font-weight: 700; font-size: 0.98rem; color: var(--error-red); margin-bottom: 6px; }
+        .bio-card-title-pos { font-weight: 700; font-size: 0.98rem; color: #059669; margin-bottom: 6px; }
+        .bio-card-title-neg { font-weight: 700; font-size: 0.98rem; color: #dc2626; margin-bottom: 6px; }
 
         .bio-card-text {
             font-size: 0.9rem;
             line-height: 1.55;
-            color: var(--text-main);
+            color: #334155;
         }
 
         .glossary-term {
-            border-bottom: 1px dashed var(--primary);
-            color: var(--primary);
-            cursor: help;
-            position: relative;
-            display: inline-block;
-        }
-
-        .glossary-term:hover::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--card-bg);
-            color: var(--text-main);
-            border: 1px solid var(--primary);
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            width: 220px;
-            z-index: 100;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            white-space: normal;
+            border-bottom: 1px dashed #0284c7;
+            color: #0284c7;
+            font-weight: 600;
         }
 
         .compat-box {
@@ -352,28 +334,29 @@
         }
 
         .compat-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid var(--card-border);
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
             border-radius: 8px;
             padding: 12px;
             text-align: center;
         }
 
-        .compat-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; }
-        .compat-value { font-size: 0.95rem; font-weight: bold; color: var(--primary); }
+        .compat-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; color: #475569; }
+        .compat-value { font-size: 0.95rem; font-weight: bold; color: #0284c7; }
 
         details.gabarito-panel {
-            background-color: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--card-border);
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
             border-radius: 8px;
             padding: 12px;
             margin-top: 20px;
+            color: #334155;
         }
 
         details.gabarito-panel summary {
             cursor: pointer;
             font-weight: 700;
-            color: var(--primary);
+            color: #0284c7;
             outline: none;
         }
 
@@ -386,7 +369,7 @@
         }
 
         .gabarito-item {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid #e2e8f0;
             padding-bottom: 6px;
         }
     </style>
@@ -416,10 +399,10 @@
         </form>
     </div>
 
-    <div id="result-section" class="card">
+    <div id="result-section" class="card" style="background-color: #ffffff; color: #1e293b; border: 1px solid #cbd5e1;">
         <div id="pdfExportArea">
-            <div class="result-title" id="profileTitle">Seu Perfil Ideológico</div>
-            <div class="result-subtitle" id="profileCoords"></div>
+            <div class="result-title" id="profileTitle" style="color: #0369a1;">Seu Perfil Ideológico</div>
+            <div class="result-subtitle" id="profileCoords" style="color: #64748b;"></div>
             
             <div class="chart-container">
                 <canvas id="compassChart"></canvas>
@@ -785,170 +768,4 @@
                     { nome: "Liz Truss (1975–presente)", papel: "Primeira-Ministra do Reino Unido", bio: "Política conservadora britânica cujo mandato durou apenas 45 dias no segundo semestre de 2022.", criticas: "Protagonizou um dos maiores desastres de política econômica da história moderna britânica ao anunciar um pacote radical de cortes massivos de impostos sem qualquer lastro de compensação orçamentária, provocando uma fuga violenta de capitais, colapso na cotação da libra esterlina e pânico nos fundos de pensão." }
                 ]
             },
-            "Esquerda Reformista / Social-Desenvolvimentista": {
-                positivas: [
-                    { nome: "John Maynard Keynes (1883–1946)", papel: "Economista e Financista Britânico", bio: "O pensador econômico mais influente do século XX, cujas ideias redefiniram a macroeconomia mundial.", feitos: "Revolucionou a teoria econômica ao publicar a *Teoria Geral do Emprego, do Juro e da Moeda* (1936), provando que o mercado livre não se autocorrigia automaticamente em depressões profundas e demonstrando a necessidade vital de gastos e investimentos públicos anticrise para sustentar o pleno emprego." },
-                    { nome: "Maria da Conceição Tavares (1931–2024)", papel: "Economista e Professora Luso-Brasileira", bio: "Principal referência intelectual do pensamento estruturalista e desenvolvimentista na América Latina.", feitos: "Dedicou sua vida acadêmica e pública a denunciar as amarras do subdesenvolvimento periférico, defendendo com veemência a industrialização nacional autônoma, a distribuição de renda, a soberania monetária e a atuação do Estado como motor indispensável contra a pobreza." }
-                ],
-                negativas: [
-                    { nome: "Alberto Fernández (1959–presente)", papel: "Presidente da Argentina", bio: "Advogado e político peronista que chefiou o governo argentino entre 2019 e 2023 em cenário de esgotamento fiscal.", criticas: "Sua presidência ficou marcada negativamente por um colapso inflacionário sem precedentes recentes (superando 100% ao ano), desvalorização extrema do peso, aumento dramático da linha de pobreza nacional e graves crises de governabilidade e escândalos éticos na residência presidencial." },
-                    { nome: "Cristina Kirchner (1953–presente)", papel: "Presidente e Vice-Presidente da Argentina", bio: "Figura central da política argentina contemporânea, liderou o país por dois mandatos presidenciais (2007–2015).", criticas: "Sua trajetória sofre severas contestações legais e econômicas; foi condenada judicialmente por esquemas de corrupção e desvio de verbas em licitações de obras públicas, além de ser responsabilizada por políticas de controle de preços artificiais e confronto institucional persistente." }
-                ]
-            },
-            "Direita Fiscal / Liberalismo de Mercado": {
-                positivas: [
-                    { nome: "Milton Friedman (1912–2006)", papel: "Economista e Prêmio Nobel (EUA)", bio: "Principal líder da Escola de Economia de Chicago e mais destacado defensor do monetarismo no mundo.", feitos: "Reformulou a teoria quantitativa da moeda, demonstrou que a inflação é sempre um fenômeno monetário, defendeu o câmbio flutuante, o fim do serviço militar obrigatório e a desregulamentação comercial, influenciando decisivamente as políticas econômicas globais dos anos 1980." },
-                    { nome: "Elinor Ostrom (1933–2012)", papel: "Economista e Cientista Política (EUA)", bio: "Primeira mulher a ser laureada com o Prêmio Nobel de Ciências Econômicas (2009).", feitos: "Sua pesquisa empírica revolucionária demonstrou como comunidades locais e associações privadas de indivíduos podem gerir recursos naturais comuns de forma altamente sustentável e eficiente, superando tanto o modelo de estatização centralizada quanto a tragédia dos bens comunais." }
-                ],
-                negativas: [
-                    { nome: "Carlos Menem (1930–2021)", papel: "Presidente da Argentina", bio: "Político peronista que governou a Argentina ao longo da década de 1990 com reformas liberais drásticas.", criticas: "Embora tenha inicialmente estabilizado a inflação com a conversibilidade fixa (1 peso = 1 dólar), seu modelo ruiu espetacularmente devido ao endividamento externo insustentável, privatizações conduzidas sob suspeitas de corrupção sistêmica e o colapso financeiro terminal de 2001 (*Corralito*)." },
-                    { nome: "Jeanine Áñez (1967–presente)", papel: "Presidente Interina da Bolívia", bio: "Senadora conservadora que assumiu o governo interino boliviano após a renúncia contestada de Evo Morales em 2019.", criticas: "Sua gestão de transição foi marcada por intensa polarização e criticada fortemente por organizações internacionais de direitos humanos devido à repressão militar violenta a protestos sociais (massacres de Senkata e Sacaba) e posterior condenação judicial por quebra de preceitos constitucionais." }
-                ]
-            },
-            "Social-Libertário / Progressista Laico": {
-                positivas: [
-                    { nome: "John Stuart Mill (1806–1873)", papel: "Filósofo e Economista Britânico", bio: "Um dos pensadores liberais mais importantes do século XIX, pioneiro do utilitarismo reformado e dos direitos civis.", feitos: "Escreveu a clássica tese *Sobre a Liberdade* (1859), estabelecendo o princípio do dano individual, defendendo a liberdade de expressão absoluta sem censura moral e lutando bravamente no Parlamento britânico pelo sufrágio feminino e reformas sociais." },
-                    { nome: "Bertha Lutz (1894–1976)", papel: "Cientista e Líder Feminista Brasileira", bio: "Bióloga laureada pelo Museu Nacional e diplomata brasileira de destaque internacional.", feitos: "Liderou com maestria o movimento sufragista nacional, fundando a Federação Brasileira pelo Progresso Feminino e conquistando o sufrágio das mulheres na Constituição de 1932; integrou a delegação oficial do Brasil na Conferência de São Francisco (1945), garantindo a menção expressa à igualdade de gênero na carta de fundação da ONU." }
-                ],
-                negativas: [
-                    { nome: "Mikhail Bakunin (1814–1876)", papel: "Teórico Anarquista Russo", bio: "Principal arquiteto do anarquismo coletivista revolucionário e feroz oponente de Karl Marx na Primeira Internacional.", criticas: "Embora sua crítica ao autoritarismo estatal seja notável, sua pregação pela insurreição armada imediata e pela demolição violenta e total de todas as estruturas jurídicas, religiosas e governamentais da sociedade inspirou grupos guerrilheiros radicais e episódios de terrorismo político no século XIX." },
-                    { nome: "Emma Goldman (1869–1940)", papel: "Ativista Anarquista e Oradora (EUA/Rússia)", bio: "Famosa agitadora política anarcocomunista e feminista nascida na Lituânia, radicada nos Estados Unidos.", criticas: "Sua trajetória gerou intensas controvérsias históricas pelo seu apoio público inicial e romantização da violência revolucionária armada como método legítimo de derrubada da ordem burguesa, o que resultou em sua subsequente deportação dos EUA após conspirações ligadas a atentados políticos." }
-                ]
-            },
-            "Conservadorismo Moderado / Defensor da Ordem": {
-                positivas: [
-                    { nome: "Rui Barbosa (1849–1923)", papel: "Jurista, Político e Diplomata Brasileiro", bio: "Figura proeminente da transição monarquia-república, autor principal da Constituição de 1891 e 'Águia de Haia'.", feitos: "Dedicou sua vida pública à defesa intransigente do habeas corpus, da independência estrita dos Poderes republicanos, do federalismo e da aplicação rigorosa da ciência jurídica contra os arroubos autoritários do poder central." },
-                    { nome: "Emmeline Pankhurst (1858–1928)", papel: "Ativista e Líder Política Britânica", bio: "Fundadora da União Social e Política das Mulheres (*WSPU*), principal motor do movimento sufragista militante na Grã-Bretanha.", feitos: "Conduziu a luta implacável das mulheres pelo direito ao voto sob a égide da cidadania e da responsabilidade cívica, enfrentando prisões e greves de fome até assegurar a vitória histórica do sufrágio feminino no Reino Unido." }
-                ],
-                negativas: [
-                    { nome: "Jânio Quadros (1917–1992)", papel: "Presidente do Brasil", bio: "Político populista brasileiro eleito em 1960 sob a bandeira moralista da 'vassoura' contra a corrupção.", criticas: "Seu governo ruiu devido a atos erráticos, excentricidades administrativas e uma renúncia teatral e inesperada após apenas sete meses de mandato, desestabilizando gravemente a frágil institucionalidade democrática brasileira e abrindo caminho para a crise que culminou no golpe militar de 1964." },
-                    { nome: "Isabel Perón (1931–presente)", papel: "Presidente da Argentina", bio: "Primeira mulher a assumir a chefia de Estado nas Américas, sucedendo seu marido Juan Domingo Perón após o falecimento deste em 1974.", criticas: "Sua administração desmoronou em meio a uma incapacidade governativa crônica, inflação descontrolada, conivência com o esquadrão paramilitar de extrema-direita (*Triple A*) e o aprofundamento do caos social que resultou no golpe militar de 1976." }
-                ]
-            }
-        };
-
-        const dadosRef = referenciasCompletas[perfilNome] || { positivas: [], negativas: [] };
-
-        html += `<div class="report-context-box-positive">`;
-        html += `<strong>🟢 Referências Históricas Positivas (Destaques e Legados):</strong><br><br>`;
-        dadosRef.positivas.forEach(b => {
-            html += `
-                <div class="bio-card">
-                    <div class="bio-card-title-pos">👤 ${b.nome}</div>
-                    <div class="bio-card-text"><strong>Atuação:</strong> ${b.papel}.<br><strong>Biografia:</strong> ${b.bio}<br><strong>Principais Feitos:</strong> ${b.feitos}</div>
-                </div>
-            `;
-        });
-        html += `</div>`;
-
-        html += `<div class="report-context-box-negative">`;
-        html += `<strong>🔴 Referências Históricas Críticas (Alertas e Controvérsias):</strong><br><br>`;
-        dadosRef.negativas.forEach(b => {
-            html += `
-                <div class="bio-card">
-                    <div class="bio-card-title-neg">⚠️ ${b.nome}</div>
-                    <div class="bio-card-text"><strong>Atuação:</strong> ${b.papel}.<br><strong>Biografia:</strong> ${b.bio}<br><strong>Críticas Históricas:</strong> ${b.criticas}</div>
-                </div>
-            `;
-        });
-        html += `</div>`;
-
-        html += `
-            <details class="gabarito-panel">
-                <summary>📋 Gabarito Detalhado com as suas 40 Respostas</summary>
-                <div class="gabarito-list">
-        `;
-        
-        perguntas.forEach(q => {
-            const v = r[q.id];
-            let txtResp = "Não respondida";
-            if(v === 1) txtResp = "Discordo Totalmente";
-            if(v === 2) txtResp = "Discordo Parcialmente";
-            if(v === 4) txtResp = "Concordo Parcialmente";
-            if(v === 5) txtResp = "Concordo Totalmente";
-
-            html += `<div class="gabarito-item"><strong>${q.texto}</strong><br><span>Sua resposta: <u style="color: var(--primary);">${txtResp}</u> (Eixo ${q.eixo})</span></div>`;
-        });
-
-        html += `</div></details>`;
-
-        return html;
-    }
-
-    function exibirResultado(x, y, respostasMap) {
-        document.getElementById('quizContainer').style.display = 'none';
-        document.getElementById('result-section').style.display = 'block';
-
-        const nomePerfil = definirIdeologia(x, y);
-        document.getElementById('profileTitle').innerText = `Seu Perfil: ${nomePerfil}`;
-        document.getElementById('profileCoords').innerText = `Coordenadas: Eixo Econômico (${x > 0 ? '+' : ''}${x.toFixed(1)}) | Eixo Social (${y > 0 ? '+' : ''}${y.toFixed(1)})`;
-
-        document.getElementById('reportContent').innerHTML = gerarRelatorioTextual(x, y, respostasMap);
-
-        const ctx = document.getElementById('compassChart').getContext('2d');
-        if (typeof Chart !== 'undefined') {
-            compassChartInstance = new Chart(ctx, {
-                type: 'scatter',
-                data: {
-                    datasets: [{
-                        label: 'Sua Posição',
-                        data: [{ x: x, y: y }],
-                        backgroundColor: '#f43f5e',
-                        borderColor: '#ffffff',
-                        borderWidth: 2,
-                        pointRadius: 9,
-                        pointHoverRadius: 12
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        x: {
-                            min: -10,
-                            max: 10,
-                            ticks: { color: '#94a3b8' },
-                            title: { display: true, text: '← Esquerda Econômica | Direita Econômica →', color: '#f8fafc' },
-                            grid: { color: (ctx) => ctx.tick.value === 0 ? '#38bdf8' : '#334155', lineWidth: (ctx) => ctx.tick.value === 0 ? 2 : 1 }
-                        },
-                        y: {
-                            min: -10,
-                            max: 10,
-                            ticks: { color: '#94a3b8' },
-                            title: { display: true, text: '← Libertário/Progressista | Conservador/Autoritário →', color: '#f8fafc' },
-                            grid: { color: (ctx) => ctx.tick.value === 0 ? '#38bdf8' : '#334155', lineWidth: (ctx) => ctx.tick.value === 0 ? 2 : 1 }
-                        }
-                    },
-                    plugins: {
-                        legend: { labels: { color: '#f8fafc' } },
-                        tooltip: {
-                            callbacks: {
-                                label: (ctx) => `Econômico: ${ctx.parsed.x.toFixed(1)}, Social: ${ctx.parsed.y.toFixed(1)}`
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function baixarRelatorioPDF() {
-        const elemento = document.getElementById('pdfExportArea');
-        const opcoes = {
-            margin:       10,
-            filename:     'relatorio-mapeamento-politico.pdf',
-            image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { scale: 2, useCORS: true, backgroundColor: '#1e293b' },
-            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-        };
-
-        html2pdf().from(elemento).set(opcoes).save();
-    }
-
-    renderizarPassoAPasso();
-</script>
-
-</body>
-</html>
+            "Esquerda Reformista / Social-Desenvolviment

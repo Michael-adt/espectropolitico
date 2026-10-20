@@ -15,6 +15,7 @@
             --text-muted: #94a3b8;
             --example-bg: #0f172a;
             --accent-gold: #fbbf24;
+            --accent-green: #34d399;
             --error-red: #ef4444;
         }
 
@@ -29,7 +30,7 @@
             padding: 12px;
         }
 
-        .container { max-width: 650px; margin: 0 auto; }
+        .container { max-width: 680px; margin: 0 auto; }
 
         header { text-align: center; margin-bottom: 15px; }
         h1 { color: var(--text-main); font-size: 1.5rem; margin-bottom: 6px; }
@@ -211,34 +212,73 @@
             color: var(--primary);
             border-bottom: 1px solid var(--card-border);
             padding-bottom: 6px;
-            margin-top: 15px;
+            margin-top: 20px;
             margin-bottom: 12px;
         }
 
         .report-paragraph {
             margin-bottom: 14px;
-            font-size: 0.93rem;
+            font-size: 0.94rem;
             line-height: 1.6;
+            color: var(--text-main);
         }
 
         .report-paragraph strong {
             color: var(--primary);
         }
 
-        .report-bullet {
-            margin-bottom: 8px;
-            padding-left: 10px;
-            font-size: 0.92rem;
+        .report-bullet-list {
+            margin: 10px 0 16px 0;
+            padding-left: 0;
+            list-style: none;
         }
 
-        .report-nuances {
+        .report-bullet-item {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 0.92rem;
+            line-height: 1.5;
+            color: var(--text-main);
+        }
+
+        .report-bullet-item::before {
+            content: "•";
+            position: absolute;
+            left: 4px;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .report-highlight-box {
+            background-color: rgba(56, 189, 248, 0.06);
+            border-left: 4px solid var(--primary);
+            padding: 14px;
+            border-radius: 6px;
+            margin: 16px 0;
+            font-size: 0.93rem;
+            line-height: 1.5;
+        }
+
+        .report-nuances-box {
             background-color: rgba(251, 191, 36, 0.08);
             border-left: 4px solid var(--accent-gold);
-            padding: 12px;
-            border-radius: 4px;
-            margin-top: 15px;
+            padding: 14px;
+            border-radius: 6px;
+            margin: 16px 0;
             color: #fef08a;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+
+        .report-context-box {
+            background-color: rgba(52, 211, 153, 0.08);
+            border-left: 4px solid var(--accent-green);
+            padding: 14px;
+            border-radius: 6px;
+            margin: 16px 0;
+            color: #a7f3d0;
+            font-size: 0.92rem;
             line-height: 1.5;
         }
     </style>
@@ -321,323 +361,4 @@
         { id: 'q28', bloco: '4. Natureza, Tecnologia e Relações Internacionais', eixo: 'X', invertido: false, texto: '28. Outros países não têm o direito de exigir regras ambientais para comprar a carne ou a soja produzidas no Brasil.', exemplo: 'Rejeitar exigências de países da Europa que tentem proibir a compra de produtos agrícolas do Brasil.' },
         { id: 'q29', bloco: '4. Natureza, Tecnologia e Relações Internacionais', eixo: 'X', invertido: true, texto: '29. O dinheiro dos impostos deve ser usado para financiar pesquisas científicas e invenções nas universidades.', exemplo: 'O governo dar bolsas para cientistas brasileiros criarem vacinas, remédios e tecnologia no país.' },
         { id: 'q30', bloco: '4. Natureza, Tecnologia e Relações Internacionais', eixo: 'X', invertido: false, texto: '30. O Brasil deve negociar vendas de produtos direto com qualquer país, sem depender de autorização do Mercosul.', exemplo: 'Fazer acordos comerciais diretos com os EUA ou China sem precisar de aprovação da Argentina ou Uruguai.' },
-        { id: 'q31', bloco: '4. Natureza, Tecnologia e Relações Internacionais', eixo: 'X', invertido: false, texto: '31. Empresas devem ter permissão para tirar minérios ou fazer plantações em terras indígenas se pagarem lucros à tribo.', exemplo: 'Liberar exploração mineral ou agrícola em terras indígenas mediante compensação financeira direta à comunidade.' },
-        { id: 'q32', bloco: '4. Natureza, Tecnologia e Relações Internacionais', eixo: 'X', invertido: true, texto: '32. Empresas ou governos de outros países não deveriam poder comprar grandes extensões de terra no Brasil.', exemplo: 'Proibir por lei que investidores estrangeiros comprem milhares de hectares de fazendas ou florestas no país.' },
-
-        // BLOCO 5
-        { id: 'q33', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: true, texto: '33. As campanhas dos políticos devem ser pagas com dinheiro de impostos, proibindo doações de empresários.', exemplo: 'Usar fundo eleitoral público para panfletos e TV, evitando que grandes empresários ajudem candidatos em troca de favores.' },
-        { id: 'q34', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: true, texto: '34. A população deveria ir às urnas votar diretamente para decidir sobre leis importantes e polêmicas.', exemplo: 'Votar diretamente na urna dizendo "Sim" ou "Não" sobre legalização de armas, reformas ou privatizações.' },
-        { id: 'q35', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: false, texto: '35. Os ministros do governo deveriam ser escolhidos apenas pelo currículo de trabalho, e não por acordos entre partidos.', exemplo: 'Nomear apenas especialistas renomados para os ministérios, recusando indicações de deputados em troca de votos.' },
-        { id: 'q36', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: true, texto: '36. Votar no dia da eleição deveria ser uma escolha livre, e não uma obrigação.', exemplo: 'Acabar com a multa e o bloqueio de documentos para quem escolhe não ir votar no dia da eleição.' },
-        { id: 'q37', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: false, texto: '37. Funcionários públicos que atendem mal ou trabalham de forma ineficiente deveriam poder ser demitidos.', exemplo: 'Criar avaliações de atendimento em postos e escolas, podendo demitir o funcionário público com desempenho ruim constante.' },
-        { id: 'q38', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: false, texto: '38. Presidentes, Governadores e Prefeitos não deveriam poder se reeleger para um segundo mandato seguido.', exemplo: 'Estabelecer mandato único de 4 ou 5 anos para governantes, sem permissão de disputar a reeleição em sequência.' },
-        { id: 'q39', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: false, texto: '39. Organizações sociais e ambientais (ONGs) devem ter suas contas e projetos fiscalizados com rigor pelo governo.', exemplo: 'Fiscalizar rigorosamente o financiamento e as ações de ONGs que atuam na Amazônia ou em pautas sociais.' },
-        { id: 'q40', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: false, texto: '40. O número de deputados e vereadores no país deveria ser cortado pela metade para economizar dinheiro.', exemplo: 'Reduzir a quantidade de cadeiras nas Câmaras para economizar impostos gastos com salários e gabinetes.' }
-    ];
-
-    let perguntaAtualIndex = 0;
-    let compassChartInstance = null;
-
-    function renderizarPassoAPasso() {
-        const wrapper = document.getElementById('questionsWrapper');
-        wrapper.innerHTML = '';
-
-        perguntas.forEach((q, index) => {
-            const stepDiv = document.createElement('div');
-            stepDiv.className = `question-step ${index === 0 ? 'active' : ''}`;
-            stepDiv.id = `step_${index}`;
-
-            stepDiv.innerHTML = `
-                <div class="section-badge">${q.bloco}</div>
-                <div class="card">
-                    <div class="q-header">${q.texto}</div>
-                    <div class="q-example"><strong>Na prática:</strong> ${q.exemplo}</div>
-                    <div class="options-grid">
-                        <div class="option-item" onclick="selecionarOpcao('${q.id}', '1', this)">
-                            <input type="radio" id="${q.id}_1" name="${q.id}" value="1">
-                            <label for="${q.id}_1">Discordo Totalmente</label>
-                        </div>
-                        <div class="option-item" onclick="selecionarOpcao('${q.id}', '2', this)">
-                            <input type="radio" id="${q.id}_2" name="${q.id}" value="2">
-                            <label for="${q.id}_2">Discordo Parcialmente</label>
-                        </div>
-                        <div class="option-item" onclick="selecionarOpcao('${q.id}', '4', this)">
-                            <input type="radio" id="${q.id}_4" name="${q.id}" value="4">
-                            <label for="${q.id}_4">Concordo Parcialmente</label>
-                        </div>
-                        <div class="option-item" onclick="selecionarOpcao('${q.id}', '5', this)">
-                            <input type="radio" id="${q.id}_5" name="${q.id}" value="5">
-                            <label for="${q.id}_5">Concordo Totalmente</label>
-                        </div>
-                    </div>
-                </div>
-            `;
-            wrapper.appendChild(stepDiv);
-        });
-
-        atualizarBarraProgresso();
-    }
-
-    function selecionarOpcao(qId, val, element) {
-        document.getElementById('errorMessage').style.display = 'none';
-
-        const input = document.getElementById(`${qId}_${val}`);
-        if (input) input.checked = true;
-
-        const parentGrid = element.closest('.options-grid');
-        parentGrid.querySelectorAll('.option-item').forEach(item => item.classList.remove('selected'));
-        element.classList.add('selected');
-
-        setTimeout(() => {
-            if (perguntaAtualIndex < perguntas.length - 1) {
-                mudarPergunta(1);
-            }
-        }, 220);
-    }
-
-    function mudarPergunta(direcao) {
-        if (direcao === 1) {
-            const qAtual = perguntas[perguntaAtualIndex];
-            const respondido = document.querySelector(`input[name="${qAtual.id}"]:checked`);
-            
-            if (!respondido) {
-                document.getElementById('errorMessage').style.display = 'block';
-                return;
-            }
-        }
-
-        document.getElementById('errorMessage').style.display = 'none';
-
-        const passoAtual = document.getElementById(`step_${perguntaAtualIndex}`);
-        passoAtual.classList.remove('active');
-
-        perguntaAtualIndex += direcao;
-
-        if (perguntaAtualIndex >= perguntas.length) {
-            calcularResultado();
-            return;
-        }
-
-        const proximoPasso = document.getElementById(`step_${perguntaAtualIndex}`);
-        proximoPasso.classList.add('active');
-
-        document.getElementById('btnPrev').style.display = perguntaAtualIndex > 0 ? 'block' : 'none';
-        
-        if (perguntaAtualIndex === perguntas.length - 1) {
-            document.getElementById('btnNext').innerText = 'Ver Diagnóstico Completo →';
-        } else {
-            document.getElementById('btnNext').innerText = 'Próxima →';
-        }
-
-        atualizarBarraProgresso();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function atualizarBarraProgresso() {
-        const total = perguntas.length;
-        const atual = perguntaAtualIndex + 1;
-        const pct = (atual / total) * 100;
-
-        document.getElementById('progressBar').style.width = `${pct}%`;
-        document.getElementById('progressText').innerText = `Pergunta ${atual} de ${total} (${Math.round(pct)}%)`;
-    }
-
-    function calcularResultado() {
-        let scoreX = 0, scoreY = 0;
-        let qtdX = 0, qtdY = 0;
-        let respostasMap = {};
-
-        perguntas.forEach(q => {
-            const el = document.querySelector(`input[name="${q.id}"]:checked`);
-            if (el) {
-                const val = parseInt(el.value);
-                respostasMap[q.id] = val;
-
-                let pontos = 0;
-                if (val === 1) pontos = -2;
-                else if (val === 2) pontos = -1;
-                else if (val === 4) pontos = 1;
-                else if (val === 5) pontos = 2;
-
-                if (q.invertido) pontos = -pontos;
-
-                if (q.eixo === 'X') {
-                    scoreX += pontos;
-                    qtdX++;
-                } else {
-                    scoreY += pontos;
-                    qtdY++;
-                }
-            }
-        });
-
-        const posX = (scoreX / (qtdX * 2)) * 10;
-        const posY = (scoreY / (qtdY * 2)) * 10;
-
-        exibirResultado(posX, posY, respostasMap);
-    }
-
-    function definirIdeologia(x, y) {
-        if (Math.abs(x) <= 2 && Math.abs(y) <= 2) return "Centrismo Pragmático / Moderado";
-        if (x < -2 && y > 2) return "Socialismo de Estado / Estatismo Conservador";
-        if (x > 2 && y > 2) return "Conservadorismo Tradicional / Direita Conservadora";
-        if (x < -2 && y < -2) return "Social-Democracia / Progressismo Social";
-        if (x > 2 && y < -2) return "Liberalismo Econômico / Libertarianismo";
-        if (x < -2) return "Esquerda Reformista / Social-Desenvolvimentista";
-        if (x > 2) return "Direita Fiscal / Liberalismo de Mercado";
-        if (y < -2) return "Social-Libertário / Progressista Laico";
-        return "Conservadorismo Moderado / Defensor da Ordem";
-    }
-
-    // Gerador de Resumo Personalizado e Exclusivo por Perfil
-    function gerarRelatorioTextual(x, y, r) {
-        let html = '';
-
-        // SEÇÃO 1: EIXO ECONÔMICO
-        html += `<div class="report-section-header">1. No Eixo Econômico (Nota ${x.toFixed(1)})</div>`;
-        if (x > 2) {
-            html += `<div class="report-paragraph">📈 <strong>Direita Econômica (Liberalismo de Mercado):</strong> Suas respostas indicam uma prioridade clara à liberdade econômica, privatizações e redução de impostos.</div>`;
-            html += `<div class="report-bullet">• <strong>Iniciativa Privada:</strong> Você enxerga a livre concorrência como o motor mais eficiente para gerar riqueza e preços justos.</div>`;
-            html += `<div class="report-bullet">• <strong>Papel do Estado:</strong> Defende que o governo deve interferir o mínimo possível no mercado e manter equilíbrio fiscal rigoroso.</div>`;
-        } else if (x < -2) {
-            html += `<div class="report-paragraph">🛠️ <strong>Esquerda Econômica (Intervencionista / Social):</strong> Suas respostas apontam o Estado como o guardião essencial da igualdade e do bem-estar coletivo.</div>`;
-            html += `<div class="report-bullet">• <strong>Serviços Públicos:</strong> Você defende que saúde, educação e infraestrutura devem ser fortemente mantidas pelo Estado.</div>`;
-            html += `<div class="report-bullet">• <strong>Justiça Fiscal:</strong> Apoia a tributação progressiva (como impostos sobre fortunas) para financiar auxílios de renda.</div>`;
-        } else {
-            html += `<div class="report-paragraph">⚖️ <strong>Pragmatismo de Centro:</strong> Você está na linha central econômica. Não segue cartilhas estatistas nem de mercado puro.</div>`;
-            html += `<div class="report-bullet">• <strong>Iniciativa Privada:</strong> Você reconhece que o livre mercado e a concorrência são eficientes para gerar inovação e produtos.</div>`;
-            html += `<div class="report-bullet">• <strong>Presença do Estado:</strong> Ao mesmo tempo, concorda que o Estado é indispensável para garantir serviços essenciais e conter abusos.</div>`;
-            html += `<div class="report-bullet">• <strong>Resumo:</strong> Você tende a avaliar cada medida econômica de forma prática (o que funciona) e não por ideologia rígida.</div>`;
-        }
-
-        // SEÇÃO 2: EIXO SOCIAL E CULTURAL
-        html += `<div class="report-section-header">2. No Eixo Social/Cultural (Nota ${y.toFixed(1)})</div>`;
-        if (y > 2) {
-            html += `<div class="report-paragraph">🏛️ <strong>Conservadorismo / Defesa da Ordem:</strong> Suas escolhas refletem apreço pela ordem social, moralidade tradicional e instituições consolidadas.</div>`;
-            html += `<div class="report-bullet">• <strong>Costumes e Família:</strong> Valoriza princípios morais tradicionais como orientadores das leis e diretrizes escolares.</div>`;
-            html += `<div class="report-bullet">• <strong>Segurança Pública:</strong> Defende o rigor penal, o cumprimento severo de penas e o direito à legítima defesa do cidadão.</div>`;
-        } else if (y < -2) {
-            html += `<div class="report-paragraph">🌈 <strong>Social-Libertário / Progressista Laico:</strong> Seu posicionamento indica forte defesa da autonomia individual, diversidade e laicidade.</div>`;
-            html += `<div class="report-bullet">• <strong>Liberdade e Autonomia:</strong> Defende que cada indivíduo deve ter autonomia sobre seu próprio corpo e escolhas, sem interferência moral do Estado.</div>`;
-            html += `<div class="report-bullet">• <strong>Laicidade do Estado:</strong> Prefere um Estado neutro em relação a crenças religiosas, focado na igualdade civil e combate a discriminações.</div>`;
-            html += `<div class="report-bullet">• <strong>Anti-Autoritarismo:</strong> Desconfia de imposições morais ou tutela governamental sobre a vida privada dos cidadãos.</div>`;
-        } else {
-            html += `<div class="report-paragraph">🕊️ <strong>Moderado no Campo Cultural:</strong> Você demonstra um equilíbrio ponderado nas pautas de costumes.</div>`;
-            html += `<div class="report-bullet">• <strong>Equilíbrio:</strong> Respeita tradições e o direito à segurança pública, mas acolhe certas garantias de liberdade individual e a laicidade do Estado.</div>`;
-        }
-
-        // SEÇÃO 3: RESUMO EXCLUSIVO E DEDICADO POR QUADRANTE
-        html += `<div class="report-section-header">💡 Resumo do seu Perfil</div>`;
-        const perfilNome = definirIdeologia(x, y);
-
-        // Textos explicativos e analíticos únicos para cada combinação
-        const textosConclusao = {
-            "Centrismo Pragmático / Moderado": "Você se recusa a adotar cartilhas ideológicas fechadas. Suas 40 respostas revelam um perfil essencialmente racional e ponderado: você apoia a eficiência do mercado onde ela traz resultados, mas não hesita em defender a intervenção do Estado para proteger serviços essenciais ou garantir direitos. No campo cultural, busca o equilíbrio entre respeitar tradições e acolher liberdades individuais.",
-            "Socialismo de Estado / Estatismo Conservador": "Você combina uma forte convicção de que a economia deve ser controlada e planejada pelo Estado para proteger a população contra os abusos do mercado, com uma visão de sociedade focada na ordem, no respeito à autoridade e na preservação dos costumes tradicionais. Para você, o bem comum e a estabilidade social vêm antes do individualismo econômico ou comportamental.",
-            "Conservadorismo Tradicional / Direita Conservadora": "Seu perfil valoriza a aliança entre o livre mercado na economia e a preservação da ordem moral e das tradições na sociedade. Você enxerga a iniciativa privada, a responsabilidade fiscal e a menor intervenção do Estado como os motores do progresso financeiro, enquanto defende o fortalecimento da família, o rigor penal e as raízes morais como os pilares da coesão social.",
-            "Social-Democracia / Progressismo Social": "Seu diagnóstico aponta para a defesa incondicional de um Estado de bem-estar social forte, focado na saúde e educação públicas e na redução da desigualdade via impostos progressivos. Paralelamente, você sustenta valores amplamente libertários e inclusivos no campo social, defendendo a laicidade estrita do Estado, os direitos de minorias e a autonomia individual.",
-            "Liberalismo Econômico / Libertarianismo": "Você tem como princípio supremo a liberdade individual e a menor presença possível do Estado na vida do cidadão. Na economia, defende privatizações, desregulamentação e livre concorrência sem amarras tributárias. No campo social e de escolhas pessoais, acredita que o governo não deve ditar comportamentos, respeitando a autonomia total das decisões individuais.",
-            "Esquerda Reformista / Social-Desenvolvimentista": "Sua prioridade estratégica está no papel ativo do Estado como indutor do desenvolvimento econômico e garantidor da justiça social. Você apoia investimentos públicos em infraestrutura, ciência e direitos trabalhistas para alavancar o país, mantendo uma postura pragmática ou moderada em relação às pautas comportamentais e de costumes.",
-            "Direita Fiscal / Liberalismo de Mercado": "Você tem um foco primordial na gestão econômica responsável, no livre comércio, no empreendedorismo e no enxugamento da máquina pública. Para você, o corte de gastos estatais e a atração de capital privado são os únicos caminhos reais para o crescimento, adotando uma postura neutra ou flexível quanto às pautas morais e culturais.",
-            "Social-Libertário / Progressista Laico": "Você prioriza a liberdade de escolha individual e a laicidade do Estado como valores fundamentais para uma sociedade justa. Suas escolhas apontam forte rejeição a tutelas morais, proibições estatais sobre costumes e censura, enquanto na economia você mantém uma postura equilibrada entre aceitar o mercado e exigir proteção social básica.",
-            "Conservadorismo Moderado / Defensor da Ordem": "Sua visão prioriza a segurança pública, o respeito às leis, a eficiência das instituições e a estabilidade da sociedade. Você apoia o bom funcionamento das regras do mercado, mas coloca a ordem, o cumprimento de penas, o combate ao crime e o bom senso administrativo no centro de suas preocupações políticas."
-        };
-
-        const textoExplicativo = textosConclusao[perfilNome] || "Com base nas suas 40 respostas, seu diagnóstico reflete uma combinação única de posições econômicas e sociais que se alinham com a busca por soluções práticas para o país.";
-
-        html += `<div class="report-paragraph">Com base nas suas 40 respostas, o seu diagnóstico dominante é <strong>${perfilNome}</strong>.</div>`;
-        html += `<div class="report-paragraph">${textoExplicativo}</div>`;
-
-        // DETECTOR DINÂMICO DE SINGULARIDADES / CONTRADIÇÕES REAIS
-        let nuances = [];
-        if (x > 1 && r['q11'] >= 4) {
-            nuances.push("Apoia a liberdade econômica de mercado, mas concorda com políticas de cotas para reparação social.");
-        }
-        if (y > 1 && r['q10'] >= 4) {
-            nuances.push("Sua orientação geral é conservadora na ordem, mas você defende a liberdade individual de escolha sobre o próprio corpo e estilo de vida.");
-        }
-        if (x < -1 && r['q13'] >= 4) {
-            nuances.push("Defende o papel do Estado na economia e nos serviços públicos, mas apoia o direito do cidadão de possuir armas para defesa pessoal.");
-        }
-        if (r['q17'] >= 4 && r['q18'] >= 4) {
-            nuances.push("Valoriza a liberdade de expressão ampla, mas concorda com a remoção de fake news pelo governo em casos graves.");
-        }
-        if (r['q36'] >= 4 && r['q37'] >= 4) {
-            nuances.push("Defende reformas institucionais profundas, como o fim do voto obrigatório e a demissão de servidores públicos ineficientes.");
-        }
-
-        if (nuances.length > 0) {
-            html += `
-                <div class="report-nuances">
-                    <strong>🔍 Suas Nuances e Singularidades:</strong><br>
-                    Note que o seu perfil apresenta pontos marcantes onde você diverge da visão tradicional: ${nuances.join(' ')}
-                </div>
-            `;
-        }
-
-        return html;
-    }
-
-    function exibirResultado(x, y, respostasMap) {
-        document.getElementById('quizContainer').style.display = 'none';
-        document.getElementById('result-section').style.display = 'block';
-
-        const nomePerfil = definirIdeologia(x, y);
-        document.getElementById('profileTitle').innerText = `Seu Perfil: ${nomePerfil}`;
-        document.getElementById('profileCoords').innerText = `Coordenadas: Eixo Econômico (${x > 0 ? '+' : ''}${x.toFixed(1)}) | Eixo Social (${y > 0 ? '+' : ''}${y.toFixed(1)})`;
-
-        document.getElementById('reportContent').innerHTML = gerarRelatorioTextual(x, y, respostasMap);
-
-        const ctx = document.getElementById('compassChart').getContext('2d');
-        if (typeof Chart !== 'undefined') {
-            compassChartInstance = new Chart(ctx, {
-                type: 'scatter',
-                data: {
-                    datasets: [{
-                        label: 'Sua Posição',
-                        data: [{ x: x, y: y }],
-                        backgroundColor: '#f43f5e',
-                        borderColor: '#ffffff',
-                        borderWidth: 2,
-                        pointRadius: 9,
-                        pointHoverRadius: 12
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        x: {
-                            min: -10,
-                            max: 10,
-                            ticks: { color: '#94a3b8' },
-                            title: { display: true, text: '← Esquerda Econômica | Direita Econômica →', color: '#f8fafc' },
-                            grid: { color: (ctx) => ctx.tick.value === 0 ? '#38bdf8' : '#334155', lineWidth: (ctx) => ctx.tick.value === 0 ? 2 : 1 }
-                        },
-                        y: {
-                            min: -10,
-                            max: 10,
-                            ticks: { color: '#94a3b8' },
-                            title: { display: true, text: '← Libertário/Progressista | Conservador/Autoritário →', color: '#f8fafc' },
-                            grid: { color: (ctx) => ctx.tick.value === 0 ? '#38bdf8' : '#334155', lineWidth: (ctx) => ctx.tick.value === 0 ? 2 : 1 }
-                        }
-                    },
-                    plugins: {
-                        legend: { labels: { color: '#f8fafc' } },
-                        tooltip: {
-                            callbacks: {
-                                label: (ctx) => `Econômico: ${ctx.parsed.x.toFixed(1)}, Social: ${ctx.parsed.y.toFixed(1)}`
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    renderizarPassoAPasso();
-</script>
-
-</body>
-</html>
+        { id: 'q31', bloco: '4. Natureza, Tecnologia e Relações Internacionais', eixo: 'X', invertido: false, texto: '31. Empresas devem ter permissão para tirar minérios ou fazer plantações em terras indígenas se pa

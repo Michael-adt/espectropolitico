@@ -1,4 +1,4 @@
- indígenas se pa<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -236,7 +236,7 @@
         .report-bullet-item {
             position: relative;
             padding-left: 20px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-size: 0.92rem;
             line-height: 1.5;
             color: var(--text-main);
@@ -529,63 +529,102 @@
         return "Conservadorismo Moderado / Defensor da Ordem";
     }
 
-    // Gerador de Relatório Didático, Rico e Aprofundado
+    // Gerador de Análise Ultra-Detalhada dos Eixos
     function gerarRelatorioTextual(x, y, r) {
         let html = '';
 
-        // BLOCO 1: EIXO ECONÔMICO
-        html += `<div class="report-section-header">1. No Eixo Econômico (Pontuação: ${x.toFixed(1)} / 10)</div>`;
+        // BLOCO 1: ANÁLISE APROFUNDADA DO EIXO ECONÔMICO (X)
+        html += `<div class="report-section-header">1. Análise Detalhada do Eixo Econômico (Pontuação: ${x > 0 ? '+' : ''}${x.toFixed(1)})</div>`;
+        
+        let perfilEco = "";
+        if (x > 6) perfilEco = "Liberalismo de Mercado Convicto";
+        else if (x > 2) perfilEco = "Liberalismo Econômico Moderado";
+        else if (x >= -2) perfilEco = "Centrismo Econômico / Pragmático";
+        else if (x >= -6) perfilEco = "Social-Desenvolvimentismo Moderado";
+        else perfilEco = "Intervencionismo Estatal / Estatismo Social";
+
+        html += `<div class="report-paragraph">Sua orientação econômica é classificada como <strong>${perfilEco}</strong>. Esse eixo avalia o quanto você acredita que o governo deve intervir na produção, no emprego e na distribuição de renda do país.</div>`;
+        
+        html += `<ul class="report-bullet-list">`;
+        
+        // Subpauta A: Estado vs Mercado
         if (x > 2) {
-            html += `<div class="report-paragraph">📈 <strong>Direita Econômica (Liberalismo de Mercado):</strong> Suas respostas revelam forte confiança na iniciativa privada, na desregulamentação e na livre concorrência como os caminhos mais eficientes para gerar riqueza e preços acessíveis.</div>`;
-            html += `<ul class="report-bullet-list">`;
-            html += `<li class="report-bullet-item"><strong>Livre Mercado & Concorrência:</strong> Acredita que a oferta e a procura ajustam os preços melhor do que qualquer controle de preços governamental.</li>`;
-            html += `<li class="report-bullet-item"><strong>Estado Enxuto & Fiscal:</strong> Defende a privatização de estatais e a redução de impostos para estimular investimentos.</li>`;
-            html += `</ul>`;
+            html += `<li class="report-bullet-item"><strong>Papel das Empresas e Mercado:</strong> Você prioriza a livre iniciativa, concorrência e privatizações. Entende que o livre mercado regula os preços de forma mais eficiente do que governos e que impostos altos desestimulam empregos e investimentos.</li>`;
         } else if (x < -2) {
-            html += `<div class="report-paragraph">🛠️ <strong>Esquerda Econômica (Intervencionista / Social):</strong> Você enxerga o Estado como um instrumento indispensável de justiça social, incumbido de proteger os vulneráveis e moderar os excessos do mercado.</div>`;
-            html += `<ul class="report-bullet-list">`;
-            html += `<li class="report-bullet-item"><strong>Serviços Públicos Universais:</strong> Defende que saúde, educação e saneamento devem ser garantidos prioritariamente pelo Estado com dinheiro público.</li>`;
-            html += `<li class="report-bullet-item"><strong>Tributação Progressiva:</strong> Apoia impostos maiores sobre grandes fortunas e heranças para financiar auxílios de renda.</li>`;
-            html += `</ul>`;
+            html += `<li class="report-bullet-item"><strong>Papel das Empresas e Mercado:</strong> Você defende um Estado indutor, capaz de gerir estatais estratégicas (como energia e saneamento) e regular preços ou abusos para impedir monopólios que prejudiquem a população.</li>`;
         } else {
-            html += `<div class="report-paragraph">⚖️ <strong>Pragmatismo de Centro:</strong> Você se posiciona na linha de equilíbrio econômico, rejeitando soluções extremas tanto do liberalismo puro quanto do estatismo rígido.</div>`;
-            html += `<ul class="report-bullet-list">`;
-            html += `<li class="report-bullet-item"><strong>Mercado com Regulação:</strong> Reconhece a eficiência e dinamismo das empresas privadas, mas defende que o Estado atue como regulador para conter abusos.</li>`;
-            html += `<li class="report-bullet-item"><strong>Responsabilidade Social:</strong> Concorda que serviços essenciais como o SUS e escolas públicas devem ser preservados sem inviabilizar as contas públicas.</li>`;
-            html += `</ul>`;
+            html += `<li class="report-bullet-item"><strong>Papel das Empresas e Mercado:</strong> Sua posição é de equilíbrio: você reconhece o valor da livre iniciativa privada para gerar inovação, mas concorda que o Estado precisa atuar onde o mercado não atende de forma justa.</li>`;
         }
 
-        // BLOCO 2: EIXO SOCIAL E CULTURAL
-        html += `<div class="report-section-header">2. No Eixo Social e Cultural (Pontuação: ${y.toFixed(1)} / 10)</div>`;
+        // Subpauta B: Impostos e Serviços Públicos
+        if (x > 2) {
+            html += `<li class="report-bullet-item"><strong>Impostos e Proteção Social:</strong> Prefere a redução da carga tributária geral e defende a responsabilidade fiscal rigorosa. Acredita que os benefícios sociais devem ter regras claras de transição para o mercado de trabalho.</li>`;
+        } else if (x < -2) {
+            html += `<li class="report-bullet-item"><strong>Impostos e Proteção Social:</strong> Defende a justiça fiscal com tributação progressiva sobre grandes fortunas e renda mais alta, financiando serviços 100% públicos e universais em saúde, educação e auxílios de renda.</li>`;
+        } else {
+            html += `<li class="report-bullet-item"><strong>Impostos e Proteção Social:</strong> Apoia a manutenção de redes essenciais de proteção social (como SUS e auxílios), mas cobra eficiência, gestão responsável dos recursos e equilíbrio no orçamento.</li>`;
+        }
+
+        // Subpauta C: Desenvolvimento e Meio Ambiente
+        if (r['q25'] >= 4 || r['q27'] >= 4) {
+            html += `<li class="report-bullet-item"><strong>Sustentabilidade e Clima:</strong> Suas respostas destacam forte preocupação ambiental, concordando que regras de proteção da natureza e compromissos climáticos globais devem sobrepor-se ao crescimento econômico desordenado.</li>`;
+        } else {
+            html += `<li class="report-bullet-item"><strong>Desenvolvimento e Soberania:</strong> Suas respostas enfatizam a produção nacional, a autonomia agrícola e industrial e a rejeição a barreiras externas que possam travar o crescimento produtivo do país.</li>`;
+        }
+        html += `</ul>`;
+
+
+        // BLOCO 2: ANÁLISE APROFUNDADA DO EIXO SOCIAL E CULTURAL (Y)
+        html += `<div class="report-section-header">2. Análise Detalhada do Eixo Social/Cultural (Pontuação: ${y > 0 ? '+' : ''}${y.toFixed(1)})</div>`;
+        
+        let perfilSoc = "";
+        if (y > 6) perfilSoc = "Conservadorismo Tradicional Convicto";
+        else if (y > 2) perfilSoc = "Conservadorismo Institucional / Defensor da Ordem";
+        else if (y >= -2) perfilSoc = "Moderado no Campo Cultural / Equilibrado";
+        else if (y >= -6) perfilSoc = "Progressismo Social / Social-Libertário";
+        else perfilSoc = "Libertarianismo Social / Progressismo Laico Rígido";
+
+        html += `<div class="report-paragraph">No campo social e institucional, sua postura é classificada como <strong>${perfilSoc}</strong>. Esse eixo mede sua visão sobre costumes, papel da religião no Estado, segurança pública e limites da autoridade governamental.</div>`;
+        
+        html += `<ul class="report-bullet-list">`;
+        
+        // Subpauta A: Liberdades Individuais e Costumes
         if (y > 2) {
-            html += `<div class="report-paragraph">🏛️ <strong>Conservadorismo / Defesa da Ordem:</strong> Suas escolhas priorizam a manutenção da estabilidade social, dos valores morais tradicionais e do rigor na aplicação das leis.</div>`;
-            html += `<ul class="report-bullet-list">`;
-            html += `<li class="report-bullet-item"><strong>Valores Morais & Família:</strong> Entende que preceitos éticos e a instituição familiar tradicional são vigas mestras da sociedade.</li>`;
-            html += `<li class="report-bullet-item"><strong>Segurança & Autoridade:</strong> Valoriza a atuação firme das forças policiais, o cumprimento severo das penas e a ordem pública.</li>`;
-            html += `</ul>`;
+            html += `<li class="report-bullet-item"><strong>Moralidade e Princípios:</strong> Você valoriza a preservação da estrutura familiar e moral tradicional como alicerces de estabilidade da sociedade, preferindo diretrizes escolares e leis alinhadas a esses costumes.</li>`;
         } else if (y < -2) {
-            html += `<div class="report-paragraph">🌈 <strong>Social-Libertário / Progressista Laico:</strong> Seu perfil valoriza a autonomia individual sobre a própria vida, a diversidade cultural e a estrita laicidade do governo.</div>`;
-            html += `<ul class="report-bullet-list">`;
-            html += `<li class="report-bullet-item"><strong>Autonomia Individual:</strong> Sustenta que o Estado não deve ditar escolhas morais, comportamentais ou sobre o próprio corpo.</li>`;
-            html += `<li class="report-bullet-item"><strong>Laicidade & Direitos Civis:</strong> Defende a neutralidade religiosa nas repartições públicas e o combate a discriminações.</li>`;
-            html += `</ul>`;
+            html += `<li class="report-bullet-item"><strong>Moralidade e Princípios:</strong> Defende a autonomia individual plena e o respeito à diversidade, sustentando que o Estado deve ser estritamente laico e neutro, garantindo que cada cidadão decida sobre seu próprio corpo e estilo de vida.</li>`;
         } else {
-            html += `<div class="report-paragraph">🕊️ <strong>Postura Moderada / Ponderada:</strong> Suas respostas indicam moderação nas pautas de costumes e instituições.</div>`;
-            html += `<ul class="report-bullet-list">`;
-            html += `<li class="report-bullet-item"><strong>Equilíbrio Prático:</strong> Respeita tradições e apoia a segurança pública, mas acolhe garantias individuais e a igualdade civil.</li>`;
-            html += `</ul>`;
+            html += `<li class="report-bullet-item"><strong>Moralidade e Princípios:</strong> Demonstra tolerancia e respeito às liberdades individuais, ao mesmo tempo em que reconhece a relevância das tradições culturais e religiosas para a coesão social.</li>`;
         }
 
-        // BLOCO 3: ANÁLISE EXCLUSIVA DO PERFIL DOMINANTE
-        html += `<div class="report-section-header">💡 Resumo Didático do seu Perfil</div>`;
+        // Subpauta B: Segurança Pública e Leis
+        if (y > 2) {
+            html += `<li class="report-bullet-item"><strong>Segurança e Ordem Pública:</strong> Favorece uma abordagem de firmeza e rigor penal, apoiando maior punição para crimes graves, atuação policial enérgica e o direito à legítima defesa do cidadão comum.</li>`;
+        } else if (y < -2) {
+            html += `<li class="report-bullet-item"><strong>Segurança e Ordem Pública:</strong> Enfatiza a proteção dos direitos civis, garantias individuais e limites à atuação do Estado e das forças policiais para evitar abusos de autoridade.</li>`;
+        } else {
+            html += `<li class="report-bullet-item"><strong>Segurança e Ordem Pública:</strong> Apoia ações efetivas de combate à criminalidade e respeito às leis, buscando conciliar a autoridade do Estado com a preservação dos direitos humanos básicos.</li>`;
+        }
+
+        // Subpauta C: Instituições e Política
+        if (r['q36'] >= 4 || r['q37'] >= 4 || r['q40'] >= 4) {
+            html += `<li class="report-bullet-item"><strong>Reforma do Estado:</strong> Suas respostas indicam forte desejo de reformar o sistema político, cortando privilégios, reduzindo o número de parlamentares e flexibilizando a obrigatoriedade do voto.</li>`;
+        } else {
+            html += `<li class="report-bullet-item"><strong>Institucionalidade:</strong> Suas respostas mostram respeito pela estrutura republicana representativa tradicional e pela manutenção do equilíbrio entre os poderes constituídos.</li>`;
+        }
+        html += `</ul>`;
+
+
+        // BLOCO 3: RESUMO EXCLUSIVO E DEDICADO DO PERFIL
+        html += `<div class="report-section-header">💡 Síntese do seu Perfil Ideológico</div>`;
         const perfilNome = definirIdeologia(x, y);
 
         const textosConclusao = {
-            "Centrismo Pragmático / Moderado": "Você se recusa a seguir cartilhas ideológicas fechadas. Suas respostas revelam um pensamento essencialmente centrista: apoia a eficiência do mercado onde ela funciona, mas não hesita em defender a atuação do Estado para garantir saúde, educação e segurança pública. No campo social, busca o equilíbrio entre o respeito às tradições e o acolhimento das liberdades individuais.",
+            "Centrismo Pragmático / Moderado": "Você se recusa a adotar cartilhas ideológicas fechadas. Suas respostas revelam um pensamento essencialmente centrista: apoia a eficiência do mercado onde ela funciona, mas não hesita em defender a atuação do Estado para garantir saúde, educação e segurança pública. No campo social, busca o equilíbrio entre o respeito às tradições e o acolhimento das liberdades individuais.",
             "Socialismo de Estado / Estatismo Conservador": "Você une a defesa de uma economia planejada e regulada pelo Estado com uma visão cultural conservadora. Para você, o governo deve controlar os setores estratégicos para evitar a exploração econômica, ao mesmo tempo em que protege a ordem pública, os costumes tradicionais e as instituições familiares.",
             "Conservadorismo Tradicional / Direita Conservadora": "Seu perfil alinha o liberalismo econômico no mercado à preservação da ordem moral na sociedade. Você enxerga a livre iniciativa e a responsabilidade fiscal como fontes de riqueza, e defende que o rigor nas leis, o combate à criminalidade e o fortalecimento da família são essenciais para a coesão social.",
             "Social-Democracia / Progressismo Social": "Seu diagnóstico aponta para a defesa de um Estado social forte e protetor, combinado com valores progressistas e libertários. Você defende serviços públicos universais e justiça fiscal para combater as desigualdades, ao mesmo tempo em que luta pela laicidade do Estado, diversidade e direitos civis.",
-            "Liberalismo Econômico / Libertarianismo": "Seu princípio orientador é a liberdade individual plena. Na economia, defende privatizações, desregulamentação e corte de impostos para que o mercado prospere sem amarras estatais. No campo pessoal, sustenta que o governo não tem o direito de interferir nos costumes e nas escolhas privadas das pessoas.",
+            "Liberalismo Econômico / Libertarianismo": "Seu princípio orientador é a liberdade individual plena. Na economia, defende privatizaciones, desregulamentação e corte de impostos para que o mercado prospere sem amarras estatais. No campo pessoal, sustenta que o governo não tem o direito de interferir nos costumes e nas escolhas privadas das pessoas.",
             "Esquerda Reformista / Social-Desenvolvimentista": "Sua prioridade política é usar o Estado como indutor do desenvolvimento econômico nacional e garantidor de direitos sociais. Você defende investimentos estatais em ciência, infraestrutura e valorização do trabalho, adotando uma postura equilibrada ou moderada em relação às pautas culturais.",
             "Direita Fiscal / Liberalismo de Mercado": "Seu foco primordial está na responsabilidade fiscal, no enxugamento do Estado e na criação de um ambiente favorável para empresas e empreendedores. Para você, o equilíbrio das contas públicas e a atração de capital são a base do progresso, mantendo uma atitude flexível em questões morais.",
             "Social-Libertário / Progressista Laico": "Você prioriza a autonomia das escolhas pessoais e a neutralidade laica do Estado acima de tutelas morais. Na economia, adota uma posição equilibrada, valorizando o livre mercado sem abrir mão de uma rede pública de proteção social para quem precisa.",
@@ -595,7 +634,7 @@
         const textoExplicativo = textosConclusao[perfilNome] || "Com base nas suas escolhas, seu perfil reflete uma combinação única de visão econômica e social.";
 
         html += `<div class="report-highlight-box">`;
-        html += `<strong>Diagnóstico Final: ${perfilNome}</strong><br><br>`;
+        html += `<strong>Diagnóstico Dominante: ${perfilNome}</strong><br><br>`;
         html += `${textoExplicativo}`;
         html += `</div>`;
 
@@ -620,7 +659,7 @@
         if (nuances.length > 0) {
             html += `<div class="report-nuances-box">`;
             html += `<strong>🔍 Suas Nuances e Singularidades:</strong><br>`;
-            html += `O seu resultado não é 100% rígido. Notamos pontos onde você diverge das cartilhas tradicionais:<br><br>`;
+            html += `O seu resultado não é 100% engessado. Notamos pontos marcantes onde você diverge das cartilhas tradicionais:<br><br>`;
             nuances.forEach(n => {
                 html += `• ${n}<br>`;
             });

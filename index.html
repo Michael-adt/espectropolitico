@@ -230,6 +230,17 @@
             padding-left: 10px;
             font-size: 0.92rem;
         }
+
+        .report-nuances {
+            background-color: rgba(251, 191, 36, 0.08);
+            border-left: 4px solid var(--accent-gold);
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 15px;
+            color: #fef08a;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
@@ -315,7 +326,7 @@
 
         // BLOCO 5
         { id: 'q33', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: true, texto: '33. As campanhas dos políticos devem ser pagas com dinheiro de impostos, proibindo doações de empresários.', exemplo: 'Usar fundo eleitoral público para panfletos e TV, evitando que grandes empresários ajudem candidatos em troca de favores.' },
-        { id: 'q34', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: true, texto: '34. A população deveria ir às urnas votar diretamente para decidir sobre leis importantes e polêmicas.', exemplo: 'Votar diretamente na urna dizendo "Sim" ou "Não" sobre legalização de armas, reformas ou privatizaciones.' },
+        { id: 'q34', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: true, texto: '34. A população deveria ir às urnas votar diretamente para decidir sobre leis importantes e polêmicas.', exemplo: 'Votar diretamente na urna dizendo "Sim" ou "Não" sobre legalização de armas, reformas ou privatizações.' },
         { id: 'q35', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: false, texto: '35. Os ministros do governo deveriam ser escolhidos apenas pelo currículo de trabalho, e não por acordos entre partidos.', exemplo: 'Nomear apenas especialistas renomados para os ministérios, recusando indicações de deputados em troca de votos.' },
         { id: 'q36', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: true, texto: '36. Votar no dia da eleição deveria ser uma escolha livre, e não uma obrigação.', exemplo: 'Acabar com a multa e o bloqueio de documentos para quem escolhe não ir votar no dia da eleição.' },
         { id: 'q37', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: false, texto: '37. Funcionários públicos que atendem mal ou trabalham de forma ineficiente deveriam poder ser demitidos.', exemplo: 'Criar avaliações de atendimento em postos e escolas, podendo demitir o funcionário público com desempenho ruim constante.' },
@@ -478,7 +489,7 @@
         return "Conservadorismo Moderado / Defensor da Ordem";
     }
 
-    // Geração de Análise Didática Detalhada Estilo Consultoria
+    // Gerador de Resumo Personalizado e Exclusivo por Perfil
     function gerarRelatorioTextual(x, y, r) {
         let html = '';
 
@@ -515,10 +526,54 @@
             html += `<div class="report-bullet">• <strong>Equilíbrio:</strong> Respeita tradições e o direito à segurança pública, mas acolhe certas garantias de liberdade individual e a laicidade do Estado.</div>`;
         }
 
-        // SEÇÃO 3: SÍNTESE DO PERFIL
+        // SEÇÃO 3: RESUMO EXCLUSIVO E DEDICADO POR QUADRANTE
         html += `<div class="report-section-header">💡 Resumo do seu Perfil</div>`;
         const perfilNome = definirIdeologia(x, y);
-        html += `<div class="report-paragraph">Com base nas suas 40 respostas, o seu diagnóstico dominante é <strong>${perfilNome}</strong>. Você apresenta uma visão prática da realidade, combinando suas convicções econômicas e sociais de maneira autêntica e sem amarras ideológicas cegas.</div>`;
+
+        // Textos explicativos e analíticos únicos para cada combinação
+        const textosConclusao = {
+            "Centrismo Pragmático / Moderado": "Você se recusa a adotar cartilhas ideológicas fechadas. Suas 40 respostas revelam um perfil essencialmente racional e ponderado: você apoia a eficiência do mercado onde ela traz resultados, mas não hesita em defender a intervenção do Estado para proteger serviços essenciais ou garantir direitos. No campo cultural, busca o equilíbrio entre respeitar tradições e acolher liberdades individuais.",
+            "Socialismo de Estado / Estatismo Conservador": "Você combina uma forte convicção de que a economia deve ser controlada e planejada pelo Estado para proteger a população contra os abusos do mercado, com uma visão de sociedade focada na ordem, no respeito à autoridade e na preservação dos costumes tradicionais. Para você, o bem comum e a estabilidade social vêm antes do individualismo econômico ou comportamental.",
+            "Conservadorismo Tradicional / Direita Conservadora": "Seu perfil valoriza a aliança entre o livre mercado na economia e a preservação da ordem moral e das tradições na sociedade. Você enxerga a iniciativa privada, a responsabilidade fiscal e a menor intervenção do Estado como os motores do progresso financeiro, enquanto defende o fortalecimento da família, o rigor penal e as raízes morais como os pilares da coesão social.",
+            "Social-Democracia / Progressismo Social": "Seu diagnóstico aponta para a defesa incondicional de um Estado de bem-estar social forte, focado na saúde e educação públicas e na redução da desigualdade via impostos progressivos. Paralelamente, você sustenta valores amplamente libertários e inclusivos no campo social, defendendo a laicidade estrita do Estado, os direitos de minorias e a autonomia individual.",
+            "Liberalismo Econômico / Libertarianismo": "Você tem como princípio supremo a liberdade individual e a menor presença possível do Estado na vida do cidadão. Na economia, defende privatizações, desregulamentação e livre concorrência sem amarras tributárias. No campo social e de escolhas pessoais, acredita que o governo não deve ditar comportamentos, respeitando a autonomia total das decisões individuais.",
+            "Esquerda Reformista / Social-Desenvolvimentista": "Sua prioridade estratégica está no papel ativo do Estado como indutor do desenvolvimento econômico e garantidor da justiça social. Você apoia investimentos públicos em infraestrutura, ciência e direitos trabalhistas para alavancar o país, mantendo uma postura pragmática ou moderada em relação às pautas comportamentais e de costumes.",
+            "Direita Fiscal / Liberalismo de Mercado": "Você tem um foco primordial na gestão econômica responsável, no livre comércio, no empreendedorismo e no enxugamento da máquina pública. Para você, o corte de gastos estatais e a atração de capital privado são os únicos caminhos reais para o crescimento, adotando uma postura neutra ou flexível quanto às pautas morais e culturais.",
+            "Social-Libertário / Progressista Laico": "Você prioriza a liberdade de escolha individual e a laicidade do Estado como valores fundamentais para uma sociedade justa. Suas escolhas apontam forte rejeição a tutelas morais, proibições estatais sobre costumes e censura, enquanto na economia você mantém uma postura equilibrada entre aceitar o mercado e exigir proteção social básica.",
+            "Conservadorismo Moderado / Defensor da Ordem": "Sua visão prioriza a segurança pública, o respeito às leis, a eficiência das instituições e a estabilidade da sociedade. Você apoia o bom funcionamento das regras do mercado, mas coloca a ordem, o cumprimento de penas, o combate ao crime e o bom senso administrativo no centro de suas preocupações políticas."
+        };
+
+        const textoExplicativo = textosConclusao[perfilNome] || "Com base nas suas 40 respostas, seu diagnóstico reflete uma combinação única de posições econômicas e sociais que se alinham com a busca por soluções práticas para o país.";
+
+        html += `<div class="report-paragraph">Com base nas suas 40 respostas, o seu diagnóstico dominante é <strong>${perfilNome}</strong>.</div>`;
+        html += `<div class="report-paragraph">${textoExplicativo}</div>`;
+
+        // DETECTOR DINÂMICO DE SINGULARIDADES / CONTRADIÇÕES REAIS
+        let nuances = [];
+        if (x > 1 && r['q11'] >= 4) {
+            nuances.push("Apoia a liberdade econômica de mercado, mas concorda com políticas de cotas para reparação social.");
+        }
+        if (y > 1 && r['q10'] >= 4) {
+            nuances.push("Sua orientação geral é conservadora na ordem, mas você defende a liberdade individual de escolha sobre o próprio corpo e estilo de vida.");
+        }
+        if (x < -1 && r['q13'] >= 4) {
+            nuances.push("Defende o papel do Estado na economia e nos serviços públicos, mas apoia o direito do cidadão de possuir armas para defesa pessoal.");
+        }
+        if (r['q17'] >= 4 && r['q18'] >= 4) {
+            nuances.push("Valoriza a liberdade de expressão ampla, mas concorda com a remoção de fake news pelo governo em casos graves.");
+        }
+        if (r['q36'] >= 4 && r['q37'] >= 4) {
+            nuances.push("Defende reformas institucionais profundas, como o fim do voto obrigatório e a demissão de servidores públicos ineficientes.");
+        }
+
+        if (nuances.length > 0) {
+            html += `
+                <div class="report-nuances">
+                    <strong>🔍 Suas Nuances e Singularidades:</strong><br>
+                    Note que o seu perfil apresenta pontos marcantes onde você diverge da visão tradicional: ${nuances.join(' ')}
+                </div>
+            `;
+        }
 
         return html;
     }

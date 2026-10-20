@@ -281,6 +281,27 @@
             font-size: 0.92rem;
             line-height: 1.5;
         }
+
+        .bio-card {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+
+        .bio-card-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .bio-card-text {
+            font-size: 0.88rem;
+            line-height: 1.45;
+            color: var(--text-main);
+        }
     </style>
 </head>
 <body>
@@ -529,7 +550,7 @@
         return "Conservadorismo Moderado / Defensor da Ordem";
     }
 
-    // Gerador de Análise Ultra-Detalhada com Figuras Históricas
+    // Gerador de Análise Ultra-Detalhada com Biografias (Homens e Mulheres)
     function gerarRelatorioTextual(x, y, r) {
         let html = '';
 
@@ -540,7 +561,7 @@
         if (x > 6) perfilEco = "Liberalismo de Mercado Convicto";
         else if (x > 2) perfilEco = "Liberalismo Econômico Moderado";
         else if (x >= -2) perfilEco = "Centrismo Econômico / Pragmático";
-        else if (x >= -6) perfilEco = "Social-Desenvolvimentismo Moderado";
+        else if (x >= -6) perfilEco = "Social-Desenvolvimentista Moderado";
         else perfilEco = "Intervencionismo Estatal / Estatismo Social";
 
         html += `<div class="report-paragraph">Sua orientação econômica é classificada como <strong>${perfilEco}</strong>. Esse eixo avalia o quanto você acredita que o governo deve intervir na produção, no emprego e na distribuição de renda do país.</div>`;
@@ -660,56 +681,68 @@
             html += `</div>`;
         }
 
-        // BLOCO 5: FIGURAS HISTÓRICAS E CORRENTES AFINS
-        const contextoHistorico = {
-            "Centrismo Pragmático / Moderado": {
-                figuras: "Franklin D. Roosevelt (EUA) e Helmut Kohl (Alemanha)",
-                correntes: "Social-Democracia Moderada, Neoliberalismo Social e Pragmatismo Político"
-            },
-            "Socialismo de Estado / Estatismo Conservador": {
-                figuras: "Clement Attlee (Reino Unido) e Getúlio Vargas (Fase Trabalhista - Brasil)",
-                correntes: "Nacional-Desenvolvimentismo, Estatismo Social e Trabalhismo de Estado"
-            },
-            "Conservadorismo Tradicional / Direita Conservadora": {
-                figuras: "Edmund Burke (Reino Unido) e Winston Churchill (Reino Unido)",
-                correntes: "Conservadorismo Clássico, Democracia Cristã e Neoconservadorismo"
-            },
-            "Social-Democracia / Progressismo Social": {
-                figuras: "Olof Palme (Suécia) e Willy Brandt (Alemanha)",
-                correntes: "Social-Democracia Nórdica, Progressismo Social e Sociedade Aberta"
-            },
-            "Liberalismo Econômico / Libertarianismo": {
-                figuras: "Adam Smith (Escócia) e Ludwig von Mises (Áustria)",
-                correntes: "Libertarianismo, Escola Austríaca de Economia e Minarquismo"
-            },
-            "Esquerda Reformista / Social-Desenvolvimentista": {
-                figuras: "John Maynard Keynes (Reino Unido) e Celso Furtado (Brasil)",
-                correntes: "Keynesianismo, Social-Desenvolvimentismo e Reformismo Social"
-            },
-            "Direita Fiscal / Liberalismo de Mercado": {
-                figuras: "Ludwig Erhard (Alemanha) e Milton Friedman (EUA)",
-                correntes: "Ordoliberalismo, Neoliberalismo Fiscal e Economia Social de Mercado"
-            },
-            "Social-Libertário / Progressista Laico": {
-                figuras: "John Stuart Mill (Reino Unido) e Joaquim Nabuco (Brasil)",
-                correntes: "Liberalismo Social, Progressismo Laico e Humanismo Secular"
-            },
-            "Conservadorismo Moderado / Defensor da Ordem": {
-                figuras: "Rui Barbosa (Brasil) e Charles de Gaulle (França)",
-                correntes: "Legalismo, Republicanismo Clássico e Conservadorismo Institucional"
-            }
+        // BLOCO 5: FIGURAS HISTÓRICAS (MASCULINAS E FEMININAS) COM BIOGRAFIAS E FEITOS
+        const dadosBiograficos = {
+            "Centrismo Pragmático / Moderado": [
+                { nome: "Franklin D. Roosevelt (1882–1945)", papel: "Presidente dos EUA", bio: "Liderou os EUA durante a Grande Depressão e a Segunda Guerra Mundial.", feitos: "Criou o New Deal, combinando economia de mercado com forte rede de proteção social pública e infraestrutura." },
+                { nome: "Angela Merkel (1954–presente)", papel: "Chanceler da Alemanha", bio: "Física e política, governou a Alemanha por 16 anos como referência de estabilidade europeia.", feitos: "Destacou-se pela gestão pragmática de crises financeiras, transição energética e capacidade de conciliar consensos de centro." }
+            ],
+            "Socialismo de Estado / Estatismo Conservador": [
+                { nome: "Clement Attlee (1883–1967)", papel: "Primeiro-Ministro do Reino Unido", bio: "Líder trabalhista do pós-guerra conhecido por sua conduta austera e senso de dever civil.", feitos: "Nacionalizou indústrias essenciais e fundou o Serviço Nacional de Saúde (NHS), o maior sistema público de saúde do mundo." },
+                { nome: "Indira Gandhi (1917–1984)", papel: "Primeira-Ministra da Índia", bio: "Primeira e única mulher a liderar a Índia, centralizou decisões estratégicas do país.", feitos: "Nacionalizou os maiores bancos indianos, impulsionou a Revolução Verde agrícola e consolidou a Índia como potência regional." }
+            ],
+            "Conservadorismo Tradicional / Direita Conservadora": [
+                { nome: "Winston Churchill (1874–1965)", papel: "Primeiro-Ministro do Reino Unido", bio: "Estadista, historiador e Nobel de Literatura que liderou a resistência britânica ao nazismo.", feitos: "Defendeu as instituições democráticas ocidentais, a soberania nacional e os valores morais clássicos do Ocidente." },
+                { nome: "Margaret Thatcher (1925–2013)", papel: "Primeira-Ministra do Reino Unido", bio: "Conhecida como a 'Dama de Ferro', foi a primeira mulher a ocupar o cargo no Reino Unido.", feitos: "Promoveu privatizações massivas, desregulamentação financeira e combateu o poder dos sindicatos com foco na responsabilidade individual." }
+            ],
+            "Social-Democracia / Progressismo Social": [
+                { nome: "Olof Palme (1927–1986)", papel: "Primeiro-Ministro da Suécia", bio: "Líder social-democrata sueco que marcou a política internacional do século XX.", feitos: "Consolidou o 'Modelo Sueco' de bem-estar social universais com forte igualdade de gênero, direitos civis e pacifismo global." },
+                { nome: "Gro Harlem Brundtland (1939–presente)", papel: "Primeira-Ministra da Noruega e Médica", bio: "Primeira mulher Chefe de Governo da Noruega e ex-Diretora-Geral da OMS.", feitos: "Liderou o relatório da ONU que definiu o conceito de 'Desenvolvimento Sustentável' e expandiu licenças parentais e igualdade social." }
+            ],
+            "Liberalismo Econômico / Libertarianismo": [
+                { nome: "Adam Smith (1723–1790)", papel: "Filósofo e Economista Escocês", bio: "Considerado o pai da economia moderna e do liberalismo clássico.", feitos: "Escreveu 'A Riqueza das Nações', demonstrando como a livre concorrência e a divisão do trabalho geram prosperidade social." },
+                { nome: "Rose Wilder Lane (1886–1968)", papel: "Escritora e Teórica Política (EUA)", bio: "Uma das mães do movimento libertário americano do século XX.", feitos: "Autora do clássico libertário 'The Discovery of Freedom', advogou pela liberdade individual absoluta e mínima interferência estatal." }
+            ],
+            "Esquerda Reformista / Social-Desenvolvimentista": [
+                { nome: "John Maynard Keynes (1883–1946)", papel: "Economista Britânico", bio: "Um dos economistas mais influentes da história moderna.", feitos: "Propôs o uso de investimentos públicos em momentos de crise para gerar empregos e reativar a demanda econômica." },
+                { nome: "Maria da Conceição Tavares (1931–2024)", papel: "Economista e Professora Luso-Brasileira", bio: "Uma das vozes mais marcantes do pensamento desenvolvimentista na América Latina.", feitos: "Defendeu apaixonadamente a industrialização do Brasil, a valorização do salário mínimo e o papel do Estado no combate à pobreza." }
+            ],
+            "Direita Fiscal / Liberalismo de Mercado": [
+                { nome: "Milton Friedman (1912–2006)", papel: "Economista e Prêmio Nobel (EUA)", bio: "Líder da Escola de Economia de Chicago e defensor do livre mercado.", feitos: "Advogou pela contenção da inflação via controle monetário, livre câmbio e privatização, influenciando governos mundiais." },
+                { nome: "Elinor Ostrom (1933–2012)", papel: "Economista e Cientista Política (EUA)", bio: "Primeira mulher a ganhar o Prêmio Nobel de Ciências Econômicas (2009).", feitos: "Demonstrou como associações locais de indivíduos podem gerir recursos comuns de forma eficiente sem intervenção estatal centralizada." }
+            ],
+            "Social-Libertário / Progressista Laico": [
+                { nome: "John Stuart Mill (1806–1873)", papel: "Filósofo e Economista Britânico", bio: "Pioneiro do liberalismo social e defensor das liberdades individuais.", feitos: "Escreveu 'Sobre a Liberdade', defendendo a liberdade de expressão irrestrita e o direito de voto para as mulheres no século XIX." },
+                { nome: "Bertha Lutz (1894–1976)", papel: "Cientista e Líder Feminista Brasileira", bio: "Bióloga e diplomata brasileira, uma das figuras mais importantes das ciências e política do Brasil.", feitos: "Liderou a conquista do voto feminino no Brasil em 1932 e atuou na elaboração da Carta da ONU para garantir igualdade de direitos entre homens e mulheres." }
+            ],
+            "Conservadorismo Moderado / Defensor da Ordem": [
+                { nome: "Rui Barbosa (1849–1923)", papel: "Jurista, Político e Diplomata Brasileiro", bio: "Um dos fundadores da República brasileira e patrono dos advogados do Brasil.", feitos: "Defendeu o império da lei, a independência dos poderes constitucionais e representou o Brasil na Haia com brilho em prol da igualdade internacional." },
+                { nome: "Emmeline Pankhurst (1858–1928)", papel: "Ativista e Líder Política Britânica", bio: "Líder do movimento sufragista britânico reconhecida por sua determinação e disciplina.", feitos: "Lutou incansavelmente pela incorporação das mulheres ao sistema político eleitoral sob o império da lei e da cidadania plena." }
+            ]
         };
 
-        const dadosContexto = contextoHistorico[perfilNome] || {
-            figuras: "Pensadores do Iluminismo e do Constitucionalismo Moderno",
-            correntes: "Ciência Política Contemporânea"
-        };
+        const bios = dadosBiograficos[perfilNome] || [
+            { nome: "Pensadores da Ciência Política", papel: "Referência Teórica", bio: "Atores históricos de diversas correntes republicanas.", feitos: "Contribuíram para o desenvolvimento do pensamento político moderno." }
+        ];
 
         html += `<div class="report-context-box">`;
-        html += `<strong>🏛️ Referências Históricas & Filosofias Afins:</strong><br><br>`;
-        html += `• <strong>Figuras de Referência Histórica:</strong> <em>${dadosContexto.figuras}</em>.<br>`;
-        html += `• <strong>Escolas do Pensamento:</strong> <em>${dadosContexto.correntes}</em>.<br><br>`;
-        html += `<small><em>*Nota pedagógica: As referências históricas servem como ilustrações didáticas de líderes e pensadores que dialogam com o seu quadrante.</em></small>`;
+        html += `<strong>🏛️ Referências Históricas de Destaque (Homens e Mulheres):</strong><br>`;
+        html += `Pessoas cujas trajetórias e ideias refletem aspectos centrais do seu quadrante político:<br><br>`;
+
+        bios.forEach(b => {
+            html += `
+                <div class="bio-card">
+                    <div class="bio-card-title">👤 ${b.nome}</div>
+                    <div class="bio-card-text">
+                        <strong>Atuação:</strong> ${b.papel}.<br>
+                        <strong>Quem foi:</strong> ${b.bio}<br>
+                        <strong>Principais Feitos:</strong> ${b.feitos}
+                    </div>
+                </div>
+            `;
+        });
+
+        html += `<small><em>*Nota pedagógica: As biografias apresentadas têm caráter exclusivamente informativo e educativo sobre a história do pensamento político.</em></small>`;
         html += `</div>`;
 
         return html;

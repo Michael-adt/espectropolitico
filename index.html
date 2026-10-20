@@ -9,14 +9,14 @@
             --bg-color: #0f172a;
             --card-bg: #1e293b;
             --card-border: #334155;
-            --primary: #0284c7;
-            --primary-hover: #0369a1;
+            --primary: #38bdf8;
+            --primary-hover: #0284c7;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --example-bg: #0f172a;
-            --accent-gold: #d97706;
-            --accent-green: #059669;
-            --error-red: #dc2626;
+            --accent-gold: #fbbf24;
+            --accent-green: #34d399;
+            --error-red: #ef4444;
         }
 
         * { box-sizing: border-box; }
@@ -179,10 +179,10 @@
 
         .btn-next {
             background-color: var(--primary);
-            color: #ffffff;
+            color: #0f172a;
         }
 
-        .btn-next:hover { background-color: var(--primary-hover); }
+        .btn-next:hover { background-color: var(--primary-hover); color: #ffffff; }
 
         #result-section { display: none; }
         .result-title { text-align: center; font-size: 1.5rem; font-weight: bold; margin-bottom: 6px; color: var(--primary); }
@@ -191,13 +191,13 @@
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
             aspect-ratio: 1 / 1;
             margin: 0 auto 20px auto;
-            background-color: #ffffff;
+            background-color: var(--example-bg);
             padding: 10px;
             border-radius: 8px;
-            border: 1px solid #cbd5e1;
+            border: 1px solid var(--card-border);
         }
 
         .share-btn-container {
@@ -207,7 +207,7 @@
 
         .btn-share {
             background-color: var(--accent-green);
-            color: #ffffff;
+            color: #0f172a;
             font-weight: 700;
             padding: 12px 20px;
             border-radius: 8px;
@@ -220,21 +220,20 @@
         .btn-share:hover { opacity: 0.9; }
 
         .report-box {
-            background-color: #ffffff;
-            color: #1e293b;
-            border: 1px solid #cbd5e1;
+            background-color: var(--example-bg);
+            border: 1px solid var(--card-border);
             border-radius: 8px;
-            padding: 22px;
+            padding: 18px;
             margin-top: 15px;
         }
 
         .report-section-header {
             font-size: 1.1rem;
             font-weight: 700;
-            color: #0369a1;
-            border-bottom: 2px solid #e2e8f0;
+            color: var(--primary);
+            border-bottom: 1px solid var(--card-border);
             padding-bottom: 6px;
-            margin-top: 24px;
+            margin-top: 20px;
             margin-bottom: 12px;
         }
 
@@ -242,10 +241,10 @@
             margin-bottom: 14px;
             font-size: 0.94rem;
             line-height: 1.6;
-            color: #334155;
+            color: var(--text-main);
         }
 
-        .report-paragraph strong { color: #0284c7; }
+        .report-paragraph strong { color: var(--primary); }
 
         .report-bullet-list {
             margin: 10px 0 16px 0;
@@ -259,71 +258,72 @@
             margin-bottom: 12px;
             font-size: 0.92rem;
             line-height: 1.6;
-            color: #334155;
+            color: var(--text-main);
         }
 
         .report-bullet-item::before {
             content: "•";
             position: absolute;
             left: 4px;
-            color: #0284c7;
+            color: var(--primary);
             font-size: 1.2rem;
         }
 
         .report-highlight-box {
-            background-color: #f0f9ff;
-            border-left: 4px solid #0284c7;
+            background-color: rgba(56, 189, 248, 0.06);
+            border-left: 4px solid var(--primary);
             padding: 14px;
             border-radius: 6px;
             margin: 16px 0;
             font-size: 0.93rem;
             line-height: 1.6;
-            color: #0369a1;
         }
 
         .report-context-box-positive {
-            background-color: #ecfdf5;
-            border-left: 4px solid #059669;
+            background-color: rgba(52, 211, 153, 0.08);
+            border-left: 4px solid var(--accent-green);
             padding: 14px;
             border-radius: 6px;
             margin: 16px 0;
-            color: #065f46;
+            color: #a7f3d0;
             font-size: 0.92rem;
             line-height: 1.6;
         }
 
         .report-context-box-negative {
-            background-color: #fef2f2;
-            border-left: 4px solid #dc2626;
+            background-color: rgba(239, 68, 68, 0.08);
+            border-left: 4px solid var(--error-red);
             padding: 14px;
             border-radius: 6px;
             margin: 16px 0;
-            color: #991b1b;
+            color: #fca5a5;
             font-size: 0.92rem;
             line-height: 1.6;
         }
 
         .bio-card {
-            background-color: #ffffff;
-            border: 1px solid #e2e8f0;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
             border-radius: 8px;
             padding: 14px;
             margin-bottom: 12px;
         }
 
-        .bio-card-title-pos { font-weight: 700; font-size: 0.98rem; color: #059669; margin-bottom: 6px; }
-        .bio-card-title-neg { font-weight: 700; font-size: 0.98rem; color: #dc2626; margin-bottom: 6px; }
+        .bio-card-title-pos { font-weight: 700; font-size: 0.98rem; color: var(--accent-green); margin-bottom: 6px; }
+        .bio-card-title-neg { font-weight: 700; font-size: 0.98rem; color: var(--error-red); margin-bottom: 6px; }
 
         .bio-card-text {
             font-size: 0.9rem;
             line-height: 1.55;
-            color: #334155;
+            color: var(--text-main);
         }
 
         .glossary-term {
-            border-bottom: 1px dashed #0284c7;
-            color: #0284c7;
-            font-weight: 600;
+            border-bottom: 1px dashed var(--primary);
+            color: var(--primary);
+            cursor: help;
+            position: relative;
+            display: inline-block;
         }
 
         .compat-box {
@@ -334,29 +334,28 @@
         }
 
         .compat-card {
-            background: #f8fafc;
-            border: 1px solid #cbd5e1;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--card-border);
             border-radius: 8px;
             padding: 12px;
             text-align: center;
         }
 
-        .compat-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; color: #475569; }
-        .compat-value { font-size: 0.95rem; font-weight: bold; color: #0284c7; }
+        .compat-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; }
+        .compat-value { font-size: 0.95rem; font-weight: bold; color: var(--primary); }
 
         details.gabarito-panel {
-            background-color: #f8fafc;
-            border: 1px solid #cbd5e1;
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--card-border);
             border-radius: 8px;
             padding: 12px;
             margin-top: 20px;
-            color: #334155;
         }
 
         details.gabarito-panel summary {
             cursor: pointer;
             font-weight: 700;
-            color: #0284c7;
+            color: var(--primary);
             outline: none;
         }
 
@@ -369,7 +368,7 @@
         }
 
         .gabarito-item {
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             padding-bottom: 6px;
         }
     </style>
@@ -399,10 +398,10 @@
         </form>
     </div>
 
-    <div id="result-section" class="card" style="background-color: #ffffff; color: #1e293b; border: 1px solid #cbd5e1;">
+    <div id="result-section" class="card">
         <div id="pdfExportArea">
-            <div class="result-title" id="profileTitle" style="color: #0369a1;">Seu Perfil Ideológico</div>
-            <div class="result-subtitle" id="profileCoords" style="color: #64748b;"></div>
+            <div class="result-title" id="profileTitle">Seu Perfil Ideológico</div>
+            <div class="result-subtitle" id="profileCoords"></div>
             
             <div class="chart-container">
                 <canvas id="compassChart"></canvas>
@@ -890,20 +889,20 @@
                         x: {
                             min: -10,
                             max: 10,
-                            ticks: { color: '#475569' },
-                            title: { display: true, text: '← Esquerda Econômica | Direita Econômica →', color: '#1e293b' },
-                            grid: { color: (ctx) => ctx.tick.value === 0 ? '#0284c7' : '#cbd5e1', lineWidth: (ctx) => ctx.tick.value === 0 ? 2 : 1 }
+                            ticks: { color: '#94a3b8' },
+                            title: { display: true, text: '← Esquerda Econômica | Direita Econômica →', color: '#f8fafc' },
+                            grid: { color: (ctx) => ctx.tick.value === 0 ? '#38bdf8' : '#334155', lineWidth: (ctx) => ctx.tick.value === 0 ? 2 : 1 }
                         },
                         y: {
                             min: -10,
                             max: 10,
-                            ticks: { color: '#475569' },
-                            title: { display: true, text: '← Libertário/Progressista | Conservador/Autoritário →', color: '#1e293b' },
-                            grid: { color: (ctx) => ctx.tick.value === 0 ? '#0284c7' : '#cbd5e1', lineWidth: (ctx) => ctx.tick.value === 0 ? 2 : 1 }
+                            ticks: { color: '#94a3b8' },
+                            title: { display: true, text: '← Libertário/Progressista | Conservador/Autoritário →', color: '#f8fafc' },
+                            grid: { color: (ctx) => ctx.tick.value === 0 ? '#38bdf8' : '#334155', lineWidth: (ctx) => ctx.tick.value === 0 ? 2 : 1 }
                         }
                     },
                     plugins: {
-                        legend: { labels: { color: '#1e293b' } }
+                        legend: { labels: { color: '#f8fafc' } }
                     }
                 }
             });
@@ -914,6 +913,12 @@
 
     function baixarRelatorioPDF() {
         const elemento = document.getElementById('pdfExportArea');
+        
+        // Adiciona classe temporária para formatar o PDF com fundo branco e cores escuras legíveis
+        elemento.style.backgroundColor = '#ffffff';
+        elemento.style.color = '#1e293b';
+        elemento.style.padding = '20px';
+
         const opcoes = {
             margin:       10,
             filename:     'relatorio-mapeamento-politico.pdf',
@@ -922,7 +927,12 @@
             jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
         };
 
-        html2pdf().from(elemento).set(opcoes).save();
+        html2pdf().from(elemento).set(opcoes).save().then(() => {
+            // Restaura o estilo original da tela após a exportação
+            elemento.style.backgroundColor = '';
+            elemento.style.color = '';
+            elemento.style.padding = '';
+        });
     }
 
     renderizarPassoAPasso();

@@ -188,9 +188,12 @@
         .result-title { text-align: center; font-size: 1.5rem; font-weight: bold; margin-bottom: 6px; color: var(--primary); }
         .result-subtitle { text-align: center; font-size: 0.95rem; color: var(--text-muted); margin-bottom: 18px; }
 
+        /* FORMATO QUADRADO PERFEITO (1:1) */
         .chart-container {
             position: relative;
-            max-width: 100%;
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 1 / 1;
             margin: 0 auto 20px auto;
             background-color: var(--example-bg);
             padding: 10px;
@@ -550,7 +553,6 @@
         return "Conservadorismo Moderado / Defensor da Ordem";
     }
 
-    // Gerador de Análise Ultra-Detalhada com Biografias (Homens e Mulheres)
     function gerarRelatorioTextual(x, y, r) {
         let html = '';
 
@@ -775,6 +777,7 @@
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: false,
                     scales: {
                         x: {
                             min: -10,

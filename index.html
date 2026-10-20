@@ -275,12 +275,12 @@
         }
 
         .report-context-box {
-            background-color: rgba(52, 211, 153, 0.08);
-            border-left: 4px solid var(--accent-green);
+            background-color: rgba(239, 68, 68, 0.08);
+            border-left: 4px solid var(--error-red);
             padding: 14px;
             border-radius: 6px;
             margin: 16px 0;
-            color: #a7f3d0;
+            color: #fca5a5;
             font-size: 0.92rem;
             line-height: 1.5;
         }
@@ -296,7 +296,7 @@
         .bio-card-title {
             font-weight: 700;
             font-size: 0.95rem;
-            color: var(--primary);
+            color: var(--error-red);
             margin-bottom: 4px;
         }
 
@@ -683,68 +683,66 @@
             html += `</div>`;
         }
 
-        // BLOCO 5: FIGURAS HISTÓRICAS (MASCULINAS E FEMININAS) COM BIOGRAFIAS E FEITOS
-        const dadosBiograficos = {
+        // BLOCO 5: FIGURAS HISTÓRICAS CONTROVERSAS/CRÍTICAS (MASCULINAS E FEMININAS)
+        const dadosBiograficosNegativos = {
             "Centrismo Pragmático / Moderado": [
-                { nome: "Franklin D. Roosevelt (1882–1945)", papel: "Presidente dos EUA", bio: "Liderou os EUA durante a Grande Depressão e a Segunda Guerra Mundial.", feitos: "Criou o New Deal, combinando economia de mercado com forte rede de proteção social pública e infraestrutura." },
-                { nome: "Angela Merkel (1954–presente)", papel: "Chanceler da Alemanha", bio: "Física e política, governou a Alemanha por 16 anos como referência de estabilidade europeia.", feitos: "Destacou-se pela gestão pragmática de crises financeiras, transição energética e capacidade de conciliar consensos de centro." }
+                { nome: "Neville Chamberlain (1869–1940)", papel: "Primeiro-Ministro do Reino Unido", bio: "Político britânico de centro que adotou a 'Política de Apaziguamento' frente ao avanço nazista no pré-Guerra.", desdobramento: "Critica-se sua hesitação e conciliação excessiva que adiaram a reação internacional ao expansionismo totalitário." },
+                { nome: "Dilma Rousseff (1947–presente)", papel: "Presidente do Brasil", bio: "Economista e política de centro-esquerda que governou o Brasil entre 2011 e 2016.", desdobramento: "Critica-se sua condução da 'Nova Matriz Econômica', que resultou na grave recessão de 2014–2016 e nas pedaladas fiscais." }
             ],
             "Socialismo de Estado / Estatismo Conservador": [
-                { nome: "Clement Attlee (1883–1967)", papel: "Primeiro-Ministro do Reino Unido", bio: "Líder trabalhista do pós-guerra conhecido por sua conduta austera e senso de dever civil.", feitos: "Nacionalizou indústrias essenciais e fundou o Serviço Nacional de Saúde (NHS), o maior sistema público de saúde do mundo." },
-                { nome: "Indira Gandhi (1917–1984)", papel: "Primeira-Ministra da Índia", bio: "Primeira e única mulher a liderar a Índia, centralizou decisões estratégicas do país.", feitos: "Nacionalizou os maiores bancos indianos, impulsionou a Revolução Verde agrícola e consolidou a Índia como potência regional." }
+                { nome: "Josef Stalin (1878–1953)", papel: "Líder Supremo da União Soviética", bio: "Ditador soviético que promoveu a coletivização forçada e a industrialização pesada do país.", desdobramento: "Responsável pelo Grande Expurgo político, regime de terror policial, censura estrita e pelos campos de trabalho forçado (Gulags)." },
+                { nome: "Elena Ceaușescu (1916–1989)", papel: "Vice-Primeira-Ministra da Romênia", bio: "Cofigura central do regime ditatorial comunista comunista romeno ao lado de seu marido.", desdobramento: "Associada ao desvio de recursos públicos, culto à personalidade e empobrecimento severo da população até a revolução de 1989." }
             ],
             "Conservadorismo Tradicional / Direita Conservadora": [
-                { nome: "Winston Churchill (1874–1965)", papel: "Primeiro-Ministro do Reino Unido", bio: "Estadista, historiador e Nobel de Literatura que liderou a resistência britânica ao nazismo.", feitos: "Defendeu as instituições democráticas ocidentais, a soberania nacional e os valores morais clássicos do Ocidente." },
-                { nome: "Margaret Thatcher (1925–2013)", papel: "Primeira-Ministra do Reino Unido", bio: "Conhecida como a 'Dama de Ferro', foi a primeira mulher a ocupar o cargo no Reino Unido.", feitos: "Promoveu privatizações massivas, desregulamentação financeira e combateu o poder dos sindicatos com foco na responsabilidade individual." }
+                { nome: "Augusto Pinochet (1915–2006)", papel: "Ditador Militar do Chile", bio: "General chileno que assumiu o poder via golpe militar em 1973 e implementou reformas liberais.", desdobramento: "Criticado internacionalmente por graves violações dos direitos humanos, tortura, assassinatos políticos e censura violenta." },
+                { nome: "Imelda Marcos (1929–presente)", papel: "Primeira-Dama e Ministra das Filipinas", bio: "Figura influente durante o regime autoritário de seu marido, Ferdinand Marcos.", desdobramento: "Símbolo de extravagância e corrupção sistêmica, criticada pela apropriação indevida de bilhões de dólares do erário público." }
             ],
             "Social-Democracia / Progressismo Social": [
-                { nome: "Olof Palme (1927–1986)", papel: "Primeiro-Ministro da Suécia", bio: "Líder social-democrata sueco que marcou a política internacional do século XX.", feitos: "Consolidou o 'Modelo Sueco' de bem-estar social universais com forte igualdade de gênero, direitos civis e pacifismo global." },
-                { nome: "Gro Harlem Brundtland (1939–presente)", papel: "Primeira-Ministra da Noruega e Médica", bio: "Primeira mulher Chefe de Governo da Noruega e ex-Diretora-Geral da OMS.", feitos: "Liderou o relatório da ONU que definiu o conceito de 'Desenvolvimento Sustentável' e expandiu licenças parentais e igualdade social." }
+                { nome: "François Hollande (2012–2017)", papel: "Presidente da França", bio: "Líder socialista francês que governou em meio a estagnação econômica e crises de segurança.", desdobramento: "Atingiu índices recordes de impopularidade devido ao fraco desempenho econômico, paralisia de reformas e falta de liderança." },
+                { nome: "Sanna Marin (1985–presente)", papel: "Primeira-Ministra da Finlândia", bio: "Líder social-democrata mais jovem do mundo ao assumir o cargo na Finlândia.", desdobramento: "Criticada pelo forte aumento do endividamento público durante sua gestão e por controvérsias de conduta ética no cargo." }
             ],
             "Liberalismo Econômico / Libertarianismo": [
-                { nome: "Adam Smith (1723–1790)", papel: "Filósofo e Economista Escocês", bio: "Considerado o pai da economia moderna e do liberalismo clássico.", feitos: "Escreveu 'A Riqueza das Nações', demonstrando como a livre concorrência e a divisão do trabalho geram prosperidade social." },
-                { nome: "Rose Wilder Lane (1886–1968)", papel: "Escritora e Teórica Política (EUA)", bio: "Uma das mães do movimento libertário americano do século XX.", feitos: "Autora do clássico libertário 'The Discovery of Freedom', advogou pela liberdade individual absoluta e mínima interferência estatal." }
+                { nome: "Ayn Rand (1905–1982)", papel: "Escritora e Teórica Filosófica (EUA/Rússia)", bio: "Criadora do Objetivismo, defendeu o egoísmo racional e o capitalismo sem regulação estatal.", desdobramento: "Criticada por sua rejeição radical ao altruísmo, solidariedade pública e a qualquer forma de auxílio ou rede social estatal." },
+                { nome: "Liz Truss (1975–presente)", papel: "Primeira-Ministra do Reino Unido", bio: "Política britânica com o mandato mais curto da história do país (45 dias em 2022).", desdobramento: "Provocou o colapso da moeda e forte crise de mercado ao tentar aprovar cortes radicais de impostos sem lastro orçamentário." }
             ],
             "Esquerda Reformista / Social-Desenvolvimentista": [
-                { nome: "John Maynard Keynes (1883–1946)", papel: "Economista Britânico", bio: "Um dos economistas mais influentes da história moderna.", feitos: "Propôs o uso de investimentos públicos em momentos de crise para gerar empregos e reativar a demanda econômica." },
-                { nome: "Maria da Conceição Tavares (1931–2024)", papel: "Economista e Professora Luso-Brasileira", bio: "Uma das vozes mais marcantes do pensamento desenvolvimentista na América Latina.", feitos: "Defendeu apaixonadamente a industrialização do Brasil, a valorização do salário mínimo e o papel do Estado no combate à pobreza." }
+                { nome: "Alberto Fernández (1959–presente)", papel: "Presidente da Argentina", bio: "Político peronista de centro-esquerda que governou a Argentina entre 2019 e 2023.", desdobramento: "Criticado pela desvalorização acelerada da moeda, hiperinflação, aumento da pobreza e escândalos de conduta pessoal." },
+                { nome: "Cristina Kirchner (1953–presente)", papel: "Presidente e Vice-Presidente da Argentina", bio: "Figura central do peronismo desenvolvimentista na Argentina durante o século XXI.", desdobramento: "Condenada por esquemas de corrupção em obras públicas, além de criticada por políticas de intervencionismo e inflação altos." }
             ],
             "Direita Fiscal / Liberalismo de Mercado": [
-                { nome: "Milton Friedman (1912–2006)", papel: "Economista e Prêmio Nobel (EUA)", bio: "Líder da Escola de Economia de Chicago e defensor do livre mercado.", feitos: "Advogou pela contenção da inflação via controle monetário, livre câmbio e privatização, influenciando governos mundiais." },
-                { nome: "Elinor Ostrom (1933–2012)", papel: "Economista e Cientista Política (EUA)", bio: "Primeira mulher a ganhar o Prêmio Nobel de Ciências Econômicas (2009).", feitos: "Demonstrou como associações locais de indivíduos podem gerir recursos comuns de forma eficiente sem intervenção estatal centralizada." }
+                { nome: "Carlos Menem (1930–2021)", papel: "Presidente da Argentina", bio: "Governou a Argentina nos anos 1990 com privatizações rápidas e paridade dólar-peso.", desdobramento: "Criticado por corrupção sistêmica, escândalos de venda ilegal de armas e pela crise que gerou o colapso financeiro de 2001." },
+                { nome: "Jeanine Áñez (1967–presente)", papel: "Presidente Interina da Bolívia", bio: "Assumiu o poder interino da Bolívia em meio a forte crise política e institucional em 2019.", desdobramento: "Criticada por repressão violenta a protestos populares, violações constitucionais e posterior condenação por descumprimento de deveres." }
             ],
             "Social-Libertário / Progressista Laico": [
-                { nome: "John Stuart Mill (1806–1873)", papel: "Filósofo e Economista Britânico", bio: "Pioneiro do liberalismo social e defensor das liberdades individuais.", feitos: "Escreveu 'Sobre a Liberdade', defendendo a liberdade de expressão irrestrita e o direito de voto para as mulheres no século XIX." },
-                { nome: "Bertha Lutz (1894–1976)", papel: "Cientista e Líder Feminista Brasileira", bio: "Bióloga e diplomata brasileira, uma das figuras mais importantes das ciências e política do Brasil.", feitos: "Liderou a conquista do voto feminino no Brasil em 1932 e atuou na elaboração da Carta da ONU para garantir igualdade de direitos entre homens e mulheres." }
+                { nome: "Mikhail Bakunin (1814–1876)", papel: "Teórico Anarquista Russo", bio: "Um dos fundadores do anarquismo coletivista e crítico de qualquer tipo de autoridade.", desdobramento: "Defendeu a destruição violenta do Estado e de instituições estabelecidas, influenciando grupos insurreicionais radicais." },
+                { nome: "Emma Goldman (1869–1940)", papel: "Ativista Anarquista e Escritora (EUA/Rússia)", bio: "Pioneira na defesa do amor livre e antimilitarismo no início do século XX.", desdobramento: "Criticada pelo apoio explícito ao uso da violência revolucionária e atos de propaganda pelo fato no início de sua trajetória." }
             ],
             "Conservadorismo Moderado / Defensor da Ordem": [
-                { nome: "Rui Barbosa (1849–1923)", papel: "Jurista, Político e Diplomata Brasileiro", bio: "Um dos fundadores da República brasileira e patrono dos advogados do Brasil.", feitos: "Defendeu o império da lei, a independência dos poderes constitucionais e representou o Brasil na Haia com brilho em prol da igualdade internacional." },
-                { nome: "Emmeline Pankhurst (1858–1928)", papel: "Ativista e Líder Política Britânica", bio: "Líder do movimento sufragista britânico reconhecida por sua determinação e disciplina.", feitos: "Lutou incansavelmente pela incorporação das mulheres ao sistema político eleitoral sob o império da lei e da cidadania plena." }
+                { nome: "Jânio Quadros (1917–1992)", papel: "Presidente do Brasil", bio: "Político brasileiro conhecido por sua campanha moralista e postura populista e legalista.", desdobramento: "Renunciou de forma impulsiva após 7 meses, gerando grave crise política nacional, além de decrees autoritários e folclóricos." },
+                { nome: "Isabel Perón (1931–presente)", papel: "Presidente da Argentina", bio: "Primeira mulher a assumir a presidência nas Américas após a morte de Juan Domingo Perón.", desdobramento: "Gestão fraca e caótica marcada por crise econômica severa, avanço da violência política estatal (Triple A) e pelo golpe militar de 1976." }
             ]
         };
 
-        const bios = dadosBiograficos[perfilNome] || [
-            { nome: "Pensadores da Ciência Política", papel: "Referência Teórica", bio: "Atores históricos de diversas correntes republicanas.", feitos: "Contribuíram para o desenvolvimento do pensamento político moderno." }
-        ];
+        const biosNegativas = dadosBiograficosNegativos[perfilNome] || [];
 
         html += `<div class="report-context-box">`;
-        html += `<strong>🏛️ Referências Históricas de Destaque (Homens e Mulheres):</strong><br>`;
-        html += `Pessoas cujas trajetórias e ideias refletem aspectos centrais do seu quadrante político:<br><br>`;
+        html += `<strong>⚠️ Referências Históricas Críticas/Controversas (Homens e Mulheres):</strong><br>`;
+        html += `Figuras históricas associadas ao seu quadrante que enfrentam fortes críticas, controvérsias ou acusações de autoritarismo/má gestão pela historiografia:<br><br>`;
 
-        bios.forEach(b => {
+        biosNegativas.forEach(b => {
             html += `
                 <div class="bio-card">
-                    <div class="bio-card-title">👤 ${b.nome}</div>
+                    <div class="bio-card-title">⚠️ ${b.nome}</div>
                     <div class="bio-card-text">
                         <strong>Atuação:</strong> ${b.papel}.<br>
                         <strong>Quem foi:</strong> ${b.bio}<br>
-                        <strong>Principais Feitos:</strong> ${b.feitos}
+                        <strong>Arestas e Críticas Historicas:</strong> ${b.desdobramento}
                     </div>
                 </div>
             `;
         });
 
-        html += `<small><em>*Nota pedagógica: As biografias apresentadas têm caráter exclusivamente informativo e educativo sobre a história do pensamento político.</em></small>`;
+        html += `<small><em>*Nota pedagógica: A apresentação destas referências atende a fins exclusivamente educativos e analíticos sobre os desvios, excessos e controvérsias documentadas na história política.</em></small>`;
         html += `</div>`;
 
         return html;

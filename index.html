@@ -200,25 +200,6 @@
             border: 1px solid var(--card-border);
         }
 
-        .share-btn-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .btn-share {
-            background-color: var(--accent-green);
-            color: #0f172a;
-            font-weight: 700;
-            padding: 12px 20px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            font-size: 0.95rem;
-            transition: opacity 0.2s;
-        }
-
-        .btn-share:hover { opacity: 0.9; }
-
         .report-box {
             background-color: var(--example-bg);
             border: 1px solid var(--card-border);
@@ -399,25 +380,18 @@
     </div>
 
     <div id="result-section" class="card">
-        <div id="pdfExportArea">
-            <div class="result-title" id="profileTitle">Seu Perfil Ideológico</div>
-            <div class="result-subtitle" id="profileCoords"></div>
-            
-            <div class="chart-container">
-                <canvas id="compassChart"></canvas>
-            </div>
-
-            <div class="report-box" id="reportContent"></div>
+        <div class="result-title" id="profileTitle">Seu Perfil Ideológico</div>
+        <div class="result-subtitle" id="profileCoords"></div>
+        
+        <div class="chart-container">
+            <canvas id="compassChart"></canvas>
         </div>
 
-        <div class="share-btn-container" style="margin-top: 20px;">
-            <button class="btn-share" onclick="baixarRelatorioPDF()">📄 Baixar Análise Completa em PDF</button>
-        </div>
+        <div class="report-box" id="reportContent"></div>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 <script>
     const perguntas = [
@@ -909,30 +883,6 @@
         }
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function baixarRelatorioPDF() {
-        const elemento = document.getElementById('pdfExportArea');
-        
-        // Adiciona classe temporária para formatar o PDF com fundo branco e cores escuras legíveis
-        elemento.style.backgroundColor = '#ffffff';
-        elemento.style.color = '#1e293b';
-        elemento.style.padding = '20px';
-
-        const opcoes = {
-            margin:       10,
-            filename:     'relatorio-mapeamento-politico.pdf',
-            image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { scale: 2, useCORS: true, backgroundColor: '#ffffff' },
-            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-        };
-
-        html2pdf().from(elemento).set(opcoes).save().then(() => {
-            // Restaura o estilo original da tela após a exportação
-            elemento.style.backgroundColor = '';
-            elemento.style.color = '';
-            elemento.style.padding = '';
-        });
     }
 
     renderizarPassoAPasso();

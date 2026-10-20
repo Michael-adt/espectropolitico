@@ -188,7 +188,6 @@
         .result-title { text-align: center; font-size: 1.5rem; font-weight: bold; margin-bottom: 6px; color: var(--primary); }
         .result-subtitle { text-align: center; font-size: 0.95rem; color: var(--text-muted); margin-bottom: 18px; }
 
-        /* FORMATO QUADRADO PERFEITO (1:1) */
         .chart-container {
             position: relative;
             width: 100%;
@@ -319,7 +318,6 @@
             color: var(--text-main);
         }
 
-        /* GLOSSÁRIO TOOLTIP */
         .glossary-term {
             border-bottom: 1px dashed var(--primary);
             color: var(--primary);
@@ -346,7 +344,6 @@
             white-space: normal;
         }
 
-        /* COMPATIBILIDADE */
         .compat-box {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -365,7 +362,6 @@
         .compat-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; }
         .compat-value { font-size: 0.95rem; font-weight: bold; color: var(--primary); }
 
-        /* PAINEL DE GABARITO (ACCORDION) */
         details.gabarito-panel {
             background-color: rgba(255, 255, 255, 0.02);
             border: 1px solid var(--card-border);
@@ -443,7 +439,6 @@
 
 <script>
     const perguntas = [
-        // BLOCO 1
         { id: 'q1', bloco: '1. Dinheiro, Compras e Emprego', eixo: 'X', invertido: false, texto: '1. Se o preço de algo subir muito (como combustível ou comida), o governo não deve congelar os preços nem interferir.', exemplo: 'Deixar os donos de postos e mercados cobrarem o valor que quiserem, acreditando que a concorrência ajusta os preços.' },
         { id: 'q2', bloco: '1. Dinheiro, Compras e Emprego', eixo: 'X', invertido: true, texto: '2. Serviços como postos de saúde, hospitais e escolas devem ser totalmente públicos e mantidos pelo governo.', exemplo: 'O dinheiro dos impostos deve ir para o SUS e escolas públicas em vez de dar auxílios para empresas privadas do setor.' },
         { id: 'q3', bloco: '1. Dinheiro, Compras e Emprego', eixo: 'X', invertido: true, texto: '3. Quem é muito rico deveria pagar mais impostos para ajudar quem é mais pobre.', exemplo: 'Cobrar um imposto especial sobre heranças milionárias e fortunas para financiar auxílios de renda e moradia.' },
@@ -453,7 +448,6 @@
         { id: 'q7', bloco: '1. Dinheiro, Compras e Emprego', eixo: 'X', invertido: true, texto: '7. O governo pode se endividar para construir hospitais, escolas e estradas quando a população precisar.', exemplo: 'Permitir que o prefeito ou presidente gaste mais do que arrecadou no ano para fazer obras públicas urgentes.' },
         { id: 'q8', bloco: '1. Dinheiro, Compras e Emprego', eixo: 'X', invertido: false, texto: '8. Quem recebe auxílio do governo deve ter um prazo para o benefício acabar e ser obrigado a estudar ou trabalhar.', exemplo: 'Exigir que o beneficiário comprove matrícula em cursos e busca por emprego para manter o auxílio financeiro.' },
 
-        // BLOCO 2
         { id: 'q9', bloco: '2. Família, Estilo de Vida e Direitos', eixo: 'Y', invertido: false, texto: '9. Valores religiosos e tradicionais de família devem orientar as leis da sociedade.', exemplo: 'Regras de casamento, costumes e livros da escola devem respeitar princípios morais e religiosos da maioria.' },
         { id: 'q10', bloco: '2. Família, Estilo de Vida e Direitos', eixo: 'Y', invertido: true, texto: '10. Cada pessoa deve ter liberdade total para decidir sobre o seu próprio corpo e sua vida.', exemplo: 'O governo não proibir nem prender quem decide interromper uma gravidez (aborto), fazer eutanásia ou usar maconha.' },
         { id: 'q11', bloco: '2. Família, Estilo de Vida e Direitos', eixo: 'Y', invertido: true, texto: '11. O governo deve reservar vagas em universidades e empregos públicos para negros, indígenas e alunos de escola pública.', exemplo: 'Garantir cotas em faculdades públicas para ajudar grupos que enfrentaram mais dificuldades históricas.' },
@@ -463,7 +457,6 @@
         { id: 'q15', bloco: '2. Família, Estilo de Vida e Direitos', eixo: 'Y', invertido: true, texto: '15. Prédios do governo (como tribunais, câmaras e escolas) não devem ter símbolos de nenhuma religião.', exemplo: 'Tirar crucifixos e bíblias das paredes de repartições públicas para manter a neutralidade do Estado.' },
         { id: 'q16', bloco: '2. Família, Estilo de Vida e Direitos', eixo: 'Y', invertido: true, texto: '16. O Brasil deve facilitar a chegada e a moradia de estrangeiros que estão fugindo de guerras ou crises.', exemplo: 'Garantir documentos, permissão de trabalho e acesso ao SUS rapidamente para imigrantes e refugiados.' },
 
-        // BLOCO 3
         { id: 'q17', bloco: '3. Internet, Leis e Poder do Governo', eixo: 'Y', invertido: true, texto: '17. Qualquer pessoa deve poder falar o que quiser na internet ou na rua, sem medo de ser presa por suas opiniões.', exemplo: 'Não censurar nem prender pessoas por opiniões polêmicas; responder a ideias ruins com debate e não com punição.' },
         { id: 'q18', bloco: '3. Internet, Leis e Poder do Governo', eixo: 'Y', invertido: false, texto: '18. O governo deve mandar apagar publicações na internet que espalhem notícias falsas (fake news).', exemplo: 'Criar leis para que plataformas digitais removam posts e bloqueiem contas que espalhem mentiras graves.' },
         { id: 'q19', bloco: '3. Internet, Leis e Poder do Governo', eixo: 'Y', invertido: false, texto: '19. Em momentos de emergência ou doença grave na cidade, o governo pode proibir as pessoas de saírem de casa.', exemplo: 'Permitir que governantes decretem toque de recolher e fechem comércios durante crises sanitárias ou de segurança.' },
@@ -473,7 +466,6 @@
         { id: 'q23', bloco: '3. Internet, Leis e Poder do Governo', eixo: 'Y', invertido: false, texto: '23. Juízes e Tribunais (como o STF) não deveriam poder cancelar leis criadas pelos deputados eleitos.', exemplo: 'Se deputados aprovarem uma lei no Congresso, juízes não deveriam ter autoridade para anular essa decisão.' },
         { id: 'q24', bloco: '3. Internet, Leis e Poder do Governo', eixo: 'Y', invertido: false, texto: '24. A polícia deveria poder olhar mensagens de celular de pessoas investigadas por crimes sem precisar de autorização judicial.', exemplo: 'Acessar mensagens de WhatsApp de suspeitos de crimes graves de forma rápida para evitar tragédias.' },
 
-        // BLOCO 4
         { id: 'q25', bloco: '4. Natureza, Tecnologia e Relações Internacionais', eixo: 'X', invertido: true, texto: '25. Proteger florestas e rios deve ser mais importante do que construir estradas ou abrir novas fazendas.', exemplo: 'Proibir obras ou garimpos se houver qualquer risco de desmatamento da Amazônia ou poluição de rios.' },
         { id: 'q26', bloco: '4. Natureza, Tecnologia e Relações Internacionais', eixo: 'X', invertido: true, texto: '26. O governo deveria cobrar mais impostos sobre a gasolina para incentivar o uso de transporte elétrico ou público.', exemplo: 'Usar o imposto do combustível para financiar ônibus elétricos e energia solar nas cidades.' },
         { id: 'q27', bloco: '4. Natureza, Tecnologia e Relações Internacionais', eixo: 'X', invertido: true, texto: '27. O Brasil deve cumprir as regras internacionais do clima, mesmo se isso fizer o país produzir ou vender menos.', exemplo: 'Aceitar metas globais para diminuir a emissão de gases, mesmo reduzindo a criação de gado ou termelétricas.' },
@@ -483,7 +475,6 @@
         { id: 'q31', bloco: '4. Natureza, Tecnologia e Relações Internacionais', eixo: 'X', invertido: false, texto: '31. Empresas devem ter permissão para tirar minérios ou fazer plantações em terras indígenas se pagarem lucros à tribo.', exemplo: 'Liberar exploração mineral ou agrícola em terras indígenas mediante compensação financeira direta à comunidade.' },
         { id: 'q32', bloco: '4. Natureza, Tecnologia e Relações Internacionais', eixo: 'X', invertido: true, texto: '32. Empresas ou governos de outros países não deveriam poder comprar grandes extensões de terra no Brasil.', exemplo: 'Proibir por lei que investidores estrangeiros comprem milhares de hectares de fazendas ou florestas no país.' },
 
-        // BLOCO 5
         { id: 'q33', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: true, texto: '33. As campanhas dos políticos devem ser pagas com dinheiro de impostos, proibindo doações de empresários.', exemplo: 'Usar fundo eleitoral público para panfletos e TV, evitando que grandes empresários ajudem candidatos em troca de favores.' },
         { id: 'q34', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: true, texto: '34. A população deveria ir às urnas votar diretamente para decidir sobre leis importantes e polêmicas.', exemplo: 'Votar diretamente na urna dizendo "Sim" ou "Não" sobre legalização de armas, reformas ou privatizações.' },
         { id: 'q35', bloco: '5. Política, Voto e Organização do Governo', eixo: 'Y', invertido: false, texto: '35. Os ministros do governo deveriam ser escolhidos apenas pelo currículo de trabalho, e não por acordos entre partidos.', exemplo: 'Nomear apenas especialistas renomados para os ministérios, recusando indicações de deputados em troca de votos.' },
@@ -614,11 +605,9 @@
 
                 let pontos = 0;
                 if (val === 1) pontos = -2;
-                else if (val === 2) pontos - -1;
+                else if (val === 2) pontos = -1;
                 else if (val === 4) pontos = 1;
                 else if (val === 5) pontos = 2;
-
-                if (val === 2) pontos = -1; // Ajuste correto para parcial negativo
 
                 if (q.invertido) pontos = -pontos;
 
@@ -668,7 +657,6 @@
     function gerarRelatorioTextual(x, y, r) {
         let html = '';
 
-        // BLOCO 1: ANÁLISE DETALHADA E EXPANDIDA DO EIXO ECONÔMICO
         html += `<div class="report-section-header">1. Análise Aprofundada do Eixo Econômico (Pontuação: ${x > 0 ? '+' : ''}${x.toFixed(1)})</div>`;
         
         let perfilEco = "";
@@ -692,8 +680,6 @@
         }
         html += `</ul>`;
 
-
-        // BLOCO 2: ANÁLISE DETALHADA E EXPANDIDA DO EIXO SOCIAL
         html += `<div class="report-section-header">2. Análise Aprofundada do Eixo Social/Cultural (Pontuação: ${y > 0 ? '+' : ''}${y.toFixed(1)})</div>`;
         
         let perfilSoc = "";
@@ -717,8 +703,6 @@
         }
         html += `</ul>`;
 
-
-        // BLOCO 3: SÍNTESE DO PERFIL
         html += `<div class="report-section-header">💡 Síntese Estrutural do Perfil Ideológico</div>`;
         const perfilNome = definirIdeologia(x, y);
 
@@ -734,10 +718,7 @@
             "Conservadorismo Moderado / Defensor da Ordem": "Sua visão coloca a estabilidade institucional, o império estrito da lei e a segurança pública no centro da gravidade política. Você apoia o livre mercado e a concorrência comercial, mas exige severidade contra a criminalidade, probidade administrativa e respeito solene às tradições republicanas."
         };
 
-        html += `<div class="report-highlight-box">`;
-        html += `<strong>Diagnóstico Dominante: ${perfilNome}</strong><br><br>`;
-        html += `${textosConclusao[perfilNome] || ""}`;
-        html += `</div>`;
+        html += `<div class="report-highlight-box"><strong>Diagnóstico Dominante: ${perfilNome}</strong><br><br>${textosConclusao[perfilNome] || ""}</div>`;
 
         const comp = calcularCompatibilidades(perfilNome);
         html += `
@@ -753,7 +734,6 @@
             </div>
         `;
 
-        // BLOCO 4: REFERÊNCIAS HISTÓRICAS AMPLIADAS E DETALHADAS
         const referenciasCompletas = {
             "Centrismo Pragmático / Moderado": {
                 positivas: [
@@ -761,8 +741,8 @@
                     { nome: "Angela Merkel (1954–presente)", papel: "Chanceler da Alemanha", bio: "Cientista física e líder política que governou a principal economia da União Europeia por 16 anos consecutivos.", feitos: "Reconhecida mundialmente por sua condução pragmática e firme de crises complexas — como a crise da dívida soberana europeia, o desafio migratório e a transição energética alemã —, equilibrando rigor orçamentário com concertação política de centro." }
                 ],
                 negativas: [
-                    { nome: "Neville Chamberlain (1869–1940)", papel: "Primeiro-Ministro do Reino Unido", bio: "Político conservador moderado que chefiou o governo britânico nos anos imediatamente anteriores ao deflagrar da Segunda Guerra Mundial.", feitos: "Sua trajetória ficou marcada de forma profundamente negativa pela 'Política de Apaziguamento' (*Appeasement*) frente a Adolf Hitler, culminando no Acordo de Munique de 1938, estratégia criticada historicamente por demonstrar fraqueza e conceder tempo estratégico vital para a expansão militar nazista." },
-                    { nome: "Dilma Rousseff (1947–presente)", papel: "Presidente do Brasil", bio: "Economista e política de centro-esquerda que assumiu a chefia do Executivo brasileiro entre 2011 e 2016.", feitos: "Sua administração é severamente criticada historiográfica e economicamente pela adoção da chamada 'Nova Matriz Econômica', conjunto de intervenções artificiais no câmbio, juros e tarifas que desorganizaram as contas públicas, gerando a grave recessão de 2014–2016 e culminando em seu processo de impedimento (*impeachment*) por irregularidades fiscais." }
+                    { nome: "Neville Chamberlain (1869–1940)", papel: "Primeiro-Ministro do Reino Unido", bio: "Político conservador moderado que chefiou o governo britânico nos anos imediatamente anteriores ao deflagrar da Segunda Guerra Mundial.", criticas: "Sua trajetória ficou marcada de forma profundamente negativa pela 'Política de Apaziguamento' (*Appeasement*) frente a Adolf Hitler, culminando no Acordo de Munique de 1938, estratégia criticada historicamente por demonstrar fraqueza e conceder tempo estratégico vital para a expansão militar nazista." },
+                    { nome: "Dilma Rousseff (1947–presente)", papel: "Presidente do Brasil", bio: "Economista e política de centro-esquerda que assumiu a chefia do Executivo brasileiro entre 2011 e 2016.", criticas: "Sua administração é severamente criticada historiográfica e economicamente pela adoção da chamada 'Nova Matriz Econômica', conjunto de intervenções artificiais no câmbio, juros e tarifas que desorganizaram as contas públicas, gerando a grave recessão de 2014–2016 e culminando em seu processo de impedimento (*impeachment*) por irregularidades fiscais." }
                 ]
             },
             "Socialismo de Estado / Estatismo Conservador": {
@@ -771,8 +751,8 @@
                     { nome: "Indira Gandhi (1917–1984)", papel: "Primeira-Ministra da Índia", bio: "Figura dominante da política indiana por várias décadas, filha de Jawaharlal Nehru, exerceu forte centralização de poder.", feitos: "Implementou reformas de caráter estatizante profundo, incluindo a nacionalização dos 14 maiores bancos comerciais da Índia em 1969, promoveu a autossuficiência agrícola por meio da Revolução Verde e consolidou a projeção geopolítica e militar indiana na Ásia Meridional." }
                 ],
                 negativas: [
-                    { nome: "Josef Stalin (1878–1953)", papel: "Líder Supremo da União Soviética", bio: "Ditador comunista que transformou a URSS em uma superpotência industrial por meio de métodos de extrema violência e terror estatal.", feitos: "Sua gestão totalitária foi marcada pela coletivização forçada do campo (causando fomes catastróficas como o *Holodomor*), pelos expurgos em massa de opositores políticos e militares no 'Grande Terror', pela estrita censura cultural e pela consolidação de um regime de polícia secreta onipresente." },
-                    { nome: "Elena Ceaușescu (1916–1989)", papel: "Vice-Primeira-Ministra da Romênia", bio: "Esposa do ditador comunista Nicolae Ceaușescu e figura de poder absoluto na cúpula do regime romeno.", feitos: "Simbolizou o nepotismo, a corrupção e a megalomania do comunismo de fachada da Europa Oriental; seu governo impôs drásticas políticas de austeridade e racionamento à população para quitar a dívida externa, enquanto acumulava fortunas e mantinha um violento culto à personalidade." }
+                    { nome: "Josef Stalin (1878–1953)", papel: "Líder Supremo da União Soviética", bio: "Ditador comunista que transformou a URSS em uma superpotência industrial por meio de métodos de extrema violência e terror estatal.", criticas: "Sua gestão totalitária foi marcada pela coletivização forçada do campo (causando fomes catastróficas como o *Holodomor*), pelos expurgos em massa de opositores políticos e militares no 'Grande Terror', pela estrita censura cultural e pela consolidação de um regime de polícia secreta onipresente." },
+                    { nome: "Elena Ceaușescu (1916–1989)", papel: "Vice-Primeira-Ministra da Romênia", bio: "Esposa do ditador comunista Nicolae Ceaușescu e figura de poder absoluto na cúpula do regime romeno.", criticas: "Simbolizou o nepotismo, a corrupção e a megalomania do comunismo de fachada da Europa Oriental; seu governo impôs drásticas políticas de austeridade e racionamento à população para quitar a dívida externa, enquanto acumulava fortunas e mantinha um violento culto à personalidade." }
                 ]
             },
             "Conservadorismo Tradicional / Direita Conservadora": {
@@ -781,8 +761,8 @@
                     { nome: "Margaret Thatcher (1925–2013)", papel: "Primeira-Ministra do Reino Unido", bio: "Conhecida mundialmente como a 'Dama de Ferro', foi a primeira mulher a chefiar o governo britânico (1979–1990).", feitos: "Revolucionou a economia britânica ao desmantelar monopólios estatais, privatizar empresas públicas ineficientes, conter o poder político dos sindicatos mineradores e restaurar a disciplina fiscal e a liberdade de mercado, redefinindo o conservadorismo moderno." }
                 ],
                 negativas: [
-                    { nome: "Augusto Pinochet (1915–2006)", papel: "Ditador Militar do Chile", bio: "General do exército chileno que depôs o governo socialista de Salvador Allende através de um violento golpe de Estado em 1973.", feitos: "Seu regime militar é universalmente fustigado por graves e sistemáticas violações dos direitos humanos, incluindo milhares de assassinatos políticos, torturas institucionalizadas, exílio forçado de opositores e a supressão total das liberdades democráticas e sindicais por quase duas décadas." },
-                    { nome: "Imelda Marcos (1929–presente)", papel: "Primeira-Dama e Ministra das Filipinas", bio: "Esposa do ditador filipino Ferdinand Marcos, exercendo imenso poder político e econômico durante o regime marcial (1965–1986).", feitos: "Tornou-se o símbolo máximo de cleptocracia e ostentação desenfreada, desviando bilhões de dólares dos cofres públicos filipinos para financiar coleções luxuosas de imóveis e joias, enquanto grande parte da população sobrevivia sob extrema pobreza e repressão militar." }
+                    { nome: "Augusto Pinochet (1915–2006)", papel: "Ditador Militar do Chile", bio: "General do exército chileno que depôs o governo socialista de Salvador Allende através de um violento golpe de Estado em 1973.", criticas: "Seu regime militar é universalmente fustigado por graves e sistemáticas violações dos direitos humanos, incluindo milhares de assassinatos políticos, torturas institucionalizadas, exílio forçado de opositores e a supressão total das liberdades democráticas e sindicais por quase duas décadas." },
+                    { nome: "Imelda Marcos (1929–presente)", papel: "Primeira-Dama e Ministra das Filipinas", bio: "Esposa do ditador filipino Ferdinand Marcos, exercendo imenso poder político e econômico durante o regime marcial (1965–1986).", criticas: "Tornou-se o símbolo máximo de cleptocracia e ostentação desenfreada, desviando bilhões de dólares dos cofres públicos filipinos para financiar coleções luxuosas de imóveis e joias, enquanto grande parte da população sobrevivia sob extrema pobreza e repressão militar." }
                 ]
             },
             "Social-Democracia / Progressismo Social": {
@@ -791,8 +771,8 @@
                     { nome: "Gro Harlem Brundtland (1939–presente)", papel: "Primeira-Ministra da Noruega", bio: "Médica sanitarista e política norueguesa, primeira mulher a chefiar o governo de seu país em três mandatos distintos.", feitos: "Projetou-se mundialmente ao presidir a Comissão Mundial sobre Meio Ambiente e Desenvolvimento da ONU, redigindo o célebre relatório *Nosso Futuro Comum* (1987), que cunhou e institucionalizou o conceito global de 'Desenvolvimento Sustentável'." }
                 ],
                 negativas: [
-                    { nome: "François Hollande (1954–presente)", papel: "Presidente da França", bio: "Político do Partido Socialista francês que governou o país entre 2012 e 2017 em cenário de crise europeia.", feitos: "Sua gestão acumulou severas críticas tanto da ala esquerda quanto da direita: falhou em conter o desemprego estrutural crônico, gerou profunda divisão interna com reformas trabalhistas impopulares e atingiu índices históricos mínimos de aprovação popular, abdicando de concorrer à reeleição." },
-                    { nome: "Sanna Marin (1985–presente)", papel: "Primeira-Ministra da Finlândia", bio: "Líder social-democrata que assumiu o governo finlandês em 2019 como a mais jovem chefe de governo do mundo na época.", feitos: "Apesar de elogios internacionais por sua gestão da adesão à OTAN e crise sanitária, foi alvo de intensas polêmicas internas devido ao rápido e expressivo aumento da dívida pública nacional durante sua gestão e controvérsias de conduta em festas privadas divulgadas pela mídia." }
+                    { nome: "François Hollande (1954–presente)", papel: "Presidente da França", bio: "Político do Partido Socialista francês que governou o país entre 2012 e 2017 em cenário de crise europeia.", criticas: "Sua gestão acumulou severas críticas tanto da ala esquerda quanto da direita: falhou em conter o desemprego estrutural crônico, gerou profunda divisão interna com reformas trabalhistas impopulares e atingiu índices históricos mínimos de aprovação popular, abdicando de concorrer à reeleição." },
+                    { nome: "Sanna Marin (1985–presente)", papel: "Primeira-Ministra da Finlândia", bio: "Líder social-democrata que assumiu o governo finlandês em 2019 como a mais jovem chefe de governo do mundo na época.", criticas: "Apesar de elogios internacionais por sua gestão da adesão à OTAN e crise sanitária, foi alvo de intensas polêmicas internas devido ao rápido e expressivo aumento da dívida pública nacional durante sua gestão e controvérsias de conduta em festas privadas divulgadas pela mídia." }
                 ]
             },
             "Liberalismo Econômico / Libertarianismo": {
@@ -801,8 +781,8 @@
                     { nome: "Rose Wilder Lane (1886–1968)", papel: "Escritora e Teórica Política (EUA)", bio: "Jornalista, romancista e uma das principais fundadoras intelectuais do movimento libertário norte-americano do século XX.", feitos: "Escreveu o influentíssimo manifesto político *The Discovery of Freedom* (1943), onde defendeu com rigor filosófico a soberania absoluta do indivíduo, a cooperação social voluntária livre de coerção estatal e a rejeição integral aos planejamentos econômicos centralizados." }
                 ],
                 negativas: [
-                    { nome: "Ayn Rand (1905–1982)", papel: "Escritora e Filósofa (EUA/Rússia)", bio: "Idealizadora do sistema filosófico denominado Objetivismo, que exalta o egoísmo racional e o capitalismo puramente laissez-faire.", feitos: "Suas formulações extremas são duramente criticadas por filósofos e economistas humanistas devido à sua rejeição categórica a qualquer forma de altruísmo, solidariedade pública, leis trabalhistas ou redes de amparo assistencial do Estado para os mais necessitados da sociedade." },
-                    { nome: "Liz Truss (1975–presente)", papel: "Primeira-Ministra do Reino Unido", bio: "Política conservadora britânica cujo mandato durou apenas 45 dias no segundo semestre de 2022.", feitos: "Protagonizou um dos maiores desastres de política econômica da história moderna britânica ao anunciar um pacote radical de cortes massivos de impostos sem qualquer lastro de compensação orçamentária, provocando uma fuga violenta de capitais, colapso na cotação da libra esterlina e pânico nos fundos de pensão." }
+                    { nome: "Ayn Rand (1905–1982)", papel: "Escritora e Filósofa (EUA/Rússia)", bio: "Idealizadora do sistema filosófico denominado Objetivismo, que exalta o egoísmo racional e o capitalismo puramente laissez-faire.", criticas: "Suas formulações extremas são duramente criticadas por filósofos e economistas humanistas devido à sua rejeição categórica a qualquer forma de altruísmo, solidariedade pública, leis trabalhistas ou redes de amparo assistencial do Estado para os mais necessitados da sociedade." },
+                    { nome: "Liz Truss (1975–presente)", papel: "Primeira-Ministra do Reino Unido", bio: "Política conservadora britânica cujo mandato durou apenas 45 dias no segundo semestre de 2022.", criticas: "Protagonizou um dos maiores desastres de política econômica da história moderna britânica ao anunciar um pacote radical de cortes massivos de impostos sem qualquer lastro de compensação orçamentária, provocando uma fuga violenta de capitais, colapso na cotação da libra esterlina e pânico nos fundos de pensão." }
                 ]
             },
             "Esquerda Reformista / Social-Desenvolvimentista": {
@@ -811,8 +791,8 @@
                     { nome: "Maria da Conceição Tavares (1931–2024)", papel: "Economista e Professora Luso-Brasileira", bio: "Principal referência intelectual do pensamento estruturalista e desenvolvimentista na América Latina.", feitos: "Dedicou sua vida acadêmica e pública a denunciar as amarras do subdesenvolvimento periférico, defendendo com veemência a industrialização nacional autônoma, a distribuição de renda, a soberania monetária e a atuação do Estado como motor indispensável contra a pobreza." }
                 ],
                 negativas: [
-                    { nome: "Alberto Fernández (1959–presente)", papel: "Presidente da Argentina", bio: "Advogado e político peronista que chefiou o governo argentino entre 2019 e 2023 em cenário de esgotamento fiscal.", feitos: "Sua presidência ficou marcada negativamente por um colapso inflacionário sem precedentes recentes (superando 100% ao ano), desvalorização extrema do peso, aumento dramático da linha de pobreza nacional e graves crises de governabilidade e escândalos éticos na residência presidencial." },
-                    { nome: "Cristina Kirchner (1953–presente)", papel: "Presidente e Vice-Presidente da Argentina", bio: "Figura central da política argentina contemporânea, liderou o país por dois mandatos presidenciais (2007–2015).", feitos: "Sua trajetória sofre severas contestações legais e econômicas; foi condenada judicialmente por esquemas de corrupção e desvio de verbas em licitações de obras públicas, além de ser responsabilizada por políticas de controle de preços artificiais e confronto institucional persistente." }
+                    { nome: "Alberto Fernández (1959–presente)", papel: "Presidente da Argentina", bio: "Advogado e político peronista que chefiou o governo argentino entre 2019 e 2023 em cenário de esgotamento fiscal.", criticas: "Sua presidência ficou marcada negativamente por um colapso inflacionário sem precedentes recentes (superando 100% ao ano), desvalorização extrema do peso, aumento dramático da linha de pobreza nacional e graves crises de governabilidade e escândalos éticos na residência presidencial." },
+                    { nome: "Cristina Kirchner (1953–presente)", papel: "Presidente e Vice-Presidente da Argentina", bio: "Figura central da política argentina contemporânea, liderou o país por dois mandatos presidenciais (2007–2015).", criticas: "Sua trajetória sofre severas contestações legais e econômicas; foi condenada judicialmente por esquemas de corrupção e desvio de verbas em licitações de obras públicas, além de ser responsabilizada por políticas de controle de preços artificiais e confronto institucional persistente." }
                 ]
             },
             "Direita Fiscal / Liberalismo de Mercado": {
@@ -821,8 +801,8 @@
                     { nome: "Elinor Ostrom (1933–2012)", papel: "Economista e Cientista Política (EUA)", bio: "Primeira mulher a ser laureada com o Prêmio Nobel de Ciências Econômicas (2009).", feitos: "Sua pesquisa empírica revolucionária demonstrou como comunidades locais e associações privadas de indivíduos podem gerir recursos naturais comuns de forma altamente sustentável e eficiente, superando tanto o modelo de estatização centralizada quanto a tragédia dos bens comunais." }
                 ],
                 negativas: [
-                    { nome: "Carlos Menem (1930–2021)", papel: "Presidente da Argentina", bio: "Político peronista que governou a Argentina ao longo da década de 1990 com reformas liberais drásticas.", feitos: "Embora tenha inicialmente estabilizado a inflação com a conversibilidade fixa (1 peso = 1 dólar), seu modelo ruiu espetacularmente devido ao endividamento externo insustentável, privatizações conduzidas sob suspeitas de corrupção sistêmica e o colapso financeiro terminal de 2001 (*Corralito*)." },
-                    { nome: "Jeanine Áñez (1967–presente)", papel: "Presidente Interina da Bolívia", bio: "Senadora conservadora que assumiu o governo interino boliviano após a renúncia contestada de Evo Morales em 2019.", feitos: "Sua gestão de transição foi marcada por intensa polarização e criticada fortemente por organizações internacionais de direitos humanos devido à repressão militar violenta a protestos sociais (massacres de Senkata e Sacaba) e posterior condenação judicial por quebra de preceitos constitucionais." }
+                    { nome: "Carlos Menem (1930–2021)", papel: "Presidente da Argentina", bio: "Político peronista que governou a Argentina ao longo da década de 1990 com reformas liberais drásticas.", criticas: "Embora tenha inicialmente estabilizado a inflação com a conversibilidade fixa (1 peso = 1 dólar), seu modelo ruiu espetacularmente devido ao endividamento externo insustentável, privatizações conduzidas sob suspeitas de corrupção sistêmica e o colapso financeiro terminal de 2001 (*Corralito*)." },
+                    { nome: "Jeanine Áñez (1967–presente)", papel: "Presidente Interina da Bolívia", bio: "Senadora conservadora que assumiu o governo interino boliviano após a renúncia contestada de Evo Morales em 2019.", criticas: "Sua gestão de transição foi marcada por intensa polarização e criticada fortemente por organizações internacionais de direitos humanos devido à repressão militar violenta a protestos sociais (massacres de Senkata e Sacaba) e posterior condenação judicial por quebra de preceitos constitucionais." }
                 ]
             },
             "Social-Libertário / Progressista Laico": {
@@ -831,8 +811,8 @@
                     { nome: "Bertha Lutz (1894–1976)", papel: "Cientista e Líder Feminista Brasileira", bio: "Bióloga laureada pelo Museu Nacional e diplomata brasileira de destaque internacional.", feitos: "Liderou com maestria o movimento sufragista nacional, fundando a Federação Brasileira pelo Progresso Feminino e conquistando o sufrágio das mulheres na Constituição de 1932; integrou a delegação oficial do Brasil na Conferência de São Francisco (1945), garantindo a menção expressa à igualdade de gênero na carta de fundação da ONU." }
                 ],
                 negativas: [
-                    { nome: "Mikhail Bakunin (1814–1876)", papel: "Teórico Anarquista Russo", bio: "Principal arquiteto do anarquismo coletivista revolucionário e feroz oponente de Karl Marx na Primeira Internacional.", feitos: "Embora sua crítica ao autoritarismo estatal seja notável, sua pregação pela insurreição armada imediata e pela demolição violenta e total de todas as estruturas jurídicas, religiosas e governamentais da sociedade inspirou grupos guerrilheiros radicais e episódios de terrorismo político no século XIX." },
-                    { nome: "Emma Goldman (1869–1940)", papel: "Ativista Anarquista e Oradora (EUA/Rússia)", bio: "Famosa agitadora política anarcocomunista e feminista nascida na Lituânia, radicada nos Estados Unidos.", feitos: "Sua trajetória gerou intensas controvérsias históricas pelo seu apoio público inicial e romantização da violência revolucionária armada como método legítimo de derrubada da ordem burguesa, o que resultou em sua subsequente deportação dos EUA após conspirações ligadas a atentados políticos." }
+                    { nome: "Mikhail Bakunin (1814–1876)", papel: "Teórico Anarquista Russo", bio: "Principal arquiteto do anarquismo coletivista revolucionário e feroz oponente de Karl Marx na Primeira Internacional.", criticas: "Embora sua crítica ao autoritarismo estatal seja notável, sua pregação pela insurreição armada imediata e pela demolição violenta e total de todas as estruturas jurídicas, religiosas e governamentais da sociedade inspirou grupos guerrilheiros radicais e episódios de terrorismo político no século XIX." },
+                    { nome: "Emma Goldman (1869–1940)", papel: "Ativista Anarquista e Oradora (EUA/Rússia)", bio: "Famosa agitadora política anarcocomunista e feminista nascida na Lituânia, radicada nos Estados Unidos.", criticas: "Sua trajetória gerou intensas controvérsias históricas pelo seu apoio público inicial e romantização da violência revolucionária armada como método legítimo de derrubada da ordem burguesa, o que resultou em sua subsequente deportação dos EUA após conspirações ligadas a atentados políticos." }
                 ]
             },
             "Conservadorismo Moderado / Defensor da Ordem": {
@@ -841,8 +821,8 @@
                     { nome: "Emmeline Pankhurst (1858–1928)", papel: "Ativista e Líder Política Britânica", bio: "Fundadora da União Social e Política das Mulheres (*WSPU*), principal motor do movimento sufragista militante na Grã-Bretanha.", feitos: "Conduziu a luta implacável das mulheres pelo direito ao voto sob a égide da cidadania e da responsabilidade cívica, enfrentando prisões e greves de fome até assegurar a vitória histórica do sufrágio feminino no Reino Unido." }
                 ],
                 negativas: [
-                    { nome: "Jânio Quadros (1917–1992)", papel: "Presidente do Brasil", bio: "Político populista brasileiro eleito em 1960 sob a bandeira moralista da 'vassoura' contra a corrupção.", feitos: "Seu governo ruiu devido a atos erráticos, excentricidades administrativas e uma renúncia teatral e inesperada após apenas sete meses de mandato, desestabilizando gravemente a frágil institucionalidade democrática brasileira e abrindo caminho para a crise que culminou no golpe militar de 1964." },
-                    { nome: "Isabel Perón (1931–presente)", papel: "Presidente da Argentina", bio: "Primeira mulher a assumir a chefia de Estado nas Américas, sucedendo seu marido Juan Domingo Perón após o falecimento deste em 1974.", feitos: "Sua administração desmoronou em meio a uma incapacidade governativa crônica, inflação descontrolada, conivência com o esquadrão paramilitar de extrema-direita (*Triple A*) e o aprofundamento do caos social que resultou no golpe militar de 1976." }
+                    { nome: "Jânio Quadros (1917–1992)", papel: "Presidente do Brasil", bio: "Político populista brasileiro eleito em 1960 sob a bandeira moralista da 'vassoura' contra a corrupção.", criticas: "Seu governo ruiu devido a atos erráticos, excentricidades administrativas e uma renúncia teatral e inesperada após apenas sete meses de mandato, desestabilizando gravemente a frágil institucionalidade democrática brasileira e abrindo caminho para a crise que culminou no golpe militar de 1964." },
+                    { nome: "Isabel Perón (1931–presente)", papel: "Presidente da Argentina", bio: "Primeira mulher a assumir a chefia de Estado nas Américas, sucedendo seu marido Juan Domingo Perón após o falecimento deste em 1974.", criticas: "Sua administração desmoronou em meio a uma incapacidade governativa crônica, inflação descontrolada, conivência com o esquadrão paramilitar de extrema-direita (*Triple A*) e o aprofundamento do caos social que resultou no golpe militar de 1976." }
                 ]
             }
         };
@@ -867,7 +847,7 @@
             html += `
                 <div class="bio-card">
                     <div class="bio-card-title-neg">⚠️ ${b.nome}</div>
-                    <div class="bio-card-text"><strong>Atuação:</strong> ${b.papel}.<br><strong>Biografia:</strong> ${b.bio}<br><strong>Críticas Históricas:</strong> ${b.desdobramento}</div>
+                    <div class="bio-card-text"><strong>Atuação:</strong> ${b.papel}.<br><strong>Biografia:</strong> ${b.bio}<br><strong>Críticas Históricas:</strong> ${b.criticas}</div>
                 </div>
             `;
         });
